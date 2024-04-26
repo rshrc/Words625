@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:words625/spanish_words.dart';
