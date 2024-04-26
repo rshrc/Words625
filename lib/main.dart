@@ -5,6 +5,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:words625/spanish_words.dart';
 import 'package:words625/kannada_words.dart';
 
+// extension on string for title case
+extension TitleCase on String {
+  String get titleCase {
+    return split(' ')
+        .map((word) => word[0].toUpperCase() + word.substring(1))
+        .join(' ');
+  }
+}
+
 enum LanguageSelection {
   kannada,
   spanish,
@@ -77,7 +86,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Words625 (${selectedLang.name})'),
+        title: Text(
+          'Words625 ~ (${selectedLang.name.titleCase})',
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w500,
+              ),
+        ),
         actions: [
           PopupMenuButton<LanguageSelection>(
             onSelected: changeLang,
@@ -95,70 +109,72 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: currentChoice != null
-                ? [
-                    Container(
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.black,
-                            blurRadius: 6,
-                          ),
-                        ],
-                      ),
-                      width: MediaQuery.of(context).size.width * 0.6,
-                      child: Center(
-                        child: Text(
-                          '${currentChoice!.key}',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                          ),
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: currentChoice != null
+              ? [
+                  Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black,
+                          blurRadius: 6,
+                        ),
+                      ],
+                    ),
+                    width: MediaQuery.of(context).size.width * 0.6,
+                    child: Center(
+                      child: Text(
+                        '${currentChoice!.key}',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
                         ),
                       ),
                     ),
-                    const SizedBox(height: 60),
-                    const Divider(),
-                    const SizedBox(height: 60),
-                    Container(
-                      height: 100,
-                      width: MediaQuery.of(context).size.width * 0.6,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.secondary,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.black,
-                            blurRadius: 6,
-                          ),
-                        ],
-                      ),
-                      child: Center(
-                        child: Text(
-                          '${currentChoice?.value}',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                          ),
+                  ),
+                  const SizedBox(height: 60),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 32.0),
+                    child: Divider(),
+                  ),
+                  const SizedBox(height: 60),
+                  Container(
+                    height: 100,
+                    width: MediaQuery.of(context).size.width * 0.6,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.secondary,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black,
+                          blurRadius: 6,
+                        ),
+                      ],
+                    ),
+                    child: Center(
+                      child: Text(
+                        '${currentChoice?.value}',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
                         ),
                       ),
                     ),
-                  ]
-                : [
-                    const Center(
-                      child: Text('Press the button to get a random word'),
-                    ),
-                  ]),
+                  ),
+                ]
+              : [
+                  const Center(
+                    child: Text('Press the button to get a random word'),
+                  ),
+                ],
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.small(
-        onPressed: () {
-          chooseRandomWord();
-        },
+        onPressed: () => chooseRandomWord(),
         child: const Icon(Icons.navigate_next),
       ),
     );
