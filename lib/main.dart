@@ -1,6 +1,8 @@
 import 'dart:math';
 
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:words625/spanish_words.dart';
 import 'package:words625/kannada_words.dart';
 
@@ -25,7 +27,9 @@ class Word625 extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color(0xff414288),
         ),
+        textTheme: GoogleFonts.merriweatherTextTheme(),
       ),
+
       home: const HomePage(),
     );
   }
@@ -147,7 +151,8 @@ class _HomePageState extends State<HomePage> {
                   ]
                 : [
                     const Center(
-                        child: Text('Press the button to get a random word')),
+                      child: Text('Press the button to get a random word'),
+                    ),
                   ]),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
