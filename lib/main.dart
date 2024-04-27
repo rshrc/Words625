@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:words625/spanish_words.dart';
 import 'package:words625/kannada_words.dart';
@@ -55,11 +56,14 @@ class _HomePageState extends State<HomePage> {
 
   List choices = [];
 
+  MapEntry? prevChoice;
   MapEntry? currentChoice;
 
   LanguageSelection selectedLang = LanguageSelection.kannada;
 
   Set usedWords = {};
+
+  bool animate = false;
 
   void changeLang(LanguageSelection lang) {
     selectedLang = lang;
@@ -87,10 +91,19 @@ class _HomePageState extends State<HomePage> {
       } while (usedWords.contains(newWord));
     }
 
+    prevChoice = currentChoice;
     currentChoice = newWord;
     usedWords.add(newWord);
 
+    animate = true;
+
     setState(() {});
+  }
+
+  bool shouldAnimate() {
+    print("Line 105 : ${currentChoice != null && currentChoice != prevChoice}");
+
+    return currentChoice != null && currentChoice != prevChoice;
   }
 
   @override
@@ -123,62 +136,18 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: currentChoice != null
               ? [
-                  Container(
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primary,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black,
-                          blurRadius: 6,
-                        ),
-                      ],
-                    ),
-                    width: MediaQuery.of(context).size.width * 0.6,
-                    child: Center(
-                      child: Text(
-                        '${currentChoice!.key}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                        ),
-                      ),
-                    ),
-                  ),
+                  EnglishWord(word: currentChoice!),
                   const SizedBox(height: 60),
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 32.0),
                     child: Divider(),
                   ),
                   const SizedBox(height: 60),
-                  Container(
-                    height: 100,
-                    width: MediaQuery.of(context).size.width * 0.6,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.secondary,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black,
-                          blurRadius: 6,
-                        ),
-                      ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        '${currentChoice?.value}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                        ),
-                      ),
-                    ),
-                  ),
+                  TargetWord(targetWord: currentChoice!),
                 ]
               : [
                   const Center(
-                    child: Text('Press the button to get a random word'),
+                    child: Text('Press the button to learn a random word'),
                   ),
                 ],
         ),
@@ -189,5 +158,71 @@ class _HomePageState extends State<HomePage> {
         child: const Icon(Icons.navigate_next),
       ),
     );
+  }
+}
+
+class EnglishWord extends StatelessWidget {
+  final MapEntry<dynamic, dynamic> word;
+  const EnglishWord({Key? key, required this.word}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      key: UniqueKey(),
+      height: 100,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.primary,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black,
+            blurRadius: 6,
+          ),
+        ],
+      ),
+      width: MediaQuery.of(context).size.width * 0.6,
+      child: Center(
+        child: Text(
+          word.key,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+          ),
+        ).animate().slide(),
+      ),
+    ).animate().flip();
+  }
+}
+
+class TargetWord extends StatelessWidget {
+  final MapEntry<dynamic, dynamic> targetWord;
+  const TargetWord({Key? key, required this.targetWord}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      key: UniqueKey(),
+      height: 100,
+      width: MediaQuery.of(context).size.width * 0.6,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.secondary,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black,
+            blurRadius: 6,
+          ),
+        ],
+      ),
+      child: Center(
+        child: Text(
+          '${targetWord.value}',
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+          ),
+        ).animate().slide(),
+      ),
+    ).animate().flip();
   }
 }
