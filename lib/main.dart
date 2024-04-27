@@ -59,6 +59,8 @@ class _HomePageState extends State<HomePage> {
 
   LanguageSelection selectedLang = LanguageSelection.kannada;
 
+  Set usedWords = {};
+
   void changeLang(LanguageSelection lang) {
     selectedLang = lang;
     setState(() {});
@@ -71,13 +73,22 @@ class _HomePageState extends State<HomePage> {
   }
 
   void chooseRandomWord() {
+    MapEntry? newWord;
+
     if (selectedLang == LanguageSelection.spanish) {
-      currentChoice = flatSpanishLangList.entries
-          .elementAt(Random().nextInt(flatSpanishLangList.length));
+      do {
+        newWord = flatSpanishLangList.entries
+            .elementAt(Random().nextInt(flatSpanishLangList.length));
+      } while (usedWords.contains(newWord));
     } else {
-      currentChoice = flatKannadaLangList.entries
-          .elementAt(Random().nextInt(flatKannadaLangList.length));
+      do {
+        newWord = flatKannadaLangList.entries
+            .elementAt(Random().nextInt(flatKannadaLangList.length));
+      } while (usedWords.contains(newWord));
     }
+
+    currentChoice = newWord;
+    usedWords.add(newWord);
 
     setState(() {});
   }
