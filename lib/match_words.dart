@@ -29,6 +29,10 @@ class _MatchingGameState extends State<MatchingGame> {
           firstSelectedWord = null;
           firstSelectedTranslation = null;
         });
+
+        if (matched.length == 10) {
+          initializeGame();
+        }
       } else {
         setState(() {
           firstSelectedWord = null;
@@ -56,6 +60,10 @@ class _MatchingGameState extends State<MatchingGame> {
           firstSelectedWord = null;
           firstSelectedTranslation = null;
         });
+
+        if (matched.length == 10) {
+          initializeGame();
+        }
       } else {
         setState(() {
           firstSelectedWord = null;
