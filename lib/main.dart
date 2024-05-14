@@ -1,8 +1,10 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:words625/match_words.dart';
 import 'package:words625/spanish_words.dart';
 import 'package:words625/kannada_words.dart';
 
@@ -101,8 +103,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   bool shouldAnimate() {
-    print("Line 105 : ${currentChoice != null && currentChoice != prevChoice}");
-
     return currentChoice != null && currentChoice != prevChoice;
   }
 
@@ -110,11 +110,34 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Words625 ~ (${selectedLang.name.titleCase})',
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w500,
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Words625 ~ (${selectedLang.name.titleCase})',
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.w500,
+                  ),
+            ),
+            const SizedBox(height: 4),
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (context) => const MatchingGame(),
+                  ),
+                );
+              },
+              child: Text(
+                "Matching Game >",
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      fontWeight: FontWeight.w500,
+                      decoration: TextDecoration.underline,
+                    ),
               ),
+            )
+          ],
         ),
         actions: [
           PopupMenuButton<LanguageSelection>(
