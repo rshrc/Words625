@@ -1,4 +1,8 @@
+import 'dart:math';
+
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:words625/gen/assets.gen.dart';
 import 'package:words625/kannada_words.dart';
 
 class MatchingGame extends StatefulWidget {
@@ -16,6 +20,9 @@ class _MatchingGameState extends State<MatchingGame> {
 
   int score = 0;
 
+  final errorSounds = [];
+  final levelUpSounds = [];
+
   void selectFirstWord(String? word) {
     setState(() {
       firstSelectedWord = word;
@@ -23,6 +30,7 @@ class _MatchingGameState extends State<MatchingGame> {
 
     if (firstSelectedTranslation != null) {
       if (firstSelectedTranslation == flatKannadaLangList[firstSelectedWord]) {
+        playRandomLevelUpSound();
         setState(() {
           score++;
           matched.addAll([firstSelectedWord!, firstSelectedTranslation!]);
@@ -34,6 +42,7 @@ class _MatchingGameState extends State<MatchingGame> {
           initializeGame();
         }
       } else {
+        playRandomErrorSound();
         setState(() {
           firstSelectedWord = null;
           firstSelectedTranslation = null;
@@ -45,6 +54,8 @@ class _MatchingGameState extends State<MatchingGame> {
     }
   }
 
+  final audioPlayer = AudioPlayer();
+
   Set<String> matched = {};
 
   void selectFirstTranslation(String? translation) {
@@ -54,6 +65,7 @@ class _MatchingGameState extends State<MatchingGame> {
 
     if (firstSelectedWord != null) {
       if (firstSelectedTranslation == flatKannadaLangList[firstSelectedWord]) {
+        playRandomLevelUpSound();
         setState(() {
           score++;
           matched.addAll([firstSelectedWord!, firstSelectedTranslation!]);
@@ -65,6 +77,7 @@ class _MatchingGameState extends State<MatchingGame> {
           initializeGame();
         }
       } else {
+        playRandomErrorSound();
         setState(() {
           firstSelectedWord = null;
           firstSelectedTranslation = null;
@@ -81,12 +94,33 @@ class _MatchingGameState extends State<MatchingGame> {
     // TODO: implement initState
     super.initState();
 
+    loadSounds();
+
     initializeGame();
   }
 
-  void initializeGame() {
+  void loadSounds() {
+    errorSounds.addAll([
+      Assets.sounds.error1,
+      Assets.sounds.error2,
+      Assets.sounds.error3,
+      Assets.sounds.error4
+    ]);
+    levelUpSounds.addAll([
+      Assets.sounds.levelUp1,
+      Assets.sounds.levelUp2,
+      Assets.sounds.levelUp3,
+      Assets.sounds.levelUp4
+    ]);
+
+    setState(() {});
+  }
+
+  Future initializeGame() async {
     // select random 5 entries from wordPairs, and shuffle them into
     // displayedWords and displayTranslations
+    audioPlayer.audioCache = AudioCache(prefix: "");
+    playRandomLevelUpSound();
 
     // clearing matched selections
     matched.clear();
@@ -97,6 +131,16 @@ class _MatchingGameState extends State<MatchingGame> {
         randomSelections.sublist(0, 5).map((e) => e.value).toList()..shuffle();
 
     setState(() {});
+  }
+
+  void playRandomErrorSound() {
+    audioPlayer
+        .play(AssetSource(errorSounds[Random().nextInt(errorSounds.length)]));
+  }
+
+  void playRandomLevelUpSound() {
+    audioPlayer.play(
+        AssetSource(levelUpSounds[Random().nextInt(levelUpSounds.length)]));
   }
 
   bool isMatched(String value) => matched.contains(value);
