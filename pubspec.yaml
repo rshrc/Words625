@@ -1,29 +1,50 @@
 name: words625
-description: "Learning 625 words in Kannada or Spanish"
-publish_to: 'none'
-version: 1.0.0+1
-
-environment:
+version: '1.0.0+1'
+publish_to: none
+environment: 
   sdk: '>=3.2.3 <4.0.0'
-
-dependencies:
-  flutter:
+description: Kannalinga - A Duolingo Alternative for Kannada Learning
+dependencies: 
+  audioplayers: any
+  auto_route: any
+  chiclet: any
+  cloud_firestore: any
+  contained_tab_bar_view: '^0.8.0'
+  cupertino_icons: '^1.0.2'
+  equatable: any
+  firebase_auth: any
+  firebase_core: any
+  flutter: 
     sdk: flutter
-
-  cupertino_icons: ^1.0.2
+  flutter_animate: any
+  flutter_custom_dialog: '^1.2.0'
+  freezed: any
+  get_it: any
   google_fonts: 6.0.0
-  flutter_animate:
-  audioplayers:
-
-dev_dependencies:
-  flutter_test:
+  google_sign_in: any
+  injectable: any
+  json_annotation: any
+  logger: any
+  percent_indicator: '^4.0.0'
+  shimmer: any
+  streaming_shared_preferences: any
+dev_dependencies: 
+  auto_route_generator: any
+  build_runner: any
+  flutter_animate: any
+  flutter_gen: any
+  flutter_gen_runner: any
+  flutter_lints: '^2.0.0'
+  flutter_test: 
     sdk: flutter
-  flutter_lints: ^2.0.0
-  flutter_gen_runner:
-  build_runner:
-
-
-flutter:
+  import_sorter: any
+  injectable_generator: any
+  pubspec_dependency_sorter: any
+  string_extension: any
+flutter: 
   uses-material-design: true
-  assets:
+  assets: 
     - assets/sounds/
+    - assets/icons/
+    - assets/images/
+    - assets/screens/
