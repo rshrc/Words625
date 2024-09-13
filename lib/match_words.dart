@@ -1,7 +1,13 @@
+// Dart imports:
 import 'dart:math';
 
-import 'package:audioplayers/audioplayers.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:audioplayers/audioplayers.dart';
+
+// Project imports:
 import 'package:words625/gen/assets.gen.dart';
 import 'package:words625/kannada_words.dart';
 
