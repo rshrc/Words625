@@ -49,7 +49,7 @@ class CenterDisplay extends StatelessWidget {
             onTap: () {
               print("Tap Event");
             },
-            repeatForever: true,
+            repeatForever: false,
           ),
           Container(padding: const EdgeInsets.all(5)),
           RichText(
