@@ -25,6 +25,7 @@ dependencies:
   google_sign_in: any
   injectable: any
   json_annotation: any
+  json_serializable: any
   logger: any
   percent_indicator: '^4.0.0'
   shimmer: any

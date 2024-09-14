@@ -1,0 +1,63 @@
+{
+  "courses": [
+    {
+      "courseName": "Basic Kannada",
+      "levels": [
+        {
+          "level": 1,
+          "questions": [
+            {
+              "type": "translate",
+              "prompt": "Translate the sentence",
+              "sentence": "Naanu vidyaarthi.",
+              "options": [
+                "I am a student.",
+                "You are a student.",
+                "They are students."
+              ],
+              "correctAnswer": "I am a student."
+            },
+            {
+              "type": "multiple_choice",
+              "prompt": "Choose an appropriate response",
+              "question": "Ninna hesaru yenu?",
+              "options": [
+                "Nanna hesaru Rishi.",
+                "Naanu kaalithini.",
+                "Naanu gothilla."
+              ],
+              "correctAnswer": "Nanna hesaru Rishi."
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "questions": [
+            {
+              "type": "translate",
+              "prompt": "Translate the sentence",
+              "sentence": "Namaskaara.",
+              "options": [
+                "Hello.",
+                "My name is Rishi",
+                "What is your name?"
+              ],
+              "correctAnswer": "Hello."
+            },
+            {
+              "type": "translate",
+              "prompt": "Translate the sentence",
+              "sentence": "Naanu Bengaluru-ge hoguthiddene.",
+              "options": [
+                "I am going to Bangalore.",
+                "I am coming from Bangalore.",
+                "I live in Bangalore."
+              ],
+              "correctAnswer": "I am going to Bangalore."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
