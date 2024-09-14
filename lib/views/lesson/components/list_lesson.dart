@@ -1,45 +1,68 @@
 // Flutter imports:
+import 'package:chiclet/chiclet.dart';
 import 'package:flutter/material.dart';
+import 'package:words625/domain/course/course.dart';
+import 'package:words625/views/app.dart';
 
 class ListLesson extends StatelessWidget {
-  Widget checkButton;
-  String instructionText;
-  String question;
-  List<String> answers;
+  final Question question;
 
-  ListLesson(this.instructionText, this.question, this.answers,
-      {required this.checkButton, Key? key})
-      : super(key: key);
+  const ListLesson(this.question, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        instruction(instructionText),
+        instruction(question.prompt ?? "--"),
         const Padding(padding: EdgeInsets.only(top: 15)),
-        questionRow(question),
+        questionRow(question.sentence ?? "--"),
         Expanded(
           child: Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                listChoice(answers[0]),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 15),
-                ),
-                listChoice(answers[1]),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 15),
-                ),
-                listChoice(answers[2]),
+                ...question.options!
+                    .map((option) => listChoice(option))
+                    .toList(),
               ],
             ),
           ),
         ),
         const Spacer(),
-        checkButton,
+        bottomButton(context, "CHECK"),
       ],
+    );
+  }
+
+  bottomButton(BuildContext context, String title) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: ChicletAnimatedButton(
+          width: MediaQuery.of(context).size.width * 0.9,
+          backgroundColor: appGreen,
+          child: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          onPressed: () {
+            // setState(() {
+            //   if (percent < 1) {
+            //     percent += 0.15;
+            //     index++;
+            //   } else {
+            //     showDialog(
+            //       context: context,
+            //       builder: (BuildContext context) {
+            //         return dialog('Great job');
+            //       },
+            //     );
+            //   }
+            // });
+          }),
     );
   }
 

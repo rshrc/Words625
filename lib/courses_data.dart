@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:words625/domain/course/course.dart';
 import 'package:words625/gen/assets.gen.dart';
 
@@ -13,6 +12,17 @@ final coursesData = [
           "level": 1,
           "questions": [
             {
+              "type": "multiple_choice",
+              "prompt": "Choose an appropriate response",
+              "sentence": "Ninna hesaru yenu?",
+              "options": [
+                "Nanna hesaru Rishi.",
+                "Naanu kaalithini.",
+                "Naanu gothilla."
+              ],
+              "correctAnswer": "Nanna hesaru Rishi."
+            },
+            {
               "type": "translate",
               "prompt": "Translate the sentence",
               "sentence": "Naanu vidyaarthi.",
@@ -22,17 +32,6 @@ final coursesData = [
                 "They are students."
               ],
               "correctAnswer": "I am a student."
-            },
-            {
-              "type": "multiple_choice",
-              "prompt": "Choose an appropriate response",
-              "question": "Ninna hesaru yenu?",
-              "options": [
-                "Nanna hesaru Rishi.",
-                "Naanu kaalithini.",
-                "Naanu gothilla."
-              ],
-              "correctAnswer": "Nanna hesaru Rishi."
             },
             {
               "type": "translate",

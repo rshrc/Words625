@@ -17,11 +17,11 @@ class ExplorePage extends StatelessWidget {
         const Padding(padding: EdgeInsets.only(bottom: 5)),
         GestureDetector(
           onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const LessonPage(),
-              ),
-            );
+            // Navigator.of(context).push(
+            //   MaterialPageRoute(
+            //     builder: (context) => const LessonPage(),
+            //   ),
+            // );
           },
           child: newsBox(
               'assets/images/news-1.png',

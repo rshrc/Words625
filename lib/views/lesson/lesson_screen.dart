@@ -4,17 +4,19 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:chiclet/chiclet.dart';
+import 'package:words625/core/extensions.dart';
+import 'package:words625/domain/course/course.dart';
 
 // Project imports:
 import 'package:words625/views/app.dart';
 import 'package:words625/views/lesson/components/bottom_button.dart';
-import 'package:words625/views/lesson/components/grid_lesson.dart';
 import 'package:words625/views/lesson/components/lesson_app_bar.dart';
 import 'package:words625/views/lesson/components/list_lesson.dart';
 
 @RoutePage()
 class LessonPage extends StatefulWidget {
-  const LessonPage({Key? key}) : super(key: key);
+  final Course course;
+  const LessonPage({Key? key, required this.course}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -26,86 +28,32 @@ class LessonPageState extends State<LessonPage> {
   double percent = 0.1;
   int index = 0;
 
+  late List<ListLesson>? lessons;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    generateQuestions();
+  }
+
+  Future generateQuestions() async {
+    final List<ListLesson> lessons = [];
+    for (final question in widget.course.levels!.first.questions!) {
+      lessons.add(ListLesson(question));
+    }
+
+    setState(() {
+      this.lessons = lessons;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final lessons = [
-      GridLesson(checkButton: bottomButton(context, 'CHECK')),
-      ListLesson('Translate the sentence', 'Naanu vidyaarthi.',
-          const ['I am a student.', 'You are a student.', 'They are students.'],
-          checkButton: bottomButton(context, 'CHECK')),
-      ListLesson('Translate the sentence', 'Namaskaara.',
-          const ['Hello.', 'My name is Rishi', 'What is your name?'],
-          checkButton: bottomButton(context, 'CHECK')),
-      ListLesson('Choose an appropriate response', 'Ninna hesaru yenu?',
-          const ['Nanna hesaru Rishi.', 'Naanu kaalithini.', 'Naanu gothilla.'],
-          checkButton: bottomButton(context, 'CHECK')),
-      ListLesson(
-        'Translate the sentence',
-        'Naanu Bengaluru-ge hoguthiddene.',
-        const [
-          'I am going to Bangalore.',
-          'I am coming from Bangalore.',
-          'I live in Bangalore.'
-        ],
-        checkButton: bottomButton(context, 'CHECK'),
-      ),
-      ListLesson(
-        'Translate the sentence',
-        'Vidhaaya.',
-        const ['I am fine.', 'Goodbye.', 'Good night.'],
-        checkButton: bottomButton(context, 'CHECK'),
-      ),
-      ListLesson(
-        'Translate the sentence',
-        'Naanu Kannada kalithu kolluthiddene.',
-        const [
-          'I am learning Kannada.',
-          'I speak Kannada fluently.',
-          'I don\'t know Kannada.'
-        ],
-        checkButton: bottomButton(context, 'CHECK'),
-      ),
-      ListLesson(
-        'Choose an appropriate response',
-        'Hege iddeera?',
-        const [
-          'Chennagiddini, dhanyavaadagalu.',
-          'Nanna hesaru Rishi.',
-          'Naanu gothilla.'
-        ],
-        checkButton: bottomButton(context, 'CHECK'),
-      ),
-      ListLesson(
-        'Translate the sentence',
-        'Naanu oota maaduthiddene.',
-        const ['I am eating.', 'I am sleeping.', 'I am walking.'],
-        checkButton: bottomButton(context, 'CHECK'),
-      ),
-      ListLesson(
-        'Translate the sentence',
-        'Ninna mane ellide?',
-        const [
-          'Where is your house?',
-          'What is your name?',
-          'How old are you?'
-        ],
-        checkButton: bottomButton(context, 'CHECK'),
-      ),
-      ListLesson(
-        'Translate the sentence',
-        'Naanu Bengaluru-ge hoguthiddene.',
-        const [
-          'I am going to Bangalore.',
-          'I am coming from Bangalore.',
-          'I live in Bangalore.'
-        ],
-        checkButton: bottomButton(context, 'CHECK'),
-      ),
-    ];
-
     return Scaffold(
       appBar: LessonAppBar(percent: percent),
-      body: lessons[index],
+      body:
+          lessons != null ? lessons![index] : const CircularProgressIndicator(),
     );
   }
 
@@ -173,6 +121,29 @@ class LessonPageState extends State<LessonPage> {
           ),
           child: Text(text),
         ),
+      ),
+    );
+  }
+}
+
+class CheckButton extends StatelessWidget {
+  const CheckButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: ChicletAnimatedButton(
+        width: context.width * 0.9,
+        backgroundColor: appGreen,
+        child: const Text(
+          "CHECK",
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        onPressed: () {},
       ),
     );
   }

@@ -1,9 +1,11 @@
 // Flutter imports:
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 // Package imports:
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:words625/core/extensions.dart';
 import 'package:words625/domain/course/course.dart';
+import 'package:words625/routing/routing.gr.dart';
 import 'dart:math' as math;
 // import random
 // Project imports:
@@ -31,11 +33,7 @@ class CourseNode extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const LessonPage(),
-                ),
-              );
+              context.router.push(LessonRoute(course: course));
             },
             child: Node(course: course),
           ),
