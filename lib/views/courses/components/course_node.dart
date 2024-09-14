@@ -1,25 +1,23 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:percent_indicator/circular_percent_indicator.dart';
-
+import 'package:words625/core/extensions.dart';
+import 'package:words625/domain/course/course.dart';
+import 'dart:math' as math;
+// import random
 // Project imports:
 import 'package:words625/views/lesson/lesson_screen.dart';
 
 // Project imports:
 
 class CourseNode extends StatelessWidget {
-  final String name;
-  String? image;
-  Color? color;
+  final Course course;
   int? crown;
   double? percent;
 
   CourseNode(
-    this.name, {
-    this.image,
-    this.color,
+    this.course, {
     this.crown,
     this.percent,
     Key? key,
@@ -27,48 +25,71 @@ class CourseNode extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        GestureDetector(
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const LessonPage(),
-              ),
-            );
-          },
-          child: node(),
-        ),
-        const Padding(padding: EdgeInsets.all(5)),
-        courseName(),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16.0),
+      child: Column(
+        children: [
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const LessonPage(),
+                ),
+              );
+            },
+            child: Node(course: course),
+          ),
+          const Padding(padding: EdgeInsets.all(5)),
+          Text(course.courseName.toTitleCase,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              )),
+        ],
+      ),
     );
   }
+}
 
-  node() {
+class Node extends StatelessWidget {
+  final Course course;
+  const Node({super.key, required this.course});
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Stack(
           alignment: Alignment.center,
           children: [
-            progressCircle(),
+            ProgressCircle(
+              percent: math.Random().nextDouble(),
+            ),
             CircleAvatar(
-              backgroundColor: color ?? const Color(0xFF2B70C9),
+              backgroundColor: course.color != null
+                  ? Color(course.color!)
+                  : const Color(0xFF2B70C9),
               radius: 37,
             ),
             Image.asset(
-              image ?? 'assets/images/egg.png',
+              course.image ?? 'assets/images/egg.png',
               width: 42,
             ),
-            subCrown(),
+            SubCrown(crown: math.Random().nextInt(5)),
           ],
         ),
       ],
     );
   }
+}
 
-  progressCircle() {
+class ProgressCircle extends StatelessWidget {
+  final double? percent;
+  const ProgressCircle({super.key, this.percent});
+
+  @override
+  Widget build(BuildContext context) {
     return Transform.rotate(
       angle: 2.7,
       child: CircularPercentIndicator(
@@ -81,8 +102,14 @@ class CourseNode extends StatelessWidget {
       ),
     );
   }
+}
 
-  subCrown() {
+class SubCrown extends StatelessWidget {
+  final int? crown;
+  const SubCrown({super.key, this.crown});
+
+  @override
+  Widget build(BuildContext context) {
     return Positioned(
       right: 0,
       bottom: 5,
@@ -101,10 +128,5 @@ class CourseNode extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  courseName() {
-    return Text(name,
-        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18));
   }
 }

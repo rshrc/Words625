@@ -1,7 +1,13 @@
-final courses = [
+import 'package:flutter/material.dart';
+import 'package:words625/domain/course/course.dart';
+import 'package:words625/gen/assets.gen.dart';
+
+final coursesData = [
   [
     {
       "courseName": "basics",
+      "image": Assets.images.egg.path,
+      "color": 0xff2b70c9,
       "levels": [
         {
           "level": 1,
@@ -285,6 +291,8 @@ final courses = [
   [
     {
       "courseName": "greetings",
+      "image": Assets.images.hand.path,
+      "color": 0xffFFD700,
       "levels": [
         {
           "level": 1,
@@ -365,38 +373,62 @@ final courses = [
     },
     {
       "courseName": "introduction",
+      "image": Assets.images.pen.path,
+      "color": 0xffCE82FF,
     },
   ],
   [
     {
       "courseName": "animals",
+      "image": Assets.images.fish.path,
+      "color": 0xffFFA500,
     },
     {
       "courseName": "colors",
+      "image": Assets.images.bucket.path,
+      "color": 0xffFF0000,
     },
   ],
   [
     {
       "courseName": "sentence",
+      "image": Assets.images.bandages.path,
+      "color": 0xff00FF00,
     },
   ],
   [
     {
       "courseName": "clothing",
+      "image": Assets.images.heel.path,
+      "color": 0xffFFD700,
     },
     {
       "courseName": "tools",
+      "image": Assets.images.hammer.path,
+      "color": 0xff808080,
     },
     {
       "courseName": "emotions",
+      "image": Assets.images.emotion.path,
+      "color": 0xff0000FF,
     },
   ],
   [
     {
       "courseName": "daily",
+      "image": Assets.images.dumbbell.path,
+      "color": 0xff2b70c9,
     },
     {
       "courseName": "travel",
+      "image": Assets.images.tree.path,
+      "color": 0xffFF0000,
     },
   ]
 ];
+
+List<List<Course>> parseCourses() {
+  return coursesData.map((courseGroup) {
+    return courseGroup.map((courseMap) => Course.fromJson(courseMap)).toList();
+  }).toList();
+}

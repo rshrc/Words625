@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -11,6 +12,7 @@ import 'package:words625/views/lesson/components/grid_lesson.dart';
 import 'package:words625/views/lesson/components/lesson_app_bar.dart';
 import 'package:words625/views/lesson/components/list_lesson.dart';
 
+@RoutePage()
 class LessonPage extends StatefulWidget {
   const LessonPage({Key? key}) : super(key: key);
 
