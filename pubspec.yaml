@@ -5,6 +5,7 @@ environment:
   sdk: '>=3.2.3 <4.0.0'
 description: Kannalinga - A Duolingo Alternative for Kannada Learning
 dependencies: 
+  animated_text_kit: '^4.2.2'
   audioplayers: any
   auto_route: 9.2.2
   chiclet: any

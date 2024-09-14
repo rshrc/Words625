@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:chiclet/chiclet.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -17,9 +16,14 @@ class CourseNode extends StatelessWidget {
   int? crown;
   double? percent;
 
-  CourseNode(this.name,
-      {this.image, this.color, this.crown, this.percent, Key? key})
-      : super(key: key);
+  CourseNode(
+    this.name, {
+    this.image,
+    this.color,
+    this.crown,
+    this.percent,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

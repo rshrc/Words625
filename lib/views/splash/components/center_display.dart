@@ -3,8 +3,17 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
+import 'package:animated_text_kit/animated_text_kit.dart';
+
 // Project imports:
 import 'package:words625/views/app.dart';
+
+const centerTextStyle = TextStyle(
+  fontSize: 32,
+  fontWeight: FontWeight.bold,
+  color: appGreen,
+);
 
 class CenterDisplay extends StatelessWidget {
   const CenterDisplay({Key? key}) : super(key: key);
@@ -17,13 +26,30 @@ class CenterDisplay extends StatelessWidget {
         children: [
           Image.asset('assets/images/duo-wave.png', height: 150),
           Container(padding: const EdgeInsets.all(5)),
-          const Text(
-            "Words625",
-            style: TextStyle(
-              color: Colors.green,
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-            ),
+          AnimatedTextKit(
+            animatedTexts: [
+              TypewriterAnimatedText(
+                'Words625',
+                speed: const Duration(milliseconds: 100),
+                textStyle: centerTextStyle,
+                cursor: "",
+              ),
+              TypewriterAnimatedText(
+                'Learn Kannada',
+                speed: const Duration(milliseconds: 100),
+                textStyle: centerTextStyle,
+              ),
+              TypewriterAnimatedText(
+                'ಕನ್ನಡ ಕಲಿಯಿರಿ',
+                speed: const Duration(milliseconds: 200),
+                textStyle: centerTextStyle,
+                cursor: "",
+              ),
+            ],
+            onTap: () {
+              print("Tap Event");
+            },
+            repeatForever: true,
           ),
           Container(padding: const EdgeInsets.all(5)),
           RichText(
