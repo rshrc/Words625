@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:chiclet/chiclet.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:

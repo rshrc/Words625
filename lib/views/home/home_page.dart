@@ -46,7 +46,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: appBars[currentIndex],
       bottomNavigationBar: BottomNavigator(
-          currentIndex: currentIndex, onPress: onBottomNavigatorTapped),
+        currentIndex: currentIndex,
+        onPress: onBottomNavigatorTapped,
+      ),
       body: screens[currentIndex],
     );
   }
