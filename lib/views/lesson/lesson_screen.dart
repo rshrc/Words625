@@ -1,13 +1,13 @@
 // Flutter imports:
-import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
+import 'package:auto_route/annotations.dart';
 import 'package:chiclet/chiclet.dart';
-import 'package:words625/core/extensions.dart';
-import 'package:words625/domain/course/course.dart';
 
 // Project imports:
+import 'package:words625/core/extensions.dart';
+import 'package:words625/domain/course/course.dart';
 import 'package:words625/views/app.dart';
 import 'package:words625/views/lesson/components/bottom_button.dart';
 import 'package:words625/views/lesson/components/lesson_app_bar.dart';

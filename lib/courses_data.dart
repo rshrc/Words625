@@ -1,3 +1,4 @@
+// Project imports:
 import 'package:words625/domain/course/course.dart';
 import 'package:words625/gen/assets.gen.dart';
 

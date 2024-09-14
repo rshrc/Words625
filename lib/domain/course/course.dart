@@ -1,6 +1,6 @@
 // Package imports:
-import 'dart:ui';
 
+// Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'course.freezed.dart';

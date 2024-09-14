@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:words625/views/lesson/lesson_screen.dart';
 
 // Project imports:
 

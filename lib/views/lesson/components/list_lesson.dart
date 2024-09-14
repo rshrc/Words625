@@ -1,6 +1,10 @@
 // Flutter imports:
-import 'package:chiclet/chiclet.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:chiclet/chiclet.dart';
+
+// Project imports:
 import 'package:words625/domain/course/course.dart';
 import 'package:words625/views/app.dart';
 
@@ -12,7 +16,6 @@ class ListLesson extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         instruction(question.prompt ?? "--"),
         const Padding(padding: EdgeInsets.only(top: 15)),
@@ -23,7 +26,7 @@ class ListLesson extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 ...question.options!
-                    .map((option) => listChoice(option))
+                    .map((option) => ListChoice(title: option))
                     .toList(),
               ],
             ),
@@ -63,25 +66,6 @@ class ListLesson extends StatelessWidget {
             //   }
             // });
           }),
-    );
-  }
-
-  listChoice(String title) {
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.only(left: 15, right: 15),
-      padding: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        border: Border.all(
-          width: 2.5,
-          color: const Color(0xFFE5E5E5),
-        ),
-      ),
-      child: Text(
-        title,
-        style: const TextStyle(fontSize: 17),
-      ),
     );
   }
 
@@ -133,6 +117,34 @@ class ListLesson extends StatelessWidget {
             fontWeight: FontWeight.bold,
             color: Color(0xFF4B4B4B),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class ListChoice extends StatelessWidget {
+  final String title;
+  const ListChoice({super.key, required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      child: Container(
+        width: double.infinity,
+        margin: const EdgeInsets.only(left: 15, right: 15),
+        padding: const EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          border: Border.all(
+            width: 2.5,
+            color: const Color(0xFFE5E5E5),
+          ),
+        ),
+        child: Text(
+          title,
+          style: const TextStyle(fontSize: 17),
         ),
       ),
     );

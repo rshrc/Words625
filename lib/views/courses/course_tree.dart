@@ -1,8 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:words625/courses_data.dart';
 
 // Project imports:
+import 'package:words625/courses_data.dart';
 import 'components/course_node.dart';
 import 'components/double_course_node.dart';
 import 'components/triple_course_node.dart';

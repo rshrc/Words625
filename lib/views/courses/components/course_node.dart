@@ -1,15 +1,20 @@
+// Dart imports:
+import 'dart:math' as math;
+
 // Flutter imports:
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+
 // Package imports:
+import 'package:auto_route/auto_route.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+
+// Project imports:
 import 'package:words625/core/extensions.dart';
 import 'package:words625/domain/course/course.dart';
 import 'package:words625/routing/routing.gr.dart';
-import 'dart:math' as math;
+
 // import random
 // Project imports:
-import 'package:words625/views/lesson/lesson_screen.dart';
 
 // Project imports:
 
