@@ -1,5 +1,5 @@
 // Project imports:
-import 'package:words625/utils.dart';
+import 'package:words625/core/utils.dart';
 
 final kannadaJson = {
   "Animal (Prani)": {
