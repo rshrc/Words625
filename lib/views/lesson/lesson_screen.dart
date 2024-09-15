@@ -51,40 +51,9 @@ class LessonPageState extends State<LessonPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: LessonAppBar(percent: percent),
+      appBar: const LessonAppBar(),
       body:
           lessons != null ? lessons![index] : const CircularProgressIndicator(),
-    );
-  }
-
-  bottomButton(BuildContext context, String title) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0),
-      child: ChicletAnimatedButton(
-          width: MediaQuery.of(context).size.width * 0.9,
-          backgroundColor: appGreen,
-          child: Text(
-            title,
-            style: const TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          onPressed: () {
-            setState(() {
-              if (percent < 1) {
-                percent += 0.15;
-                index++;
-              } else {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return dialog('Great job');
-                  },
-                );
-              }
-            });
-          }),
     );
   }
 

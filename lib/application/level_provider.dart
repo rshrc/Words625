@@ -11,6 +11,7 @@ class LessonProvider with ChangeNotifier {
   bool _isAnswerCorrect = false;
   bool _hasSelectedAnswer = false;
   String? _selectedAnswer;
+  double _percent = 0;
 
   // Getters for the UI to use
   Course? get currentCourse => _currentCourse;
@@ -20,6 +21,7 @@ class LessonProvider with ChangeNotifier {
   bool get isAnswerCorrect => _isAnswerCorrect;
   bool get hasSelectedAnswer => _hasSelectedAnswer;
   String? get selectedAnswer => _selectedAnswer;
+  double get percent => _percent;
 
   void selectAnswer(String? answer) {
     _selectedAnswer = answer;
@@ -48,6 +50,10 @@ class LessonProvider with ChangeNotifier {
     } else if (_currentLevelIndex < _currentCourse!.levels!.length - 1) {
       _currentLevelIndex++;
       _currentQuestionIndex = 0;
+      // show dialog to continue, or change stuff
+      return;
+      // store in shared preferences, but quit here,
+      // show celebration on causing stuff
     } else {
       // Reached the end of the course
       _currentLevelIndex = 0;
@@ -55,6 +61,7 @@ class LessonProvider with ChangeNotifier {
     }
     _isAnswerCorrect = false;
     _hasSelectedAnswer = false;
+    _percent = (_currentQuestionIndex + 1) / (currentLevel.questions!.length);
     notifyListeners();
   }
 
