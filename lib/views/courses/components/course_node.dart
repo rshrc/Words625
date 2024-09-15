@@ -10,8 +10,11 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 
 // Project imports:
 import 'package:words625/core/extensions.dart';
+import 'package:words625/core/logger.dart';
+import 'package:words625/di/injection.dart';
 import 'package:words625/domain/course/course.dart';
 import 'package:words625/routing/routing.gr.dart';
+import 'package:words625/service/locator.dart';
 
 // import random
 // Project imports:
@@ -60,6 +63,11 @@ class Node extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final level = getIt<AppPrefs>()
+        .preferences
+        .getInt(course.courseName, defaultValue: 0)
+        .getValue();
+    logger.w("Level: $level");
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -79,7 +87,7 @@ class Node extends StatelessWidget {
               course.image ?? 'assets/images/egg.png',
               width: 42,
             ),
-            SubCrown(crown: math.Random().nextInt(5)),
+            SubCrown(crown: level),
           ],
         ),
       ],
@@ -121,7 +129,7 @@ class SubCrown extends StatelessWidget {
         children: [
           Image.asset('assets/images/crown.png', width: 40),
           Text(
-            '${crown == null || crown == 0 ? '' : crown}',
+            "$crown",
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 17,

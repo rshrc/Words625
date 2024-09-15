@@ -2,7 +2,10 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:words625/core/logger.dart';
+import 'package:words625/di/injection.dart';
 import 'package:words625/domain/course/course.dart';
+import 'package:words625/service/locator.dart';
 
 class LessonProvider with ChangeNotifier {
   Course? _currentCourse;
@@ -15,9 +18,9 @@ class LessonProvider with ChangeNotifier {
 
   // Getters for the UI to use
   Course? get currentCourse => _currentCourse;
-  Level get currentLevel => _currentCourse!.levels![_currentLevelIndex];
-  Question get currentQuestion =>
-      currentLevel.questions![_currentQuestionIndex];
+  Level? get currentLevel => _currentCourse?.levels?[_currentLevelIndex];
+  Question? get currentQuestion =>
+      currentLevel?.questions?[_currentQuestionIndex];
   bool get isAnswerCorrect => _isAnswerCorrect;
   bool get hasSelectedAnswer => _hasSelectedAnswer;
   String? get selectedAnswer => _selectedAnswer;
@@ -31,7 +34,10 @@ class LessonProvider with ChangeNotifier {
   // Function to set the current course and reset progress
   void setCourse(Course course) {
     _currentCourse = course;
-    _currentLevelIndex = 0;
+    _currentLevelIndex = getIt<AppPrefs>()
+        .preferences
+        .getInt(currentCourse!.courseName, defaultValue: 0)
+        .getValue();
     _currentQuestionIndex = 0;
     _isAnswerCorrect = false;
     _hasSelectedAnswer = false;
@@ -40,17 +46,23 @@ class LessonProvider with ChangeNotifier {
 
   // Function to check if the selected answer is correct
   bool checkAnswer() {
-    return selectedAnswer == currentQuestion.correctAnswer;
+    return selectedAnswer == currentQuestion?.correctAnswer;
   }
 
   // Function to proceed to the next question or level
   void next() {
-    if (_currentQuestionIndex < currentLevel.questions!.length - 1) {
+    if (_currentQuestionIndex < (currentLevel?.questions!.length)! - 1) {
       _currentQuestionIndex++;
     } else if (_currentLevelIndex < _currentCourse!.levels!.length - 1) {
       _currentLevelIndex++;
       _currentQuestionIndex = 0;
       // show dialog to continue, or change stuff
+      logger.w("You have completed the level");
+      getIt<AppPrefs>()
+          .preferences
+          .setInt(currentCourse!.courseName, _currentLevelIndex);
+      logger.w(
+          "Level index: ${getIt<AppPrefs>().preferences.getInt(currentCourse!.courseName, defaultValue: 0).getValue()}");
       return;
       // store in shared preferences, but quit here,
       // show celebration on causing stuff
@@ -61,7 +73,7 @@ class LessonProvider with ChangeNotifier {
     }
     _isAnswerCorrect = false;
     _hasSelectedAnswer = false;
-    _percent = (_currentQuestionIndex + 1) / (currentLevel.questions!.length);
+    _percent = (_currentQuestionIndex + 1) / (currentLevel!.questions!.length);
     notifyListeners();
   }
 

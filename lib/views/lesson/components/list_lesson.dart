@@ -27,11 +27,13 @@ class _ListLessonState extends State<ListLesson> {
     // TODO: implement initState
     super.initState();
 
-    setCourse(widget.course);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      setCourse(widget.course);
+    });
   }
 
   setCourse(Course course) {
-    final lessonProvider = Provider.of<LessonProvider>(context, listen: false);
+    final lessonProvider = context.read<LessonProvider>();
     lessonProvider.setCourse(course);
   }
 
@@ -41,27 +43,28 @@ class _ListLessonState extends State<ListLesson> {
       builder: (context, lessonProvider, child) {
         return Column(
           children: [
-            instruction(lessonProvider.currentQuestion.prompt ?? "--"),
+            instruction(lessonProvider.currentQuestion?.prompt ?? "--"),
             const Padding(padding: EdgeInsets.only(top: 15)),
-            questionRow(lessonProvider.currentQuestion.sentence ?? "--"),
+            questionRow(lessonProvider.currentQuestion?.sentence ?? "--"),
             Expanded(
               child: Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    ...lessonProvider.currentQuestion.options!.map((option) {
-                      final selectedAnswer = lessonProvider.selectedAnswer;
-                      return GestureDetector(
-                        onTap: () {
-                          lessonProvider.selectAnswer(option);
-                        },
-                        child: ListChoice(
-                          title: option,
-                          isSelected: selectedAnswer == option,
-                          isCorrect: lessonProvider.isAnswerCorrect,
-                        ),
-                      );
-                    }).toList(),
+                    ...lessonProvider.currentQuestion?.options?.map((option) {
+                          final selectedAnswer = lessonProvider.selectedAnswer;
+                          return GestureDetector(
+                            onTap: () {
+                              lessonProvider.selectAnswer(option);
+                            },
+                            child: ListChoice(
+                              title: option,
+                              isSelected: selectedAnswer == option,
+                              isCorrect: lessonProvider.isAnswerCorrect,
+                            ),
+                          );
+                        }).toList() ??
+                        [],
                   ],
                 ),
               ),
