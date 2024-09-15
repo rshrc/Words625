@@ -1,6 +1,10 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
+
+// Project imports:
 import 'package:words625/di/injection.dart';
 import 'package:words625/gen/assets.gen.dart';
 import 'package:words625/service/locator.dart';
