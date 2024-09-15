@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:words625/core/logger.dart';
@@ -7,6 +8,7 @@ import 'package:words625/di/injection.dart';
 import 'package:words625/domain/course/course.dart';
 import 'package:words625/service/locator.dart';
 
+@injectable
 class LessonProvider with ChangeNotifier {
   Course? _currentCourse;
   int _currentLevelIndex = 0;
