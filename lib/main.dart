@@ -10,6 +10,6 @@ Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
   await setupLocator();
-  // getIt<AppPrefs>().preferences.clear();
+  getIt<AppPrefs>().preferences.clear();
   runApp(const Words625App());
 }

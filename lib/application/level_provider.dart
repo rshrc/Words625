@@ -64,6 +64,12 @@ class LessonProvider with ChangeNotifier {
       getIt<AppPrefs>()
           .preferences
           .setInt(currentCourse!.courseName, _currentLevelIndex);
+      final currentScore = getIt<AppPrefs>()
+          .preferences
+          .getInt("score", defaultValue: 0)
+          .getValue();
+      getIt<AppPrefs>().preferences.setInt(
+          "score", currentScore + (currentCourse?.levels?.length ?? 0 * 10));
       return;
       // store in shared preferences, but quit here,
       // show celebration on causing stuff

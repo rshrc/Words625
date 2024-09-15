@@ -1,5 +1,9 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
+import 'package:words625/di/injection.dart';
+import 'package:words625/gen/assets.gen.dart';
+import 'package:words625/service/locator.dart';
 
 class StatAppBar extends StatelessWidget implements PreferredSizeWidget {
   const StatAppBar({Key? key}) : super(key: key);
@@ -13,52 +17,39 @@ class StatAppBar extends StatelessWidget implements PreferredSizeWidget {
       toolbarHeight: 120,
       backgroundColor: Colors.white,
       elevation: 1.5,
-      leading: flag(),
-      title: Row(
+      leading: const KarnatakaFlag(),
+      title: const Row(
         children: [
-          const Padding(padding: EdgeInsets.all(20)),
-          crown(136),
-          const Padding(padding: EdgeInsets.all(20)),
-          streak(31),
+          Padding(padding: EdgeInsets.all(20)),
+          ScoreCard(),
+          Padding(padding: EdgeInsets.all(20)),
+          Streak(),
         ],
       ),
-      actions: [
-        heart(),
+      actions: const [
+        InfinityHeart(),
       ],
     );
   }
+}
 
-  Widget heart() {
+class Streak extends StatelessWidget {
+  const Streak({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
       children: [
         Image.asset(
-          'assets/images/heart.png',
-          width: 36,
-        ),
-        const Padding(
-          padding: EdgeInsets.all(2),
-        ),
-        Image.asset('assets/images/infinity.png', width: 20),
-        const Padding(
-          padding: EdgeInsets.all(5),
-        ),
-      ],
-    );
-  }
-
-  Widget streak(int n) {
-    return Row(
-      children: [
-        Image.asset(
-          'assets/images/streak.png',
+          Assets.images.streak.path,
           width: 24,
         ),
         const Padding(
           padding: EdgeInsets.all(4),
         ),
-        Text(
-          '$n',
-          style: const TextStyle(
+        const Text(
+          '31',
+          style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Color(0xFFFF9600),
           ),
@@ -66,35 +57,77 @@ class StatAppBar extends StatelessWidget implements PreferredSizeWidget {
       ],
     );
   }
+}
 
-  Widget crown(int n) {
+class ScoreCard extends StatelessWidget {
+  const ScoreCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
       children: [
         Image.asset(
-          'assets/images/crown.png',
+          Assets.images.crown.path,
           width: 30,
         ),
         const Padding(
           padding: EdgeInsets.all(4),
         ),
-        Text(
-          '$n',
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Color(0xFFFFC800),
-          ),
-        )
+        PreferenceBuilder<int>(
+            preference:
+                getIt<AppPrefs>().preferences.getInt('score', defaultValue: 0),
+            builder: (BuildContext context, int counter) {
+              return Text(
+                '$counter',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFFFFC800),
+                ),
+              );
+            }),
       ],
     );
   }
+}
 
-  Widget flag() {
+class InfinityHeart extends StatelessWidget {
+  const InfinityHeart({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: 'Infinite Hearts',
+      triggerMode: TooltipTriggerMode.tap,
+      child: Row(
+        children: [
+          Image.asset(
+            Assets.images.heart.path,
+            width: 36,
+          ),
+          const Padding(
+            padding: EdgeInsets.all(2),
+          ),
+          Image.asset(Assets.images.infinity.path, width: 20),
+          const Padding(
+            padding: EdgeInsets.all(5),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class KarnatakaFlag extends StatelessWidget {
+  const KarnatakaFlag({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(left: 15, top: 18, bottom: 18),
       decoration: BoxDecoration(
-        image: const DecorationImage(
+        image: DecorationImage(
           fit: BoxFit.scaleDown,
-          image: AssetImage('assets/images/karnataka-flag.png'),
+          image: AssetImage(Assets.images.karnatakaFlag.path),
           // fit: BoxFit.cover,
         ),
         borderRadius: BorderRadius.circular(5),
