@@ -40,7 +40,7 @@ class LessonPageState extends State<LessonPage> {
   Future generateQuestions() async {
     final List<ListLesson> lessons = [];
     for (final question in widget.course.levels!.first.questions!) {
-      lessons.add(ListLesson(question));
+      lessons.add(ListLesson(question, course: widget.course));
     }
 
     setState(() {

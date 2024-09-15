@@ -1,5 +1,7 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:words625/application/providers.dart';
 
 // Project imports:
 import 'package:words625/di/injection.dart';
@@ -14,10 +16,13 @@ class Words625App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      title: 'words625',
-      routerConfig: router.config(),
+    return MultiProvider(
+      providers: providers,
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        title: 'words625',
+        routerConfig: router.config(),
+      ),
     );
   }
 }

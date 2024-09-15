@@ -1,71 +1,107 @@
-// Flutter imports:
-import 'package:flutter/material.dart';
-
-// Package imports:
 import 'package:chiclet/chiclet.dart';
-
-// Project imports:
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:words625/domain/course/course.dart';
 import 'package:words625/views/app.dart';
 
-class ListLesson extends StatelessWidget {
+import 'package:words625/application/level_provider.dart';
+
+class ListLesson extends StatefulWidget {
+  final Course course;
   final Question question;
 
-  const ListLesson(this.question, {Key? key}) : super(key: key);
+  const ListLesson(this.question, {Key? key, required this.course})
+      : super(key: key);
+
+  @override
+  State<ListLesson> createState() => _ListLessonState();
+}
+
+class _ListLessonState extends State<ListLesson> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    setCourse(widget.course);
+  }
+
+  setCourse(Course course) {
+    final lessonProvider = Provider.of<LessonProvider>(context, listen: false);
+    lessonProvider.setCourse(course);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        instruction(question.prompt ?? "--"),
-        const Padding(padding: EdgeInsets.only(top: 15)),
-        questionRow(question.sentence ?? "--"),
-        Expanded(
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ...question.options!
-                    .map((option) => ListChoice(title: option))
-                    .toList(),
-              ],
+    return Consumer<LessonProvider>(
+      builder: (context, lessonProvider, child) {
+        return Column(
+          children: [
+            instruction(lessonProvider.currentQuestion.prompt ?? "--"),
+            const Padding(padding: EdgeInsets.only(top: 15)),
+            questionRow(lessonProvider.currentQuestion.sentence ?? "--"),
+            Expanded(
+              child: Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ...lessonProvider.currentQuestion.options!.map((option) {
+                      final selectedAnswer = lessonProvider.selectedAnswer;
+                      return GestureDetector(
+                        onTap: () {
+                          lessonProvider.selectAnswer(option);
+                        },
+                        child: ListChoice(
+                          title: option,
+                          isSelected: selectedAnswer == option,
+                          isCorrect: lessonProvider.isAnswerCorrect,
+                        ),
+                      );
+                    }).toList(),
+                  ],
+                ),
+              ),
             ),
-          ),
-        ),
-        const Spacer(),
-        bottomButton(context, "CHECK"),
-      ],
+            const Spacer(),
+            bottomButton(
+                context,
+                lessonProvider.hasSelectedAnswer
+                    ? (lessonProvider.isAnswerCorrect ? "NEXT" : "TRY AGAIN")
+                    : "CHECK"),
+          ],
+        );
+      },
     );
   }
 
   bottomButton(BuildContext context, String title) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
-      child: ChicletAnimatedButton(
-          width: MediaQuery.of(context).size.width * 0.9,
-          backgroundColor: appGreen,
-          child: Text(
-            title,
-            style: const TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          onPressed: () {
-            // setState(() {
-            //   if (percent < 1) {
-            //     percent += 0.15;
-            //     index++;
-            //   } else {
-            //     showDialog(
-            //       context: context,
-            //       builder: (BuildContext context) {
-            //         return dialog('Great job');
-            //       },
-            //     );
-            //   }
-            // });
-          }),
+      child: Consumer<LessonProvider>(
+        builder: (context, lessonProvider, child) {
+          return ChicletAnimatedButton(
+            width: MediaQuery.of(context).size.width * 0.9,
+            backgroundColor: appGreen,
+            onPressed: lessonProvider.selectedAnswer != null
+                ? () {
+                    final checkAnswer = lessonProvider.checkAnswer();
+                    if (checkAnswer) {
+                      lessonProvider.next();
+                    } else {
+                      lessonProvider.reset(); // Reset the question or level
+                    }
+                  }
+                : null,
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
+            ), // Button disabled until an answer is selected
+          );
+        },
+      ),
     );
   }
 
@@ -125,7 +161,15 @@ class ListLesson extends StatelessWidget {
 
 class ListChoice extends StatelessWidget {
   final String title;
-  const ListChoice({super.key, required this.title});
+  final bool isSelected;
+  final bool isCorrect;
+
+  const ListChoice({
+    Key? key,
+    required this.title,
+    this.isSelected = false,
+    this.isCorrect = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +183,7 @@ class ListChoice extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           border: Border.all(
             width: 2.5,
-            color: const Color(0xFFE5E5E5),
+            color: isSelected ? appGreen : const Color(0xFFE5E5E5),
           ),
         ),
         child: Text(

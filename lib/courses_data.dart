@@ -55,7 +55,7 @@ final coursesData = [
             {
               "type": "multiple_choice",
               "prompt": "Choose an appropriate response",
-              "question": "Hege iddeera?",
+              "prompt": "Hege iddeera?",
               "options": [
                 "Chennagiddini.",
                 "Naanu gothilla.",
