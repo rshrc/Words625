@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:auto_route/annotations.dart';
 import 'package:chiclet/chiclet.dart';
+import 'package:provider/provider.dart';
 
 // Project imports:
-import 'package:words625/core/extensions.dart';
+import 'package:words625/application/level_provider.dart';
 import 'package:words625/domain/course/course.dart';
 import 'package:words625/views/app.dart';
 import 'package:words625/views/lesson/components/bottom_button.dart';
@@ -102,17 +103,33 @@ class CheckButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
-      child: ChicletAnimatedButton(
-        width: context.width * 0.9,
-        backgroundColor: appGreen,
-        child: const Text(
-          "CHECK",
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        onPressed: () {},
+      child: Consumer<LessonProvider>(
+        builder: (context, lessonState, child) {
+          final title = lessonState.hasSelectedAnswer
+              ? (lessonState.isAnswerCorrect ? "NEXT" : "TRY AGAIN")
+              : "CHECK";
+          return ChicletAnimatedButton(
+            width: MediaQuery.of(context).size.width * 0.9,
+            backgroundColor: appGreen,
+            onPressed: lessonState.selectedAnswer != null
+                ? () {
+                    final checkAnswer = lessonState.checkAnswer();
+                    if (checkAnswer) {
+                      lessonState.next();
+                    } else {
+                      lessonState.reset(); // Reset the question or level
+                    }
+                  }
+                : null,
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
+            ), // Button disabled until an answer is selected
+          );
+        },
       ),
     );
   }

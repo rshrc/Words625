@@ -2,13 +2,13 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:chiclet/chiclet.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
 import 'package:words625/application/level_provider.dart';
 import 'package:words625/domain/course/course.dart';
 import 'package:words625/views/app.dart';
+import 'package:words625/views/lesson/lesson_screen.dart';
 
 class ListLesson extends StatefulWidget {
   final Course course;
@@ -67,45 +67,10 @@ class _ListLessonState extends State<ListLesson> {
               ),
             ),
             const Spacer(),
-            bottomButton(
-                context,
-                lessonProvider.hasSelectedAnswer
-                    ? (lessonProvider.isAnswerCorrect ? "NEXT" : "TRY AGAIN")
-                    : "CHECK"),
+            const CheckButton()
           ],
         );
       },
-    );
-  }
-
-  bottomButton(BuildContext context, String title) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0),
-      child: Consumer<LessonProvider>(
-        builder: (context, lessonProvider, child) {
-          return ChicletAnimatedButton(
-            width: MediaQuery.of(context).size.width * 0.9,
-            backgroundColor: appGreen,
-            onPressed: lessonProvider.selectedAnswer != null
-                ? () {
-                    final checkAnswer = lessonProvider.checkAnswer();
-                    if (checkAnswer) {
-                      lessonProvider.next();
-                    } else {
-                      lessonProvider.reset(); // Reset the question or level
-                    }
-                  }
-                : null,
-            child: Text(
-              title,
-              style: const TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
-            ), // Button disabled until an answer is selected
-          );
-        },
-      ),
     );
   }
 
