@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:words625/domain/course/course.dart';
 
 class LessonProvider with ChangeNotifier {

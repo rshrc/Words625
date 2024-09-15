@@ -1,9 +1,11 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:provider/provider.dart';
-import 'package:words625/application/providers.dart';
 
 // Project imports:
+import 'package:words625/application/providers.dart';
 import 'package:words625/di/injection.dart';
 import 'package:words625/routing/routing.dart';
 

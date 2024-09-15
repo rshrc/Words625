@@ -1,10 +1,14 @@
-import 'package:chiclet/chiclet.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:chiclet/chiclet.dart';
 import 'package:provider/provider.dart';
+
+// Project imports:
+import 'package:words625/application/level_provider.dart';
 import 'package:words625/domain/course/course.dart';
 import 'package:words625/views/app.dart';
-
-import 'package:words625/application/level_provider.dart';
 
 class ListLesson extends StatefulWidget {
   final Course course;

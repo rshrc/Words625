@@ -28,9 +28,9 @@ dependencies:
   json_serializable: any
   logger: any
   percent_indicator: '^4.0.0'
+  provider: any
   shimmer: any
   streaming_shared_preferences: any
-  provider:
 dev_dependencies: 
   auto_route_generator: any
   build_runner: any
