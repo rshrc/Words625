@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:auto_route/auto_route.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
 
 // Project imports:
 import 'package:words625/core/extensions.dart';
@@ -15,11 +16,6 @@ import 'package:words625/di/injection.dart';
 import 'package:words625/domain/course/course.dart';
 import 'package:words625/routing/routing.gr.dart';
 import 'package:words625/service/locator.dart';
-
-// import random
-// Project imports:
-
-// Project imports:
 
 class CourseNode extends StatelessWidget {
   final Course course;
@@ -77,6 +73,19 @@ class Node extends StatelessWidget {
             ProgressCircle(
               percent: math.Random().nextDouble(),
             ),
+            PreferenceBuilder<int>(
+                preference: getIt<AppPrefs>()
+                    .preferences
+                    .getInt(course.courseName, defaultValue: 0),
+                builder: (BuildContext context, int counter) {
+                  final numberOfQuestions = course.levels?.length ?? 0;
+
+                  return ProgressCircle(
+                    percent: numberOfQuestions == 0
+                        ? 0
+                        : counter / numberOfQuestions,
+                  );
+                }),
             CircleAvatar(
               backgroundColor: course.color != null
                   ? Color(course.color!)
@@ -87,7 +96,13 @@ class Node extends StatelessWidget {
               course.image ?? 'assets/images/egg.png',
               width: 42,
             ),
-            SubCrown(crown: level),
+            PreferenceBuilder<int>(
+                preference: getIt<AppPrefs>()
+                    .preferences
+                    .getInt(course.courseName, defaultValue: 0),
+                builder: (BuildContext context, int counter) {
+                  return SubCrown(crown: counter);
+                })
           ],
         ),
       ],

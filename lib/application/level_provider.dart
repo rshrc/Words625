@@ -56,13 +56,12 @@ class LessonProvider with ChangeNotifier {
     } else if (_currentLevelIndex < _currentCourse!.levels!.length - 1) {
       _currentLevelIndex++;
       _currentQuestionIndex = 0;
+      _percent = 0;
       // show dialog to continue, or change stuff
       logger.w("You have completed the level");
       getIt<AppPrefs>()
           .preferences
           .setInt(currentCourse!.courseName, _currentLevelIndex);
-      logger.w(
-          "Level index: ${getIt<AppPrefs>().preferences.getInt(currentCourse!.courseName, defaultValue: 0).getValue()}");
       return;
       // store in shared preferences, but quit here,
       // show celebration on causing stuff
