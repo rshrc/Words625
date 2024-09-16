@@ -89,7 +89,7 @@ final coursesData = [
             {
               "type": "multiple_choice",
               "prompt": "Choose an appropriate response",
-              "question": "Yelli hoguthiddene?",
+              "sentence": "Yelli hoguthiddene?",
               "options": [
                 "Bengalurige hoguthiddene.",
                 "Chennai-ge barthini.",
@@ -111,7 +111,7 @@ final coursesData = [
             {
               "type": "multiple_choice",
               "prompt": "Choose the correct option",
-              "question": "What is the Kannada word for 'water'?",
+              "sentence": "What is the Kannada word for 'water'?",
               "options": ["Neeru", "Hannu", "BaaLa"],
               "correctAnswer": "Neeru"
             }
@@ -134,7 +134,7 @@ final coursesData = [
             {
               "type": "multiple_choice",
               "prompt": "Choose the correct response",
-              "question": "How do you say 'Good morning' in Kannada?",
+              "sentence": "How do you say 'Good morning' in Kannada?",
               "options": ["Shubhodaya", "Namaskaara", "Hege iddeera"],
               "correctAnswer": "Shubhodaya"
             },
@@ -163,7 +163,7 @@ final coursesData = [
             {
               "type": "multiple_choice",
               "prompt": "Choose the correct option",
-              "question": "Which one is correct?",
+              "sentence": "Which one is correct?",
               "options": [
                 "Naanu oota maaduthiddene.",
                 "Naale oota maaduthiddene.",
@@ -190,7 +190,7 @@ final coursesData = [
             {
               "type": "multiple_choice",
               "prompt": "Choose the correct response",
-              "question": "How do you say 'Good night' in Kannada?",
+              "sentence": "How do you say 'Good night' in Kannada?",
               "options": ["Shubha raatri", "Shubhodaya", "Chennagiddini"],
               "correctAnswer": "Shubha raatri"
             },
@@ -219,7 +219,7 @@ final coursesData = [
             {
               "type": "multiple_choice",
               "prompt": "Choose the correct answer",
-              "question": "Which one is correct?",
+              "sentence": "Which one is correct?",
               "options": [
                 "Chennagiddini",
                 "Ninna mane ellide?",
@@ -246,7 +246,7 @@ final coursesData = [
             {
               "type": "multiple_choice",
               "prompt": "Choose the correct response",
-              "question": "What is the Kannada word for 'school'?",
+              "sentence": "What is the Kannada word for 'school'?",
               "options": ["Shaale", "Neeru", "Bengaluru"],
               "correctAnswer": "Shaale"
             },
@@ -275,7 +275,7 @@ final coursesData = [
             {
               "type": "multiple_choice",
               "prompt": "Choose the correct option",
-              "question": "Which of these means 'I am learning Kannada'?",
+              "sentence": "Which of these means 'I am learning Kannada'?",
               "options": [
                 "Naanu Kannada kalithu kolluthiddene.",
                 "Naanu Kannada gothilla.",
