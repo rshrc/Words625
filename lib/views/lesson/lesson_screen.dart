@@ -105,19 +105,37 @@ class CheckButton extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8.0),
       child: Consumer<LessonProvider>(
         builder: (context, lessonState, child) {
-          final title = lessonState.hasSelectedAnswer
-              ? (lessonState.isAnswerCorrect ? "NEXT" : "TRY AGAIN")
-              : "CHECK";
+          // final title = lessonState.hasSelectedAnswer
+          //     ? (lessonState.isAnswerCorrect ? "NEXT" : "TRY AGAIN")
+          //     : "CHECK";
+
+          String? title;
+          Color? backgroundColor;
+
+          if (lessonState.answerState == AnswerState.correct) {
+            title = "NEXT";
+            backgroundColor = Colors.orangeAccent;
+          } else if (lessonState.answerState == AnswerState.incorrect) {
+            title = "TRY AGAIN";
+            backgroundColor = Colors.red;
+          } else {
+            title = "CHECK";
+            backgroundColor = appGreen;
+          }
+
           return ChicletAnimatedButton(
             width: MediaQuery.of(context).size.width * 0.9,
-            backgroundColor: appGreen,
+            backgroundColor: backgroundColor,
             onPressed: lessonState.selectedAnswer != null
                 ? () {
                     final checkAnswer = lessonState.checkAnswer();
                     if (checkAnswer) {
-                      lessonState.next();
-                    } else {
-                      lessonState.reset(); // Reset the question or level
+                      // lessonState.next();
+                      if (lessonState.answerState == AnswerState.correct) {
+                        // play uplifting sound
+                        lessonState.next();
+                      }
+                      // play some error sound or show the correct answer
                     }
                   }
                 : null,

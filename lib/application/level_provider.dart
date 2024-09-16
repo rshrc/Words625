@@ -10,6 +10,13 @@ import 'package:words625/di/injection.dart';
 import 'package:words625/domain/course/course.dart';
 import 'package:words625/service/locator.dart';
 
+enum AnswerState {
+  none,
+  selected,
+  correct,
+  incorrect,
+}
+
 @injectable
 class LessonProvider with ChangeNotifier {
   Course? _currentCourse;
@@ -19,6 +26,7 @@ class LessonProvider with ChangeNotifier {
   bool _hasSelectedAnswer = false;
   String? _selectedAnswer;
   double _percent = 0;
+  AnswerState _answerState = AnswerState.none;
 
   // Getters for the UI to use
   Course? get currentCourse => _currentCourse;
@@ -29,9 +37,11 @@ class LessonProvider with ChangeNotifier {
   bool get hasSelectedAnswer => _hasSelectedAnswer;
   String? get selectedAnswer => _selectedAnswer;
   double get percent => _percent;
+  AnswerState get answerState => _answerState;
 
   void selectAnswer(String? answer) {
     _selectedAnswer = answer;
+    _answerState = AnswerState.selected;
     notifyListeners();
   }
 
@@ -50,6 +60,14 @@ class LessonProvider with ChangeNotifier {
 
   // Function to check if the selected answer is correct
   bool checkAnswer() {
+    if (selectedAnswer == currentQuestion?.correctAnswer) {
+      _answerState = AnswerState.correct;
+    } else {
+      _answerState = AnswerState.incorrect;
+    }
+
+    notifyListeners();
+
     return selectedAnswer == currentQuestion?.correctAnswer;
   }
 
@@ -80,6 +98,7 @@ class LessonProvider with ChangeNotifier {
       _currentLevelIndex = 0;
       _currentQuestionIndex = 0;
     }
+    _answerState = AnswerState.none;
     _isAnswerCorrect = false;
     _hasSelectedAnswer = false;
     _percent = (_currentQuestionIndex + 1) / (currentLevel!.questions!.length);

@@ -145,6 +145,17 @@ class ListChoice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final lessonState = context.watch<LessonProvider>();
+    Color? borderColor;
+    if (lessonState.answerState == AnswerState.correct && isSelected) {
+      borderColor = Colors.green;
+    } else if (lessonState.answerState == AnswerState.incorrect && isSelected) {
+      borderColor = Colors.red;
+    } else if (lessonState.answerState == AnswerState.selected && isSelected) {
+      borderColor = Colors.blue;
+    } else {
+      borderColor = const Color(0xFFE5E5E5);
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Container(
@@ -155,7 +166,7 @@ class ListChoice extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           border: Border.all(
             width: 2.5,
-            color: isSelected ? appGreen : const Color(0xFFE5E5E5),
+            color: borderColor,
           ),
         ),
         child: Text(
