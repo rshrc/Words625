@@ -32,6 +32,7 @@ dependencies:
   shimmer: any
   streaming_shared_preferences: any
 dev_dependencies: 
+  audioplayers: any
   auto_route_generator: any
   build_runner: any
   flutter_animate: any

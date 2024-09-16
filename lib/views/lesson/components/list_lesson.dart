@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 // Project imports:
 import 'package:words625/application/level_provider.dart';
 import 'package:words625/domain/course/course.dart';
-import 'package:words625/views/app.dart';
 import 'package:words625/views/lesson/lesson_screen.dart';
 
 class ListLesson extends StatefulWidget {

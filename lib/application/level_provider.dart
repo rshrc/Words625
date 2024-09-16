@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
+import 'package:words625/application/audio_controller.dart';
 import 'package:words625/core/logger.dart';
 import 'package:words625/di/injection.dart';
 import 'package:words625/domain/course/course.dart';
@@ -19,6 +20,10 @@ enum AnswerState {
 
 @injectable
 class LessonProvider with ChangeNotifier {
+  final AudioController _audioController;
+
+  LessonProvider(this._audioController);
+
   Course? _currentCourse;
   int _currentLevelIndex = 0;
   int _currentQuestionIndex = 0;
@@ -62,8 +67,10 @@ class LessonProvider with ChangeNotifier {
   bool checkAnswer() {
     if (selectedAnswer == currentQuestion?.correctAnswer) {
       _answerState = AnswerState.correct;
+      _audioController.playRandomLevelUpSound();
     } else {
       _answerState = AnswerState.incorrect;
+      _audioController.playRandomErrorSound();
     }
 
     notifyListeners();
