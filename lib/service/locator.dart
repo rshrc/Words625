@@ -68,5 +68,6 @@ Future<void> setupLocator() async {
   getIt.registerLazySingleton<AppRouter>(() => AppRouter());
   getIt.registerLazySingleton<AppPrefs>(() => AppPrefs(preferences));
   getIt.registerLazySingleton<FlutterTts>(
-      () => FlutterTts()..setLanguage("kn-IN"));
+    () => FlutterTts()..setLanguage("kn-IN"),
+  );
 }

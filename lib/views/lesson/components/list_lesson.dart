@@ -4,6 +4,7 @@ import 'package:flutter_tts/flutter_tts.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
+import 'package:pulsator/pulsator.dart';
 
 // Project imports:
 import 'package:words625/application/level_provider.dart';
@@ -78,16 +79,16 @@ class _ListLessonState extends State<ListLesson> {
     );
   }
 
-  questionRow(String question) {
+  questionRow(String sentence) {
     return Container(
       margin: const EdgeInsets.only(left: 15, bottom: 5),
       child: Row(
         children: [
-          speakButton(question),
+          SpeakButton(sentence: sentence),
           const Padding(padding: EdgeInsets.only(right: 15)),
           Flexible(
             child: Text(
-              question,
+              sentence,
               style: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
@@ -95,27 +96,6 @@ class _ListLessonState extends State<ListLesson> {
             ),
           )
         ],
-      ),
-    );
-  }
-
-  speakButton(String question) {
-    return InkWell(
-      onTap: () {
-        // speak the question
-        getIt<FlutterTts>().speak(question);
-      },
-      child: Container(
-        padding: const EdgeInsets.all(5),
-        decoration: BoxDecoration(
-          color: const Color(0xFF1CB0F6),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: const Icon(
-          Icons.volume_up,
-          color: Colors.white,
-          size: 35,
-        ),
       ),
     );
   }
@@ -179,6 +159,30 @@ class ListChoice extends StatelessWidget {
         child: Text(
           title,
           style: const TextStyle(fontSize: 17),
+        ),
+      ),
+    );
+  }
+}
+
+class SpeakButton extends StatelessWidget {
+  final String sentence;
+  const SpeakButton({super.key, required this.sentence});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => getIt<FlutterTts>().speak(sentence),
+      child: Container(
+        padding: const EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: const Color(0xFF1CB0F6),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: const Icon(
+          Icons.volume_up,
+          color: Colors.white,
+          size: 35,
         ),
       ),
     );
