@@ -1,11 +1,13 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
 
 // Project imports:
 import 'package:words625/application/level_provider.dart';
+import 'package:words625/di/injection.dart';
 import 'package:words625/domain/course/course.dart';
 import 'package:words625/views/lesson/lesson_screen.dart';
 
@@ -81,7 +83,7 @@ class _ListLessonState extends State<ListLesson> {
       margin: const EdgeInsets.only(left: 15, bottom: 5),
       child: Row(
         children: [
-          speakButton(),
+          speakButton(question),
           const Padding(padding: EdgeInsets.only(right: 15)),
           Flexible(
             child: Text(
@@ -97,17 +99,23 @@ class _ListLessonState extends State<ListLesson> {
     );
   }
 
-  speakButton() {
-    return Container(
-      padding: const EdgeInsets.all(5),
-      decoration: BoxDecoration(
-        color: const Color(0xFF1CB0F6),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: const Icon(
-        Icons.volume_up,
-        color: Colors.white,
-        size: 35,
+  speakButton(String question) {
+    return InkWell(
+      onTap: () {
+        // speak the question
+        getIt<FlutterTts>().speak(question);
+      },
+      child: Container(
+        padding: const EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: const Color(0xFF1CB0F6),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: const Icon(
+          Icons.volume_up,
+          color: Colors.white,
+          size: 35,
+        ),
       ),
     );
   }

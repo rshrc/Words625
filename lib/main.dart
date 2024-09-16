@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 // Project imports:
 import 'package:words625/di/injection.dart';
@@ -11,5 +12,9 @@ Future main() async {
   configureDependencies();
   await setupLocator();
   // getIt<AppPrefs>().preferences.clear();
+  final result = await getIt<FlutterTts>().isLanguageAvailable("kn-IN");
+
+  print(result);
+
   runApp(const Words625App());
 }
