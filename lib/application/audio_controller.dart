@@ -45,7 +45,10 @@ class AudioController {
     try {
       // need to remove the assets/ prefix from the asset path
       final String path = assetPath.replaceFirst('assets/', '');
-      await _audioPlayer.play(AssetSource(path));
+      await _audioPlayer.play(
+        AssetSource(path),
+        mode: PlayerMode.lowLatency,
+      );
     } catch (e) {
       print('Error playing sound: $e');
     }
