@@ -1,10 +1,9 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 
 // Package imports:
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:provider/provider.dart';
-import 'package:pulsator/pulsator.dart';
 
 // Project imports:
 import 'package:words625/application/level_provider.dart';

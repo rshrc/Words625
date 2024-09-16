@@ -19,6 +19,7 @@ dependencies:
     sdk: flutter
   flutter_animate: any
   flutter_custom_dialog: '^1.2.0'
+  flutter_tts: any
   freezed: any
   get_it: any
   google_fonts: 6.0.0
@@ -29,11 +30,9 @@ dependencies:
   logger: any
   percent_indicator: '^4.0.0'
   provider: any
+  pulsator: any
   shimmer: any
-  flutter_tts:
-  pulsator:
   streaming_shared_preferences: any
-
 dev_dependencies: 
   auto_route_generator: any
   build_runner: any
