@@ -40,4 +40,11 @@ class Question with _$Question {
 
   factory Question.fromJson(Map<String, dynamic> json) =>
       _$QuestionFromJson(json);
+
+  // getter which shuffles and returns the options
+  // List<String> get shuffledOptions {
+  //   final List<String> _options = List.from(options!);
+  //   _options.shuffle();
+  //   return _options;
+  // }
 }

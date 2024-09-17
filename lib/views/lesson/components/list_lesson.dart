@@ -44,30 +44,30 @@ class _ListLessonState extends State<ListLesson> {
       builder: (context, lessonProvider, child) {
         return Column(
           children: [
-            instruction(lessonProvider.currentQuestion?.prompt ?? "--"),
+            Instruction(prompt: lessonProvider.currentQuestion?.prompt ?? "--"),
             const Padding(padding: EdgeInsets.only(top: 15)),
-            questionRow(lessonProvider.currentQuestion?.sentence ?? "--"),
-            Expanded(
-              child: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ...lessonProvider.currentQuestion?.options?.map((option) {
-                          final selectedAnswer = lessonProvider.selectedAnswer;
-                          return GestureDetector(
-                            onTap: () {
-                              lessonProvider.selectAnswer(option);
-                            },
-                            child: ListChoice(
-                              title: option,
-                              isSelected: selectedAnswer == option,
-                              isCorrect: lessonProvider.isAnswerCorrect,
-                            ),
-                          );
-                        }).toList() ??
-                        [],
-                  ],
-                ),
+            QuestionRow(
+                sentence: lessonProvider.currentQuestion?.sentence ?? "--"),
+            const SizedBox(height: 8),
+            Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ...lessonProvider.currentQuestion?.options?.map((option) {
+                        final selectedAnswer = lessonProvider.selectedAnswer;
+                        return GestureDetector(
+                          onTap: () {
+                            lessonProvider.selectAnswer(option);
+                          },
+                          child: ListChoice(
+                            title: option,
+                            isSelected: selectedAnswer == option,
+                            isCorrect: lessonProvider.isAnswerCorrect,
+                          ),
+                        );
+                      }).toList() ??
+                      [],
+                ],
               ),
             ),
             const Spacer(),
@@ -77,8 +77,37 @@ class _ListLessonState extends State<ListLesson> {
       },
     );
   }
+}
 
-  questionRow(String sentence) {
+class Instruction extends StatelessWidget {
+  final String prompt;
+  const Instruction({super.key, required this.prompt});
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Container(
+        padding: const EdgeInsets.only(top: 10, left: 16, right: 8),
+        child: Text(
+          prompt,
+          style: const TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFF4B4B4B),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class QuestionRow extends StatelessWidget {
+  final String sentence;
+  const QuestionRow({super.key, required this.sentence});
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(left: 15, bottom: 5),
       child: Row(
@@ -93,25 +122,9 @@ class _ListLessonState extends State<ListLesson> {
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF4B4B4B)),
             ),
-          )
-        ],
-      ),
-    );
-  }
-
-  instruction(String text) {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Container(
-        padding: const EdgeInsets.only(top: 10, left: 15),
-        child: Text(
-          text,
-          style: const TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFF4B4B4B),
           ),
-        ),
+          const SizedBox(width: 16),
+        ],
       ),
     );
   }

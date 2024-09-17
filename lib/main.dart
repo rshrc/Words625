@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -14,9 +15,10 @@ Future main() async {
   configureDependencies();
   await setupLocator();
   // getIt<AppPrefs>().preferences.clear();
-  final result = await getIt<FlutterTts>().isLanguageAvailable("kn-IN");
 
-  print(result);
+  if (!kIsWeb) {
+    final result = await getIt<FlutterTts>().isLanguageAvailable("kn-IN");
+  }
 
   runApp(const Words625App());
 }

@@ -1,3 +1,6 @@
+// Flutter imports:
+import 'package:flutter/foundation.dart';
+
 // Package imports:
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
@@ -67,7 +70,9 @@ Future<void> setupLocator() async {
   final preferences = await StreamingSharedPreferences.instance;
   getIt.registerLazySingleton<AppRouter>(() => AppRouter());
   getIt.registerLazySingleton<AppPrefs>(() => AppPrefs(preferences));
-  getIt.registerLazySingleton<FlutterTts>(
-    () => FlutterTts()..setLanguage("kn-IN"),
-  );
+
+  if (!kIsWeb) {
+    getIt.registerLazySingleton<FlutterTts>(
+        () => FlutterTts()..setLanguage("kn-IN"));
+  }
 }
