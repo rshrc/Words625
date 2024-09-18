@@ -180,6 +180,7 @@ class LevelPlayerChoice extends StatelessWidget {
                     borderColor: appGreen,
                     onPressed: () {
                       Navigator.of(context).pop();
+                      Navigator.of(context).pop();
                     },
                     child: const Text("Go Back"),
                   ),
