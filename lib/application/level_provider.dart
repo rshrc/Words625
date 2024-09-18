@@ -16,6 +16,13 @@ enum AnswerState {
   selected,
   correct,
   incorrect,
+  readyForNext,
+}
+
+extension AnswerStateX on AnswerState {
+  bool get isCorrect =>
+      this == AnswerState.correct || this == AnswerState.readyForNext;
+  bool get isIncorrect => this == AnswerState.incorrect;
 }
 
 @injectable
@@ -79,7 +86,7 @@ class LessonProvider with ChangeNotifier {
   }
 
   // Function to proceed to the next question or level
-  void next() {
+  void next(BuildContext context) {
     if (_currentQuestionIndex < (currentLevel?.questions!.length)! - 1) {
       _currentQuestionIndex++;
     } else if (_currentLevelIndex < _currentCourse!.levels!.length - 1) {
@@ -109,6 +116,11 @@ class LessonProvider with ChangeNotifier {
     _isAnswerCorrect = false;
     _hasSelectedAnswer = false;
     _percent = (_currentQuestionIndex + 1) / (currentLevel!.questions!.length);
+    notifyListeners();
+  }
+
+  void changeAnswerState(AnswerState answerState) {
+    _answerState = answerState;
     notifyListeners();
   }
 

@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 
 // Project imports:
 import 'package:words625/application/level_provider.dart';
+import 'package:words625/core/logger.dart';
 import 'package:words625/domain/course/course.dart';
 import 'package:words625/views/app.dart';
 import 'package:words625/views/lesson/components/bottom_button.dart';
@@ -58,25 +59,6 @@ class LessonPageState extends State<LessonPage> {
     );
   }
 
-  dialog(String title) {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: Container(
-        height: 120,
-        width: double.infinity,
-        decoration: const BoxDecoration(color: Color(0xFFd7ffb8)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            dialogTitle(title),
-            BottomButton(context, title: 'CONTINUE'),
-            const SizedBox(height: 8),
-          ],
-        ),
-      ),
-    );
-  }
-
   dialogTitle(String text) {
     return Align(
       alignment: Alignment.centerLeft,
@@ -105,14 +87,11 @@ class CheckButton extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8.0),
       child: Consumer<LessonProvider>(
         builder: (context, lessonState, child) {
-          // final title = lessonState.hasSelectedAnswer
-          //     ? (lessonState.isAnswerCorrect ? "NEXT" : "TRY AGAIN")
-          //     : "CHECK";
-
           String? title;
           Color? backgroundColor;
 
-          if (lessonState.answerState == AnswerState.correct) {
+          if (lessonState.answerState == AnswerState.correct ||
+              lessonState.answerState == AnswerState.readyForNext) {
             title = "NEXT";
             backgroundColor = Colors.orangeAccent;
           } else if (lessonState.answerState == AnswerState.incorrect) {
@@ -128,14 +107,21 @@ class CheckButton extends StatelessWidget {
             backgroundColor: backgroundColor,
             onPressed: lessonState.selectedAnswer != null
                 ? () {
-                    final checkAnswer = lessonState.checkAnswer();
-                    if (checkAnswer) {
-                      // lessonState.next();
-                      if (lessonState.answerState == AnswerState.correct) {
-                        // play uplifting sound
-                        lessonState.next();
+                    if (lessonState.answerState != AnswerState.readyForNext) {
+                      final checkAnswer = lessonState.checkAnswer();
+                      logger.w("Check Answer: $checkAnswer");
+                      if (checkAnswer) {
+                        // lessonState.next();
+                        if (lessonState.answerState == AnswerState.correct) {
+                          // play uplifting sound
+                          lessonState
+                              .changeAnswerState(AnswerState.readyForNext);
+                        }
+                        // play some error sound or show the correct answer
                       }
-                      // play some error sound or show the correct answer
+                    } else if (lessonState.answerState ==
+                        AnswerState.readyForNext) {
+                      lessonState.next(context);
                     }
                   }
                 : null,

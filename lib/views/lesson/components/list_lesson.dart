@@ -1,4 +1,6 @@
 // Flutter imports:
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -9,7 +11,10 @@ import 'package:provider/provider.dart';
 import 'package:words625/application/level_provider.dart';
 import 'package:words625/di/injection.dart';
 import 'package:words625/domain/course/course.dart';
+import 'package:words625/views/app.dart';
 import 'package:words625/views/lesson/lesson_screen.dart';
+
+import 'bottom_button.dart';
 
 class ListLesson extends StatefulWidget {
   final Course course;
@@ -42,36 +47,98 @@ class _ListLessonState extends State<ListLesson> {
   Widget build(BuildContext context) {
     return Consumer<LessonProvider>(
       builder: (context, lessonProvider, child) {
-        return Column(
+        return Stack(
           children: [
-            Instruction(prompt: lessonProvider.currentQuestion?.prompt ?? "--"),
-            const Padding(padding: EdgeInsets.only(top: 15)),
-            QuestionRow(
-                sentence: lessonProvider.currentQuestion?.sentence ?? "--"),
-            const SizedBox(height: 8),
-            Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ...lessonProvider.currentQuestion?.options?.map((option) {
-                        final selectedAnswer = lessonProvider.selectedAnswer;
-                        return GestureDetector(
-                          onTap: () {
-                            lessonProvider.selectAnswer(option);
-                          },
-                          child: ListChoice(
-                            title: option,
-                            isSelected: selectedAnswer == option,
-                            isCorrect: lessonProvider.isAnswerCorrect,
+            if (lessonProvider.answerState == AnswerState.correct ||
+                lessonProvider.answerState == AnswerState.incorrect ||
+                lessonProvider.answerState == AnswerState.readyForNext)
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.22,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 22,
+                    vertical: 12,
+                  ),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: lessonProvider.answerState.isCorrect
+                        ? Colors.lightGreenAccent.shade200
+                        : Colors.red.shade200,
+                    borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(12),
+                        topRight: Radius.circular(12)),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        lessonProvider.answerState.isCorrect
+                            ? "Correct Answer!"
+                            : "Incorrect Answer!",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: lessonProvider.answerState.isCorrect
+                              ? Colors.green
+                              : Colors.white,
+                        ),
+                      ),
+                      if (lessonProvider.answerState.isIncorrect) ...[
+                        const SizedBox(height: 8),
+                        Text(
+                          "${lessonProvider.currentQuestion?.correctAnswer}",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                            color: lessonProvider.answerState.isCorrect
+                                ? Colors.black
+                                : Colors.white,
                           ),
-                        );
-                      }).toList() ??
-                      [],
-                ],
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
               ),
+            Column(
+              children: [
+                Instruction(
+                    prompt: lessonProvider.currentQuestion?.prompt ?? "--"),
+                const Padding(padding: EdgeInsets.only(top: 15)),
+                QuestionRow(
+                    sentence: lessonProvider.currentQuestion?.sentence ?? "--"),
+                const SizedBox(height: 8),
+                Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ...lessonProvider.currentQuestion?.options?.map((option) {
+                            final selectedAnswer =
+                                lessonProvider.selectedAnswer;
+                            return GestureDetector(
+                              onTap: () {
+                                lessonProvider.selectAnswer(option);
+                              },
+                              child: ListChoice(
+                                title: option,
+                                isSelected: selectedAnswer == option,
+                                isCorrect: lessonProvider.isAnswerCorrect,
+                              ),
+                            );
+                          }).toList() ??
+                          [],
+                    ],
+                  ),
+                ),
+                const Spacer(),
+                const Positioned(
+                  bottom: 0,
+                  child: CheckButton(),
+                ),
+              ],
             ),
-            const Spacer(),
-            const CheckButton()
           ],
         );
       },
