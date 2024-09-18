@@ -10,6 +10,7 @@ import 'package:words625/core/logger.dart';
 import 'package:words625/di/injection.dart';
 import 'package:words625/domain/course/course.dart';
 import 'package:words625/service/locator.dart';
+import 'package:words625/views/lesson/lesson_screen.dart';
 
 enum AnswerState {
   none,
@@ -95,6 +96,8 @@ class LessonProvider with ChangeNotifier {
       _percent = 0;
       // show dialog to continue, or change stuff
       logger.w("You have completed the level");
+
+      // We store the game progress in local shared preferences
       getIt<AppPrefs>()
           .preferences
           .setInt(currentCourse!.courseName, _currentLevelIndex);
@@ -104,9 +107,11 @@ class LessonProvider with ChangeNotifier {
           .getValue();
       getIt<AppPrefs>().preferences.setInt(
           "score", currentScore + (currentCourse?.levels?.length ?? 0 * 10));
-      return;
-      // store in shared preferences, but quit here,
-      // show celebration on causing stuff
+
+      showDialog(
+        context: context,
+        builder: (context) => const LevelPlayerChoice(),
+      );
     } else {
       // Reached the end of the course
       _currentLevelIndex = 0;

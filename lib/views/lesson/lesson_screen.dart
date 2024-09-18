@@ -11,7 +11,6 @@ import 'package:words625/application/level_provider.dart';
 import 'package:words625/core/logger.dart';
 import 'package:words625/domain/course/course.dart';
 import 'package:words625/views/app.dart';
-import 'package:words625/views/lesson/components/bottom_button.dart';
 import 'package:words625/views/lesson/components/lesson_app_bar.dart';
 import 'package:words625/views/lesson/components/list_lesson.dart';
 
@@ -134,6 +133,59 @@ class CheckButton extends StatelessWidget {
             ), // Button disabled until an answer is selected
           );
         },
+      ),
+    );
+  }
+}
+
+class LevelPlayerChoice extends StatelessWidget {
+  const LevelPlayerChoice({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height * 0.4,
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const Text(
+                "Congratulations 💫",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: appGreen,
+                ),
+              ),
+              const Text("You have completed this level!",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  )),
+              Column(
+                children: [
+                  ChicletAnimatedButton(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    backgroundColor: appGreen,
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text("Continue"),
+                  ),
+                  const SizedBox(height: 12),
+                  ChicletOutlinedAnimatedButton(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    backgroundColor: Colors.white,
+                    borderColor: appGreen,
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text("Go Back"),
+                  ),
+                ],
+              ),
+            ]),
       ),
     );
   }

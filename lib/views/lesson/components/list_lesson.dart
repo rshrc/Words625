@@ -1,6 +1,6 @@
 // Flutter imports:
-import 'dart:ui';
 
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -11,10 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:words625/application/level_provider.dart';
 import 'package:words625/di/injection.dart';
 import 'package:words625/domain/course/course.dart';
-import 'package:words625/views/app.dart';
 import 'package:words625/views/lesson/lesson_screen.dart';
-
-import 'bottom_button.dart';
 
 class ListLesson extends StatefulWidget {
   final Course course;
@@ -55,10 +52,11 @@ class _ListLessonState extends State<ListLesson> {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.22,
+                  height: MediaQuery.of(context).size.height *
+                      (lessonProvider.answerState.isCorrect ? 0.16 : 0.20),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 22,
-                    vertical: 12,
+                    vertical: 16,
                   ),
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -213,7 +211,7 @@ class ListChoice extends StatelessWidget {
   Widget build(BuildContext context) {
     final lessonState = context.watch<LessonProvider>();
     Color? borderColor;
-    if (lessonState.answerState == AnswerState.correct && isSelected) {
+    if (lessonState.answerState.isCorrect && isSelected) {
       borderColor = Colors.green;
     } else if (lessonState.answerState == AnswerState.incorrect && isSelected) {
       borderColor = Colors.red;
