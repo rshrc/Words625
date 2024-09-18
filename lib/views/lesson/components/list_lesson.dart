@@ -131,10 +131,7 @@ class _ListLessonState extends State<ListLesson> {
                   ),
                 ),
                 const Spacer(),
-                const Positioned(
-                  bottom: 0,
-                  child: CheckButton(),
-                ),
+                const CheckButton(),
               ],
             ),
           ],
