@@ -52,4 +52,4 @@ Game levels are stored in simple JSON files, allowing easy creation and modifica
 - Add Fill in the blanks type game levels
 - Expand the game level repository for a more comprehensive learning journey.
 - Add support for learning Kannada script and pronunciation.
-- Add 
+- Add image based learning exercises
