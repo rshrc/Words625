@@ -53,3 +53,5 @@ Game levels are stored in simple JSON files, allowing easy creation and modifica
 - Expand the game level repository for a more comprehensive learning journey.
 - Add support for learning Kannada script and pronunciation.
 - Add image based learning exercises
+
+All PR's and Contributions Welcome!
