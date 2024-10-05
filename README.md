@@ -1,16 +1,55 @@
-# words625
+## Kannada Learning App - Duolingo Style
 
-A new Flutter project.
+A personal language learning app to teach oneself Kannada, built using Flutter 3.22.0. This project focuses on delivering an engaging and interactive experience, similar to Duolingo, with the goal of making Kannada learning easy and enjoyable.
 
-## Getting Started
+### Features
 
-This project is a starting point for a Flutter application.
+- **Game-Style Levels:** Learn Kannada through progressive levels stored in simple JSON files for easy modification and scalability.
+- **Dependency Injection:** Utilizes `get_it` and `injectable` to manage dependencies and ensure clean architecture.
+- **Routing:** Easy navigation through the app using `auto_route`.
+- **State Management:** Efficient state management with the `provider` package to handle app state.
 
-A few resources to get you started if this is your first Flutter project:
+### Installation
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/rshrc/Words625
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Words625
+   ```
+3. Install dependencies:
+   ```bash
+   flutter pub get
+   ```
+4. Run the app:
+   ```bash
+   flutter run
+   ```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Main Packages Used
+
+- **get_it**: A simple service locator for dependency injection.
+- **auto_route**: Provides a powerful and easy-to-use routing system.
+- **provider**: For state management across the app.
+- **injectable**: An annotation-based code generator for dependency injection.
+
+### JSON Game Levels
+
+Game levels are stored in simple JSON files, allowing easy creation and modification of levels without altering the app code. JSON files are parsed at runtime to dynamically generate learning content.
+
+### Screenshots
+
+| Screenshot 1                      | Screenshot 2                      | Screenshot 3                      |
+|-----------------------------------|-----------------------------------|-----------------------------------|
+| ![Screenshot 1](screenshot_0.png) | ![Screenshot 2](screenshot_1.png) | ![Screenshot 3](screenshot_3.png) |
+
+
+### Future Enhancements
+
+- Implement advanced learning modules with speaking and listening exercises.
+- Add Fill in the blanks type game levels
+- Expand the game level repository for a more comprehensive learning journey.
+- Add support for learning Kannada script and pronunciation.
+- Add 
