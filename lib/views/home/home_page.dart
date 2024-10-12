@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:auto_route/annotations.dart';
+import 'package:words625/character_drawing.dart';
 
 // Project imports:
 import 'package:words625/views/courses/course_tree.dart';
-import 'package:words625/views/explore/explore_page.dart';
 import 'package:words625/views/home/components/components.dart';
 import 'package:words625/views/leaderboard/leaderboard_page.dart';
 import 'package:words625/views/profile/profile_screen.dart';
@@ -27,18 +27,32 @@ class _HomePageState extends State<HomePage> {
 
   final screens = [
     const CourseTree(),
+    const CharacterPracticeScreen(),
     const ProfilePage(),
     LeaderboardPage(),
     const ShopPage(),
-    const ExplorePage(),
+    // const ExplorePage(),
   ];
 
   final List<PreferredSizeWidget> appBars = [
     const StatAppBar(),
+    AppBar(
+      title: Text(
+        "The Alphabet",
+        style: TextStyle(
+          color: Colors.grey[500],
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      toolbarHeight: 120,
+      backgroundColor: Colors.white,
+      elevation: 1.5,
+      centerTitle: true,
+    ),
     const ProfileAppBar(),
     const LeaderboardAppBar(),
     const ShopAppBar(),
-    const ExploreAppBar(),
   ];
 
   @override
@@ -57,5 +71,14 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       currentIndex = index;
     });
+  }
+}
+
+class CharacterLearningPage extends StatelessWidget {
+  const CharacterLearningPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const CharacterPracticeScreen();
   }
 }

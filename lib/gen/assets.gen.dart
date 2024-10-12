@@ -7,7 +7,6 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
-// Flutter imports:
 import 'package:flutter/widgets.dart';
 
 class $AssetsIconsGen {
@@ -187,6 +186,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/heel.png
   AssetGenImage get heel => const AssetGenImage('assets/images/heel.png');
 
+  /// File path: assets/images/img.png
+  AssetGenImage get img => const AssetGenImage('assets/images/img.png');
+
   /// File path: assets/images/impostor.png
   AssetGenImage get impostor =>
       const AssetGenImage('assets/images/impostor.png');
@@ -194,6 +196,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/infinity.png
   AssetGenImage get infinity =>
       const AssetGenImage('assets/images/infinity.png');
+
+  /// File path: assets/images/kannada_alphabet.png
+  AssetGenImage get kannadaAlphabet =>
+      const AssetGenImage('assets/images/kannada_alphabet.png');
 
   /// File path: assets/images/karnataka-flag.png
   AssetGenImage get karnatakaFlag =>
@@ -367,8 +373,10 @@ class $AssetsImagesGen {
         hand,
         heart,
         heel,
+        img,
         impostor,
         infinity,
+        kannadaAlphabet,
         karnatakaFlag,
         koreaFlagTransparent,
         learnOff,

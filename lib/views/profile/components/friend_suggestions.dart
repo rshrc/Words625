@@ -12,7 +12,7 @@ class FriendSuggestions extends StatelessWidget {
         Container(
           margin: const EdgeInsets.only(top: 15, left: 5),
           padding: const EdgeInsets.only(top: 5),
-          height: 190.0,
+          height: 210.0,
           child: ListView(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,

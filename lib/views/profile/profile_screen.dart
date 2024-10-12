@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:words625/character_drawing.dart';
 
 // Project imports:
 import 'components/components.dart';
@@ -12,19 +13,16 @@ class ProfilePage extends StatelessWidget {
     return const Scaffold(
       appBar: AccountAppBar(),
       body: SingleChildScrollView(
-        child: SizedBox(
-          height: 1540,
-          child: Column(
-            children: [
-              Padding(padding: EdgeInsets.all(10)),
-              FriendUpdates(),
-              Statistics(),
-              FriendSuggestions(),
-              Friends(),
-              Achievements(),
-              // Expanded(child: Column(children: [Text('yo')],)),
-            ],
-          ),
+        child: Column(
+          children: [
+            Padding(padding: EdgeInsets.all(10)),
+            FriendUpdates(),
+            Statistics(),
+            FriendSuggestions(),
+            Friends(),
+            Achievements(),
+            // Expanded(child: Column(children: [Text('yo')],)),
+          ],
         ),
       ),
     );

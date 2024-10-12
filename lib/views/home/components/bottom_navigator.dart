@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:words625/gen/assets.gen.dart';
 
 class BottomNavigator extends StatelessWidget {
   final Function(int) onPress;
@@ -30,6 +31,18 @@ class BottomNavigator extends StatelessWidget {
           ),
           label: '',
         ),
+        BottomNavigationBarItem(
+          icon: Image.asset(
+            Assets.images.kannadaAlphabet.path,
+            height: 40,
+          ),
+          activeIcon: Image.asset(
+            Assets.images.kannadaAlphabet.path,
+            height: 40,
+          ),
+          label: '',
+        ),
+
         BottomNavigationBarItem(
           icon: Image.asset(
             'assets/images/person-off.png',
@@ -64,17 +77,17 @@ class BottomNavigator extends StatelessWidget {
           ),
           label: '',
         ),
-        BottomNavigationBarItem(
-          icon: Image.asset(
-            'assets/images/explore-off.png',
-            height: 40,
-          ),
-          activeIcon: Image.asset(
-            'assets/images/explore-on.png',
-            height: 40,
-          ),
-          label: '',
-        ),
+        // BottomNavigationBarItem(
+        //   icon: Image.asset(
+        //     'assets/images/explore-off.png',
+        //     height: 40,
+        //   ),
+        //   activeIcon: Image.asset(
+        //     'assets/images/explore-on.png',
+        //     height: 40,
+        //   ),
+        //   label: '',
+        // ),
       ],
       currentIndex: currentIndex,
       selectedItemColor: Colors.blue,
