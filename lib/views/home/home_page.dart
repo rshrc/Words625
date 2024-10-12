@@ -37,13 +37,26 @@ class _HomePageState extends State<HomePage> {
   final List<PreferredSizeWidget> appBars = [
     const StatAppBar(),
     AppBar(
-      title: Text(
-        "The Alphabet",
-        style: TextStyle(
-          color: Colors.grey[500],
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-        ),
+      title: Column(
+        children: [
+          Text(
+            "The Alphabet",
+            style: TextStyle(
+              color: Colors.grey[500],
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            "Let's learn the Kannada Script",
+            style: TextStyle(
+              color: Colors.grey[500],
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
       toolbarHeight: 120,
       backgroundColor: Colors.white,

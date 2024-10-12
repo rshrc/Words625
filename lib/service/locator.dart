@@ -73,6 +73,6 @@ Future<void> setupLocator() async {
 
   if (!kIsWeb) {
     getIt.registerLazySingleton<FlutterTts>(
-        () => FlutterTts()..setLanguage("kn-IN"));
+        () => FlutterTts()..setLanguage("en-US"));
   }
 }

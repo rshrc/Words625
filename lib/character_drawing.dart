@@ -3,9 +3,13 @@ import 'dart:math';
 import 'package:auto_route/auto_route.dart';
 import 'package:chiclet/chiclet.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+import 'package:provider/provider.dart';
+import 'package:words625/application/character_provider.dart';
 import 'package:words625/core/extensions.dart';
 import 'package:words625/core/resources.dart';
 import 'package:words625/core/utils.dart';
+import 'package:words625/di/injection.dart';
 import 'package:words625/routing/routing.gr.dart';
 import 'package:words625/views/app.dart';
 
@@ -20,42 +24,104 @@ class CharacterPracticeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return SingleChildScrollView(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ChicletOutlinedAnimatedButton(
-            borderColor: appGreen,
-            width: 150,
-            child: const Text("Learn Vowels", style: TextStyle()),
-            onPressed: () {
-              context.router.push(VowelAndConsonantLearningRoute(
-                mode: CharacterLearningMode.vowels,
-              ));
-            },
-          ),
-          const SizedBox(height: 8),
-          ChicletOutlinedAnimatedButton(
-            width: 180,
-            borderColor: Colors.purple,
-            child: const Text("Learn Consonants"),
-            onPressed: () {
-              context.router.push(VowelAndConsonantLearningRoute(
-                mode: CharacterLearningMode.consonants,
-              ));
-            },
+          Wrap(
+            spacing: 8,
+            runSpacing: 4,
+            children: kannadaVowels.entries.map((e) {
+              return Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: ChicletOutlinedAnimatedButton(
+                    onPressed: () {
+                      getIt<FlutterTts>().speak(e.value);
+                    },
+                    child: Column(
+                      children: [
+                        Text(
+                          e.key,
+                          style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                        ),
+                        Text(e.value),
+                      ],
+                    )),
+              );
+            }).toList(),
           ),
           const SizedBox(height: 16),
-          ChicletOutlinedAnimatedButton(
-            borderColor: Colors.blue,
-            width: 150,
-            child: const Text("Random Alphabet"),
-            onPressed: () {
-              context.router.push(VowelAndConsonantLearningRoute(
-                mode: CharacterLearningMode.random,
-              ));
-            },
+          const Divider(),
+          const SizedBox(height: 16),
+          Wrap(
+            spacing: 8,
+            runSpacing: 6,
+            children: kannadaConsonants.entries.map((e) {
+              return Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: ChicletOutlinedAnimatedButton(
+                    onPressed: () {
+                      getIt<FlutterTts>().speak(e.value);
+                    },
+                    child: Column(
+                      children: [
+                        Text(
+                          e.key,
+                          style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                        ),
+                        Text(e.value),
+                      ],
+                    )),
+              );
+            }).toList(),
+          ),
+          const SizedBox(height: 16),
+          const Divider(),
+          const SizedBox(height: 16),
+          Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ChicletOutlinedAnimatedButton(
+                  borderColor: appGreen,
+                  width: context.width * 0.9,
+                  child: const Text("Learn Vowels", style: TextStyle()),
+                  onPressed: () {
+                    context.router.push(VowelAndConsonantLearningRoute(
+                      mode: CharacterLearningMode.vowels,
+                    ));
+                  },
+                ),
+                const SizedBox(height: 8),
+                ChicletOutlinedAnimatedButton(
+                  width: context.width * 0.9,
+                  borderColor: Colors.purple,
+                  child: const Text("Learn Consonants"),
+                  onPressed: () {
+                    context.router.push(VowelAndConsonantLearningRoute(
+                      mode: CharacterLearningMode.consonants,
+                    ));
+                  },
+                ),
+                const SizedBox(height: 16),
+                ChicletOutlinedAnimatedButton(
+                  borderColor: Colors.blue,
+                  width: context.width * 0.9,
+                  child: const Text("Random Alphabet"),
+                  onPressed: () {
+                    context.router.push(VowelAndConsonantLearningRoute(
+                      mode: CharacterLearningMode.random,
+                    ));
+                  },
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -124,6 +190,7 @@ class _VowelAndConsonantLearningPageState
                 color: Colors.green,
               ),
               onPressed: () {
+                context.read<CharacterProvider>().clearPoints();
                 setState(() {
                   visitedCharacters.add(currentCharacter);
                   charactersToLearn.remove(currentCharacter.key);
@@ -149,56 +216,51 @@ class RenderCharacter extends StatefulWidget {
 }
 
 class _RenderCharacterState extends State<RenderCharacter> {
-  List<Offset> points = []; // Stores the points where the user touches
-
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Stack(
-        children: [
-          // Background guide for the character 'B'
-          Center(
-            child: Opacity(
-              opacity: 0.15, // Semi-transparent guide for tracing
-              child: Text(
-                widget.alphabet,
-                style: const TextStyle(
-                  fontSize: 300,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+    return Consumer<CharacterProvider>(builder: (context, characterState, _) {
+      final points = characterState.points;
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Stack(
+          children: [
+            // Background guide for the character 'B'
+            Center(
+              child: Opacity(
+                opacity: 0.15, // Semi-transparent guide for tracing
+                child: Text(
+                  widget.alphabet,
+                  style: const TextStyle(
+                    fontSize: 300,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
-          ),
-          // Drawing Canvas
-          LayoutBuilder(
-            builder: (context, constraints) {
-              return GestureDetector(
-                onPanUpdate: (details) {
-                  setState(() {
-                    RenderBox renderBox =
-                        context.findRenderObject() as RenderBox;
-                    points.add(renderBox.globalToLocal(details.globalPosition));
-                  });
-                },
-                onPanEnd: (details) {
-                  // Stop capturing when the user lifts their finger
-                  setState(() {
-                    points.add(const Offset(-1, -1)); // Mark end of stroke
-                  });
-                },
-                child: CustomPaint(
-                  painter: CharacterPainter(points: points),
-                  size: const Size(300, 200),
-                  willChange: true,
-                ),
-              );
-            },
-          ),
-        ],
-      ),
-    );
+            // Drawing Canvas
+            LayoutBuilder(
+              builder: (context, constraints) {
+                return GestureDetector(
+                  onPanUpdate: (details) {
+                    characterState.addPoints(context, details);
+                  },
+                  onPanEnd: (details) {
+                    // Stop capturing when the user lifts their finger
+                    characterState.addOffset(const Offset(-1, -1));
+                  },
+                  child: CustomPaint(
+                    painter: CharacterPainter(points: points),
+                    size: const Size(300, 200),
+                    willChange: true,
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      );
+    });
   }
 }
 
