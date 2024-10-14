@@ -23,7 +23,11 @@ A personal language learning app to teach oneself Kannada, built using Flutter 3
    ```bash
    flutter pub get
    ```
-4. Run the app:
+4. Build executable package:
+   ```bash
+   flutter pub run build_runner build --delete-conflicting-outputs
+   ```
+5. Run the app:
    ```bash
    flutter run
    ```
