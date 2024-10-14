@@ -14,47 +14,65 @@ import 'package:words625/views/app.dart';
 import 'package:words625/views/lesson/components/lesson_app_bar.dart';
 import 'package:words625/views/lesson/components/list_lesson.dart';
 
+enum LessonAvailability { loading, present, absent }
+
 @RoutePage()
 class LessonPage extends StatefulWidget {
   final Course course;
   const LessonPage({Key? key, required this.course}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() {
-    return LessonPageState();
-  }
+  State<StatefulWidget> createState() => LessonPageState();
 }
 
 class LessonPageState extends State<LessonPage> {
   double percent = 0.1;
   int index = 0;
-
-  late List<ListLesson>? lessons;
+  List<ListLesson>? lessons;
+  LessonAvailability lessonAvailability = LessonAvailability.loading;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     generateQuestions();
   }
 
-  Future generateQuestions() async {
-    final List<ListLesson> lessons = [];
-    for (final question in widget.course.levels!.first.questions!) {
-      lessons.add(ListLesson(question, course: widget.course));
+  Future<void> generateQuestions() async {
+    if (widget.course.levels == null || widget.course.levels!.isEmpty) {
+      setState(() => lessonAvailability = LessonAvailability.absent);
+      return;
     }
 
+    final List<ListLesson> generatedLessons = widget
+        .course.levels!.first.questions!
+        .map((question) => ListLesson(question, course: widget.course))
+        .toList();
+
     setState(() {
-      this.lessons = lessons;
+      lessonAvailability = generatedLessons.isEmpty
+          ? LessonAvailability.absent
+          : LessonAvailability.present;
+      lessons = generatedLessons;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const LessonAppBar(),
-      body:
-          lessons != null ? lessons![index] : const CircularProgressIndicator(),
+      appBar: lessonAvailability == LessonAvailability.present
+          ? const LessonAppBar()
+          : null,
+      body: lessonAvailability == LessonAvailability.loading
+          ? const Center(child: CircularProgressIndicator())
+          : lessonAvailability == LessonAvailability.present
+              ? lessons![index]
+              : const Center(
+                  child: Text("No lessons",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                        color: Colors.grey,
+                      ))),
     );
   }
 
