@@ -62,17 +62,25 @@ class LessonPageState extends State<LessonPage> {
       appBar: lessonAvailability == LessonAvailability.present
           ? const LessonAppBar()
           : null,
-      body: lessonAvailability == LessonAvailability.loading
-          ? const Center(child: CircularProgressIndicator())
-          : lessonAvailability == LessonAvailability.present
-              ? lessons![index]
-              : const Center(
-                  child: Text("No lessons",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
-                        color: Colors.grey,
-                      ))),
+      body: Builder(
+        builder: (context) {
+          switch (lessonAvailability) {
+            case LessonAvailability.loading:
+              return const Center(child: CircularProgressIndicator());
+            case LessonAvailability.present:
+              return lessons![index];
+            case LessonAvailability.absent:
+              return const Center(
+                child: Text("No lessons",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                      color: Colors.grey,
+                    )),
+              );
+          }
+        },
+      ),
     );
   }
 
