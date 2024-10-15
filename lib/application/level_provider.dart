@@ -116,6 +116,11 @@ class LessonProvider with ChangeNotifier {
       // Reached the end of the course
       _currentLevelIndex = 0;
       _currentQuestionIndex = 0;
+
+      showDialog(
+        context: context,
+        builder: (context) => const CourseCompletionPlayerChoice(),
+      );
     }
     _answerState = AnswerState.none;
     _isAnswerCorrect = false;
