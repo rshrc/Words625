@@ -68,7 +68,16 @@ class LessonProvider with ChangeNotifier {
     _currentQuestionIndex = 0;
     _isAnswerCorrect = false;
     _hasSelectedAnswer = false;
+    shuffleOptions();
     notifyListeners();
+  }
+
+  void shuffleOptions() {
+    for (var level in currentCourse!.levels!) {
+      for (var question in level.questions!) {
+        question.options!.shuffle();
+      }
+    }
   }
 
   // Function to check if the selected answer is correct
