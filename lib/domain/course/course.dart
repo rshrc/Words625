@@ -28,7 +28,7 @@ class Level with _$Level {
   factory Level.fromJson(Map<String, dynamic> json) => _$LevelFromJson(json);
 }
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 class Question with _$Question {
   const factory Question({
     String? type,
@@ -38,13 +38,16 @@ class Question with _$Question {
     String? correctAnswer,
   }) = _Question;
 
+  // Empty constructor
+  const Question._();
+
   factory Question.fromJson(Map<String, dynamic> json) =>
       _$QuestionFromJson(json);
 
   // getter which shuffles and returns the options
-  // List<String> get shuffledOptions {
-  //   final List<String> _options = List.from(options!);
-  //   _options.shuffle();
-  //   return _options;
-  // }
+  List<String> get shuffledOptions {
+    final List<String> _options = List.from(options!);
+    _options.shuffle();
+    return _options;
+  }
 }
