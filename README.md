@@ -59,3 +59,5 @@ Game levels are stored in simple JSON files, allowing easy creation and modifica
 - Add image based learning exercises
 
 All PR's and Contributions Welcome!
+
+Join our dev community at [Discord](https://discord.gg/HqwnSZUmsz)!
