@@ -2,9 +2,11 @@ import 'dart:math';
 
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:words625/application/audio_controller.dart';
 import 'dart:async';
 
 import 'package:words625/core/utils.dart';
+import 'package:words625/di/injection.dart';
 import 'package:words625/match_levels.dart';
 import 'package:words625/views/app.dart';
 
@@ -35,12 +37,15 @@ class _MatchWordsPageState extends State<MatchWordsPage> {
 
   late Map<String, String> wordPairs;
 
+  late AudioController _audioController;
+
   @override
   void initState() {
     super.initState();
     wordPairs = getRandomWords(8);
     englishWords = wordPairs.keys.toList()..shuffle();
     kannadaWords = wordPairs.values.toList()..shuffle();
+    _audioController = getIt<AudioController>();
     startTimer();
   }
 
@@ -91,7 +96,7 @@ class _MatchWordsPageState extends State<MatchWordsPage> {
       matchedPairs = {};
       selectedEnglishWord = null;
       selectedKannadaWord = null;
-      _secondsRemaining = 60;
+      _secondsRemaining = 180;
       startTimer();
     });
   }
@@ -118,6 +123,7 @@ class _MatchWordsPageState extends State<MatchWordsPage> {
         });
 
         // Briefly highlight the match for 500ms before removing
+        _audioController.playRandomLevelUpSound();
         await Future.delayed(const Duration(milliseconds: 500));
 
         setState(() {
@@ -130,9 +136,11 @@ class _MatchWordsPageState extends State<MatchWordsPage> {
         // If all matches are found, show option to restart
         if (matchedWords.length == englishWords.length * 2) {
           showPlayerOption();
+          _timer?.cancel();
         }
       } else {
         // Reset selection if not a match
+        _audioController.playRandomErrorSound();
         setState(() {
           selectedEnglishWord = null;
           selectedKannadaWord = null;
