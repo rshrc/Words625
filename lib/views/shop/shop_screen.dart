@@ -1,5 +1,8 @@
 // Flutter imports:
+import 'package:auto_route/auto_route.dart';
+import 'package:chiclet/chiclet.dart';
 import 'package:flutter/material.dart';
+import 'package:words625/routing/routing.gr.dart';
 
 class ShopPage extends StatelessWidget {
   const ShopPage({Key? key}) : super(key: key);
@@ -10,13 +13,40 @@ class ShopPage extends StatelessWidget {
       children: [
         bigTitle('Streak'),
         item(
-            'assets/images/streak-freeze.png',
-            'Streak Freeze',
-            'Protect your streak if you miss a day'
-                ' of practice. Equip up to 2 at once.',
-            null,
-            2,
-            2),
+          'assets/images/streak-freeze.png',
+          'Streak Freeze',
+          'Protect your streak if you miss a day'
+              ' of practice. Equip up to 2 at once.',
+          null,
+          2,
+          2,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 8,
+          ),
+          child: ChicletOutlinedAnimatedButton(
+            onPressed: () {
+              context.router.push(MatchWordsRoute());
+            },
+            backgroundColor: Colors.pinkAccent,
+            borderColor: Colors.pink,
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  "Try Match Madness",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
         bigTitle('Power-Ups'),
         item(
             'assets/images/calendar.png',
