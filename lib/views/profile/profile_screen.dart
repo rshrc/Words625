@@ -1,8 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:words625/character_drawing.dart';
 
 // Project imports:
+import 'package:words625/character_drawing.dart';
 import 'components/components.dart';
 
 class ProfilePage extends StatelessWidget {

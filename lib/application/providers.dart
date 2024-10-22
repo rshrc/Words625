@@ -1,8 +1,8 @@
 // Package imports:
 import 'package:provider/provider.dart';
-import 'package:words625/application/character_provider.dart';
 
 // Project imports:
+import 'package:words625/application/character_provider.dart';
 import 'package:words625/application/level_provider.dart';
 import 'package:words625/di/injection.dart';
 

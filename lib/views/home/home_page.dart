@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:auto_route/annotations.dart';
-import 'package:words625/character_drawing.dart';
 
 // Project imports:
+import 'package:words625/character_drawing.dart';
 import 'package:words625/views/courses/course_tree.dart';
 import 'package:words625/views/home/components/components.dart';
 import 'package:words625/views/leaderboard/leaderboard_page.dart';

@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   bottomDisplay() {
-    return Expanded(
+    return const Expanded(
       child: Align(
         alignment: FractionalOffset.bottomCenter,
         child: Column(
@@ -63,11 +63,11 @@ class _LoginPageState extends State<LoginPage> {
             Row(
               // mainAxisSize: MainAxisSize.max,
               children: [
-                const FacebookButton(),
+                FacebookButton(),
                 GoogleButton(),
               ],
             ),
-            const PolicyText(),
+            PolicyText(),
           ],
         ),
       ),

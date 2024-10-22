@@ -12,7 +12,6 @@ dependencies:
   contained_tab_bar_view: '^0.8.0'
   cupertino_icons: '^1.0.2'
   equatable: any
-
   flutter: 
     sdk: flutter
   flutter_animate: any

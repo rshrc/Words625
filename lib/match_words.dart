@@ -1,10 +1,15 @@
+// Dart imports:
+import 'dart:async';
 import 'dart:math';
 
-import 'package:auto_route/annotations.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:words625/application/audio_controller.dart';
-import 'dart:async';
 
+// Package imports:
+import 'package:auto_route/annotations.dart';
+
+// Project imports:
+import 'package:words625/application/audio_controller.dart';
 import 'package:words625/core/utils.dart';
 import 'package:words625/di/injection.dart';
 import 'package:words625/match_levels.dart';
