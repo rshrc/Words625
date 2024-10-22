@@ -13,6 +13,60 @@ final coursesData = [
           "level": 1,
           "questions": [
             {
+              "type": "fill_in_the_blanks",
+              "prompt": "Complete the greeting in Kannada",
+              "sentence": "## madhyahna, hege iddira?",
+              "options": ["Shubha", "Chennagi", "Oota"],
+              "blanks": [
+                {
+                  "correctAnswer": "Shubha",
+                  "tooltip":
+                      "'Shubha' means 'good' in Kannada, used here to form 'Good afternoon'"
+                }
+              ]
+            },
+            {
+              "type": "fill_in_the_blanks",
+              "prompt":
+                  "Fill in the blank to ask someone if they have eaten in Kannada",
+              "sentence": "Neevu ## aayitha?",
+              "options": ["Oota", "Malagidira", "Barthira"],
+              "blanks": [
+                {
+                  "correctAnswer": "Oota",
+                  "tooltip":
+                      "'Oota' means 'food/eaten'. The sentence asks 'Have you eaten?'"
+                }
+              ]
+            },
+            {
+              "type": "fill_in_the_blanks",
+              "prompt":
+                  "Complete the sentence to express a need for water in Kannada",
+              "sentence": "Nanage neeru ____.",
+              "options": ["beku", "illa", "idira"],
+              "blanks": [
+                {
+                  "correctAnswer": "beku",
+                  "tooltip":
+                      "'Beku' means 'needed'. The sentence translates to 'I need water.'"
+                }
+              ]
+            },
+            {
+              "type": "fill_in_the_blanks",
+              "prompt": "Complete the greeting in Kannada",
+              "sentence": "## madhyahna, hege iddira?",
+              "options": ["Shubha", "Chennagi", "Oota"],
+              "blanks": [
+                {
+                  "correctAnswer": "Shubha",
+                  "tooltip":
+                      "'Shubha' means 'good' in Kannada, used here to form 'Good afternoon'"
+                }
+              ]
+            },
+            {
               "type": "multiple_choice",
               "prompt": "Choose an appropriate response",
               "sentence": "Ninna hesaru yenu?",

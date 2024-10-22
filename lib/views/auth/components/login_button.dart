@@ -2,15 +2,12 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:words625/shared/firebase_authentication.dart';
 
 class LoginButton extends StatefulWidget {
-  final FirebaseAuthentication auth;
   final TextEditingController emailController;
   final TextEditingController passwordController;
 
-  const LoginButton(this.auth, this.emailController, this.passwordController,
-      {Key? key})
+  const LoginButton(this.emailController, this.passwordController, {Key? key})
       : super(key: key);
 
   @override
@@ -60,36 +57,5 @@ class LoginButtonState extends State<LoginButton> {
     String userId = '';
     String email = widget.emailController.text;
     String password = widget.passwordController.text;
-    widget.auth.login(email, password).then((value) {
-      print('Login Info: $email - $password');
-      if (value == null) {
-        setState(() {
-          print('login failed');
-          loginMessage = 'Login Error';
-        });
-      } else {
-        userId = value;
-        setState(() {
-          print('login successfully');
-          loginMessage = 'User $userId successfully logged in';
-        });
-      }
-    });
   }
 }
-
-////// create user
-// else {
-// auth.createUser(txtUserName.text, txtPassword.text).then((value) {
-// if (value == null) {
-// setState(() {
-// _message = 'Registration Error';
-// });
-// } else {
-// userId = value;
-// setState(() {
-// _message = 'User $userId successfully signed in';
-// });
-// }
-// });
-// };

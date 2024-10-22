@@ -2,12 +2,9 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:words625/shared/firebase_authentication.dart';
 
 class GoogleButton extends StatefulWidget {
-  final FirebaseAuthentication auth;
-
-  const GoogleButton(this.auth, {Key? key}) : super(key: key);
+  const GoogleButton({Key? key}) : super(key: key);
   @override
   State<StatefulWidget> createState() {
     return GoogleButtonState();
@@ -55,20 +52,5 @@ class GoogleButtonState extends State<GoogleButton> {
     );
   }
 
-  googlePressed() {
-    widget.auth.loginWithGoogle().then((value) {
-      if (value == null) {
-        setState(() {
-          print('Google failed');
-          // _message = 'Google Login Error';
-        });
-      } else {
-        setState(() {
-          print('Google good: $value');
-
-          // _message = 'User $value successfully logged in with Google';
-        });
-      }
-    });
-  }
+  googlePressed() {}
 }

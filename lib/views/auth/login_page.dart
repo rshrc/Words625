@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:auto_route/annotations.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 // Project imports:
-import 'package:words625/shared/firebase_authentication.dart';
 import 'package:words625/views/auth/components/components.dart';
 
 @RoutePage()
@@ -24,17 +22,11 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  late FirebaseAuthentication auth;
-
   String loginMessage = '';
 
   @override
   void initState() {
     super.initState();
-    Firebase.initializeApp().whenComplete(() {
-      auth = FirebaseAuthentication();
-      setState(() {});
-    });
   }
 
   @override
@@ -51,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             // Text(loginMessage),
             // Container(margin: const EdgeInsets.only(top: 10)),
-            LoginButton(auth, emailController, passwordController),
+            LoginButton(emailController, passwordController),
             Container(margin: const EdgeInsets.only(top: 10)),
             const ForgotPassword(),
             bottomDisplay(),
@@ -72,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
               // mainAxisSize: MainAxisSize.max,
               children: [
                 const FacebookButton(),
-                GoogleButton(auth),
+                GoogleButton(),
               ],
             ),
             const PolicyText(),
