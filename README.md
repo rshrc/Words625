@@ -1,5 +1,7 @@
 ## Kannada Learning App - Duolingo Style
 
+![Flutter](https://img.shields.io/badge/Flutter-3.22.0-blue?logo=flutter)
+
 A personal language learning app to teach oneself Kannada, built using Flutter 3.22.0. This project focuses on delivering an engaging and interactive experience, similar to Duolingo, with the goal of making Kannada learning easy and enjoyable.
 
 ### Features
@@ -8,6 +10,9 @@ A personal language learning app to teach oneself Kannada, built using Flutter 3
 - **Dependency Injection:** Utilizes `get_it` and `injectable` to manage dependencies and ensure clean architecture.
 - **Routing:** Easy navigation through the app using `auto_route`.
 - **State Management:** Efficient state management with the `provider` package to handle app state.
+
+### Getting Started
+For more detailed instructions and troubleshooting, please refer to the ![INSTRUCTIONS.md](INSTRUCTIONS.md) file.
 
 ### Installation
 
