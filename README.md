@@ -2,6 +2,7 @@
 
 ![Flutter](https://img.shields.io/badge/Flutter-3.22.0-blue?logo=flutter)
 ![Dart SDK](https://img.shields.io/badge/Dart%20SDK-3.3.4-blue?logo=dart)
+[![Join our Discord](https://img.shields.io/discord/your_discord_server_id.svg?label=Join%20our%20Discord&logo=discord)](https://discord.gg/HqwnSZUmsz)
 
 A personal language learning app to teach oneself Kannada, built using Flutter 3.22.0. This project focuses on delivering an engaging and interactive experience, similar to Duolingo, with the goal of making Kannada learning easy and enjoyable.
 
@@ -57,13 +58,12 @@ Game levels are stored in simple JSON files, allowing easy creation and modifica
 
 
 ### Future Enhancements
+- [ ] Implement advanced learning modules with speaking and listening exercises.
+- [ ] Add Fill in the blanks type game levels.
+- [ ] Expand the game level repository for a more comprehensive learning journey.
+- [ ] Add support for learning Kannada script and pronunciation.
+- [ ] Add image-based learning exercises.
 
-- Implement advanced learning modules with speaking and listening exercises.
-- Add Fill in the blanks type game levels
-- Expand the game level repository for a more comprehensive learning journey.
-- Add support for learning Kannada script and pronunciation.
-- Add image based learning exercises
-
-All PR's and Contributions Welcome!
+All PR's and contributions are welcome! Whether you're interested in fixing bugs, adding new features, or improving documentation, we would love your help. Please feel free to open a Pull Request with your improvements. If you're not sure where to start, check out our open issues for inspiration, or join our community on Discord to discuss and collaborate. Together, we can make Kannada learning fun and accessible to everyone!
 
 Join our dev community at [Discord](https://discord.gg/HqwnSZUmsz)!
