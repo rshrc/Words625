@@ -63,6 +63,12 @@ Game levels are stored in simple JSON files, allowing easy creation and modifica
 
 
 ### Future Enhancements
+- [x] Add Firebase Auth
+- [x] Add Firebase Crashlytics
+- [x] Add Firebase Analytics
+- [ ] Maintain Streaks and Streak Reminders
+- [ ] Leagues for competition - Amethyst, Ruby equivalent of Duolingo
+- [ ] Deploy to stores
 - [ ] Implement advanced learning modules with speaking and listening exercises.
 - [ ] Add Fill in the blanks type game levels.
 - [ ] Expand the game level repository for a more comprehensive learning journey.
