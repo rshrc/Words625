@@ -6,7 +6,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:chiclet/chiclet.dart';
 
 // Project imports:
+import 'package:words625/gen/assets.gen.dart';
 import 'package:words625/routing/routing.gr.dart';
+
+import 'package:words625/views/auth/components/logout_button.dart'; // Assuming flutter_gen is being used
 
 class ShopPage extends StatelessWidget {
   const ShopPage({Key? key}) : super(key: key);
@@ -15,24 +18,20 @@ class ShopPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        bigTitle('Streak'),
-        item(
-          'assets/images/streak-freeze.png',
-          'Streak Freeze',
-          'Protect your streak if you miss a day'
-              ' of practice. Equip up to 2 at once.',
-          null,
-          2,
-          2,
+        const BigTitle(text: 'Streak'),
+        ShopItem(
+          imagePath: Assets.images.streakFreeze.path,
+          label: 'Streak Freeze',
+          description:
+              'Protect your streak if you miss a day of practice. Equip up to 2 at once.',
+          current: 2,
+          total: 2,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 8,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: ChicletOutlinedAnimatedButton(
             onPressed: () {
-              context.router.push(MatchWordsRoute());
+              context.router.push(const MatchWordsRoute());
             },
             backgroundColor: Colors.pinkAccent,
             borderColor: Colors.pink,
@@ -46,151 +45,57 @@ class ShopPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
-                )
+                ),
               ],
             ),
           ),
         ),
-        bigTitle('Power-Ups'),
-        item(
-            'assets/images/calendar.png',
-            'Double or Nothing',
-            'Attempt to double your five lingot wager by maintaining a seven day streak.',
-            450,
-            null,
-            null),
-        bigTitle('Outfits'),
-        item(
-            'assets/images/duo-1.png',
-            'Formal Attire',
-            'Learn in style. Duo has always been a sharp guy, now he\'ll look sharp too.',
-            1000,
-            null,
-            null),
-        item(
-            'assets/images/duo-2.png',
-            'Luxury Tracksuit',
-            'Learn in luxury. Duo will love the feel of 24 carat gold silk on his feathers.',
-            2000,
-            null,
-            null),
-        item(
-            'assets/images/duo-3.png',
-            'Super Duo',
-            'Transform Duo from a humble owl into a fearless feathered crimefighter.',
-            3000,
-            null,
-            null),
-      ],
-    );
-  }
-
-  item(String image, String label, String description, int? price, int? current,
-      int? total) {
-    return Container(
-      margin: const EdgeInsets.only(left: 15, right: 15, top: 10),
-      padding: const EdgeInsets.all(5),
-      height: 160,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        border: Border.all(
-          width: 2.5,
-          color: const Color(0xFFE5E5E5),
+        const BigTitle(text: 'Power-Ups'),
+        ShopItem(
+          imagePath: Assets.images.calendar.path,
+          label: 'Double or Nothing',
+          description:
+              'Attempt to double your five lingot wager by maintaining a seven-day streak.',
+          price: 450,
         ),
-      ),
-      child: Row(
-        children: [
-          itemImage(image),
-          const Padding(padding: EdgeInsets.all(5)),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              itemLabel(label),
-              const Padding(padding: EdgeInsets.all(3)),
-              itemDescription(description),
-              const Padding(padding: EdgeInsets.all(3)),
-              price != null ? priceBox(price) : equippedBox(current!, total!),
-            ],
-          )
-        ],
-      ),
-    );
-  }
-
-  equippedBox(int current, int total) {
-    return Container(
-      padding: const EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          color: Colors.green.shade50, borderRadius: BorderRadius.circular(5)),
-      child: Text(
-        '$current / $total EQUIPPED',
-        style: const TextStyle(
-            color: Color(0xFF43C000),
-            fontWeight: FontWeight.bold,
-            fontSize: 15),
-      ),
-    );
-  }
-
-  priceBox(int price) {
-    return Row(
-      children: [
-        Image.asset(
-          'assets/images/lingot.png',
-          width: 22,
+        const BigTitle(text: 'Outfits'),
+        ShopItem(
+          imagePath: Assets.images.duo1.path,
+          label: 'Formal Attire',
+          description:
+              "Learn in style. Duo has always been a sharp guy, now he'll look sharp too.",
+          price: 1000,
+        ),
+        ShopItem(
+          imagePath: Assets.images.duo2.path,
+          label: 'Luxury Tracksuit',
+          description:
+              'Learn in luxury. Duo will love the feel of 24-carat gold silk on his feathers.',
+          price: 2000,
+        ),
+        ShopItem(
+          imagePath: Assets.images.duo3.path,
+          label: 'Super Duo',
+          description:
+              'Transform Duo from a humble owl into a fearless feathered crimefighter.',
+          price: 3000,
         ),
         const Padding(
-          padding: EdgeInsets.all(2),
-        ),
-        Text(
-          '$price',
-          style: const TextStyle(
-              color: Color(0xFFFF4B4B),
-              fontSize: 17,
-              fontWeight: FontWeight.bold),
-        ),
-        const Padding(
-          padding: EdgeInsets.all(5),
+          padding: EdgeInsets.all(16.0),
+          child: LogoutButton(),
         ),
       ],
     );
   }
+}
 
-  itemDescription(String name) {
-    return SizedBox(
-      width: 210,
-      child: Text(
-        name,
-        style: const TextStyle(
-          color: Color(0xFF777777),
-          fontSize: 15,
-        ),
-        softWrap: true,
-        overflow: TextOverflow.visible,
-      ),
-    );
-  }
+class BigTitle extends StatelessWidget {
+  final String text;
 
-  itemLabel(String name) {
-    return Text(
-      name,
-      style: const TextStyle(
-        fontWeight: FontWeight.bold,
-        color: Color(0xFF4B4B4B),
-        fontSize: 20,
-      ),
-    );
-  }
+  const BigTitle({Key? key, required this.text}) : super(key: key);
 
-  itemImage(String image) {
-    return Image.asset(
-      image,
-      width: 110,
-    );
-  }
-
-  bigTitle(String text) {
+  @override
+  Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.centerLeft,
       child: Container(
@@ -202,6 +107,168 @@ class ShopPage extends StatelessWidget {
             fontWeight: FontWeight.bold,
             color: Color(0xFF4B4B4B),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class ShopItem extends StatelessWidget {
+  final String imagePath;
+  final String label;
+  final String description;
+  final int? price;
+  final int? current;
+  final int? total;
+
+  const ShopItem({
+    Key? key,
+    required this.imagePath,
+    required this.label,
+    required this.description,
+    this.price,
+    this.current,
+    this.total,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      padding: const EdgeInsets.all(5),
+      height: 160,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        border: Border.all(width: 2.5, color: const Color(0xFFE5E5E5)),
+      ),
+      child: Row(
+        children: [
+          ItemImage(imagePath: imagePath),
+          const SizedBox(width: 5),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ItemLabel(label: label),
+                const SizedBox(height: 3),
+                ItemDescription(description: description),
+                const SizedBox(height: 3),
+                price != null
+                    ? PriceBox(price: price!)
+                    : EquippedBox(current: current!, total: total!),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ItemImage extends StatelessWidget {
+  final String imagePath;
+
+  const ItemImage({Key? key, required this.imagePath}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      imagePath,
+      width: 110,
+    );
+  }
+}
+
+class ItemLabel extends StatelessWidget {
+  final String label;
+
+  const ItemLabel({Key? key, required this.label}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      label,
+      style: const TextStyle(
+        fontWeight: FontWeight.bold,
+        color: Color(0xFF4B4B4B),
+        fontSize: 20,
+      ),
+    );
+  }
+}
+
+class ItemDescription extends StatelessWidget {
+  final String description;
+
+  const ItemDescription({Key? key, required this.description})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 210,
+      child: Text(
+        description,
+        style: const TextStyle(
+          color: Color(0xFF777777),
+          fontSize: 15,
+        ),
+        softWrap: true,
+        overflow: TextOverflow.visible,
+      ),
+    );
+  }
+}
+
+class PriceBox extends StatelessWidget {
+  final int price;
+
+  const PriceBox({Key? key, required this.price}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Image.asset(
+          Assets.images.lingot.path, // Using flutter_gen's asset management
+          width: 22,
+        ),
+        const SizedBox(width: 2),
+        Text(
+          '$price',
+          style: const TextStyle(
+            color: Color(0xFFFF4B4B),
+            fontSize: 17,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class EquippedBox extends StatelessWidget {
+  final int current;
+  final int total;
+
+  const EquippedBox({Key? key, required this.current, required this.total})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        color: Colors.green.shade50,
+        borderRadius: BorderRadius.circular(5),
+      ),
+      child: Text(
+        '$current / $total EQUIPPED',
+        style: const TextStyle(
+          color: Color(0xFF43C000),
+          fontWeight: FontWeight.bold,
+          fontSize: 15,
         ),
       ),
     );
