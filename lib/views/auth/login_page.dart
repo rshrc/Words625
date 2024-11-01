@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             // Text(loginMessage),
             // Container(margin: const EdgeInsets.only(top: 10)),
-            LoginButton(emailController, passwordController),
+            // LoginButton(emailController, passwordController),
             Container(margin: const EdgeInsets.only(top: 10)),
             const ForgotPassword(),
             bottomDisplay(),

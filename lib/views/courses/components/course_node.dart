@@ -11,7 +11,6 @@ import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
 
 // Project imports:
 import 'package:words625/core/extensions.dart';
-import 'package:words625/core/logger.dart';
 import 'package:words625/di/injection.dart';
 import 'package:words625/domain/course/course.dart';
 import 'package:words625/routing/routing.gr.dart';
@@ -63,7 +62,6 @@ class Node extends StatelessWidget {
         .preferences
         .getInt(course.courseName, defaultValue: 0)
         .getValue();
-    logger.w("Level: $level");
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
