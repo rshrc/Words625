@@ -2,12 +2,14 @@
 import 'package:flutter/foundation.dart';
 
 // Package imports:
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
 
 // Project imports:
 import 'package:words625/core/logger.dart';
 import 'package:words625/di/injection.dart';
+import 'package:words625/domain/auth/firebase_user.dart';
 import 'package:words625/routing/routing.dart';
 
 class AppPrefs {
@@ -15,12 +17,22 @@ class AppPrefs {
 
   AppPrefs(
     this.preferences,
-  ) : fcmToken = preferences.getString(
+  )   : fcmToken = preferences.getString(
           PrefsConstants.fcmToken,
           defaultValue: "",
+        ),
+        authUser = preferences.getCustomValue(
+          PrefsConstants.authUser,
+          defaultValue: null,
+          adapter: JsonAdapter(
+            deserializer: (val) => SerializableFirebaseUser.fromJson(
+              val as Map<String, dynamic>,
+            ),
+          ),
         );
 
   final Preference<String> fcmToken;
+  final Preference<SerializableFirebaseUser?> authUser;
 
   Future<bool> setBool(String key, {required bool value}) async {
     printBefore(value: value, key: key);
@@ -51,6 +63,15 @@ class AppPrefs {
       String key, value, PreferenceAdapter<dynamic> adapter) async {
     printBefore(value: value, key: key);
     return preferences.setCustomValue(key, value, adapter: adapter);
+  }
+
+  Future<bool> setFirebaseUser(User user) async {
+    final serializableUser = SerializableFirebaseUser.fromFirebaseUser(user);
+    return preferences.setCustomValue(
+      PrefsConstants.authUser,
+      serializableUser.toJson(),
+      adapter: const JsonAdapter(),
+    );
   }
 
   void printBefore({String? key, value}) =>
