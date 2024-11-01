@@ -13,6 +13,11 @@ A personal language learning app to teach oneself Kannada, built using Flutter 3
 - **Routing:** Easy navigation through the app using `auto_route`.
 - **State Management:** Efficient state management with the `provider` package to handle app state.
 
+# Firebase Configuration
+This app uses Firebase services to enhance user experience, including Authentication, Firestore, and Analytics. To run the app with Firebase, you need to add the Firebase configuration files (google-services.json for Android and GoogleService-Info.plist for iOS) to the project. These files are not included in the repository for security reasons.
+
+For detailed instructions on obtaining or generating these files, please refer to the ![FIREBASE_CONFIGURATION](FIREBASE_CONFIGURATION.md) file.
+
 ### Getting Started
 For more detailed instructions and troubleshooting, please refer to the ![INSTRUCTIONS.md](INSTRUCTIONS.md) file.
 
