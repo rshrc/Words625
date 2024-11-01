@@ -52,3 +52,7 @@ private_keys/
 
 # FVM Version Cache
 .fvm/
+
+# Firebase configuration files
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
