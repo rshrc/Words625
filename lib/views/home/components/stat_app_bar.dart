@@ -2,12 +2,12 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 // Project imports:
-import 'package:words625/di/injection.dart';
 import 'package:words625/gen/assets.gen.dart';
-import 'package:words625/service/locator.dart';
+import 'package:words625/views/widgets/loader.dart';
 
 class StatAppBar extends StatelessWidget implements PreferredSizeWidget {
   const StatAppBar({Key? key}) : super(key: key);
@@ -40,6 +40,20 @@ class StatAppBar extends StatelessWidget implements PreferredSizeWidget {
 class Streak extends StatelessWidget {
   const Streak({super.key});
 
+  Stream<int> _getUserStreakStream() {
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId == null) {
+      // Return a stream with a default value if the user is not logged in
+      return Stream.value(0);
+    }
+
+    return FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
+        .snapshots()
+        .map((snapshot) => (snapshot.data()?['streak'] ?? 0) as int);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -51,13 +65,25 @@ class Streak extends StatelessWidget {
         const Padding(
           padding: EdgeInsets.all(4),
         ),
-        const Text(
-          '31',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Color(0xFFFF9600),
-          ),
-        )
+        StreamBuilder<int>(
+          stream: _getUserStreakStream(),
+          builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Loader();
+            }
+            if (snapshot.hasError) {
+              return const Text('Error');
+            }
+
+            return Text(
+              '${snapshot.data}',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Color(0xFFFF9600),
+              ),
+            );
+          },
+        ),
       ],
     );
   }
@@ -65,6 +91,20 @@ class Streak extends StatelessWidget {
 
 class ScoreCard extends StatelessWidget {
   const ScoreCard({super.key});
+
+  Stream<int> _getUserScoreStream() {
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId == null) {
+      // Return a stream with a default value if the user is not logged in
+      return Stream.value(0);
+    }
+
+    return FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
+        .snapshots()
+        .map((snapshot) => (snapshot.data()?['score'] ?? 0) as int);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,18 +117,25 @@ class ScoreCard extends StatelessWidget {
         const Padding(
           padding: EdgeInsets.all(4),
         ),
-        PreferenceBuilder<int>(
-            preference:
-                getIt<AppPrefs>().preferences.getInt('score', defaultValue: 0),
-            builder: (BuildContext context, int counter) {
-              return Text(
-                '$counter',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFFFFC800),
-                ),
-              );
-            }),
+        StreamBuilder<int>(
+          stream: _getUserScoreStream(),
+          builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Loader();
+            }
+            if (snapshot.hasError) {
+              return const Text('Error');
+            }
+
+            return Text(
+              '${snapshot.data}',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Color(0xFFFFC800),
+              ),
+            );
+          },
+        ),
       ],
     );
   }
