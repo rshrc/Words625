@@ -22,11 +22,11 @@
               "prompt": "Choose an appropriate response",
               "question": "Ninna hesaru yenu?",
               "options": [
-                "Nanna hesaru Rishi.",
+                "Nanna hesaru ${firseName}.",
                 "Naanu kaalithini.",
                 "Naanu gothilla."
               ],
-              "correctAnswer": "Nanna hesaru Rishi."
+              "correctAnswer": "Nanna hesaru ${firseName}."
             }
           ]
         },
@@ -39,7 +39,7 @@
               "sentence": "Namaskaara.",
               "options": [
                 "Hello.",
-                "My name is Rishi",
+                "My name is ${firseName}",
                 "What is your name?"
               ],
               "correctAnswer": "Hello."

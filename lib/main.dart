@@ -18,6 +18,8 @@ Future main() async {
   configureDependencies();
   await setupLocator();
 
+  getIt<AppPrefs>().preferences.clear();
+
   if (!kIsWeb) {
     final result = await getIt<FlutterTts>().isLanguageAvailable("kn-IN");
   }
