@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
@@ -97,25 +99,25 @@ class LessonProvider with ChangeNotifier {
 
   // Function to proceed to the next question or level
   void next(BuildContext context) {
+    int currentLevelScore = 0;
     if (_currentQuestionIndex < (currentLevel?.questions!.length)! - 1) {
+      currentLevelScore += 5;
+
       _currentQuestionIndex++;
     } else if (_currentLevelIndex < _currentCourse!.levels!.length - 1) {
       _currentLevelIndex++;
       _currentQuestionIndex = 0;
       _percent = 0;
+      currentLevelScore += 5;
+
       // show dialog to continue, or change stuff
       logger.w("You have completed the level");
+      incrementScore(currentLevelScore);
 
       // We store the game progress in local shared preferences
       getIt<AppPrefs>()
           .preferences
           .setInt(currentCourse!.courseName, _currentLevelIndex);
-      final currentScore = getIt<AppPrefs>()
-          .preferences
-          .getInt("score", defaultValue: 0)
-          .getValue();
-      getIt<AppPrefs>().preferences.setInt(
-          "score", currentScore + (currentCourse?.levels?.length ?? 0 * 10));
 
       showDialog(
         context: context,
@@ -136,6 +138,22 @@ class LessonProvider with ChangeNotifier {
     _hasSelectedAnswer = false;
     _percent = (_currentQuestionIndex + 1) / (currentLevel!.questions!.length);
     notifyListeners();
+  }
+
+  Future<void> incrementScore(int xp) async {
+    try {
+      final userId = FirebaseAuth.instance.currentUser?.uid;
+      if (userId == null) return;
+
+      final userDoc =
+          FirebaseFirestore.instance.collection('users').doc(userId);
+
+      await userDoc.update({
+        'score': FieldValue.increment(xp),
+      });
+    } catch (e) {
+      logger.e("Error updating score: $e");
+    }
   }
 
   void changeAnswerState(AnswerState answerState) {
