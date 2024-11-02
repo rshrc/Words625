@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:auto_route/auto_route.dart';
 import 'package:chiclet/chiclet.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -68,6 +69,8 @@ class GetStartedButton extends StatelessWidget {
       if (firebaseUser != null) {
         await getIt<AppPrefs>().setFirebaseUser(firebaseUser);
 
+        await _initializeUserDocument(firebaseUser.uid);
+
         context.router.pushAndPopUntil(
           const HomeRoute(),
           predicate: (route) => false,
@@ -78,6 +81,29 @@ class GetStartedButton extends StatelessWidget {
     } catch (e, stackTrace) {
       logger.e('Google Sign In Error: $e');
       logger.e('Google Sign In Stack Trace: $stackTrace');
+    }
+  }
+
+  Future<void> _initializeUserDocument(String userId) async {
+    final userDoc = FirebaseFirestore.instance.collection('users').doc(userId);
+
+    try {
+      final docSnapshot = await userDoc.get();
+
+      if (!docSnapshot.exists) {
+        await userDoc.set({
+          'streak': 0,
+          'score': 0,
+          'createdAt': FieldValue.serverTimestamp(),
+          'updatedAt': FieldValue.serverTimestamp(),
+        });
+        logger
+            .i("User document created with initial values for userId: $userId");
+      } else {
+        logger.i("User document already exists for userId: $userId");
+      }
+    } catch (e) {
+      logger.e("Error initializing user document: $e");
     }
   }
 }
