@@ -81,7 +81,7 @@ class CenterDisplay extends StatelessWidget {
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: 'We don\'t store any progress currently, ',
+                    text: 'We do store your login details and your XP (score)',
                     style: TextStyle(fontSize: 20, color: Colors.grey.shade600),
                   ),
                   const TextSpan(
