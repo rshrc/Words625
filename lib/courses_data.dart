@@ -18,11 +18,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "prompt": "Choose an appropriate response",
                 "sentence": "Ninna hesaru yenu?",
                 "options": [
-                  "Nanna hesaru ${firstName}.",
+                  "Nanna hesaru $firstName.",
                   "Naanu kaalithini.",
                   "Naanu gothilla."
                 ],
-                "correctAnswer": "Nanna hesaru ${firstName}."
+                "correctAnswer": "Nanna hesaru $firstName."
               },
               {
                 "type": "translate",
@@ -361,7 +361,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence": "Nimma mane yalli ide?",
                 "options": [
                   "Namma mane Bengaluralli ide.",
-                  "Nanna hesaru ${firstName}.",
+                  "Nanna hesaru $firstName.",
                   "Naanu odutha iddini."
                 ],
                 "correctAnswer": "Namma mane Bengaluralli ide."
