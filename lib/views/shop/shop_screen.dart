@@ -8,8 +8,9 @@ import 'package:chiclet/chiclet.dart';
 // Project imports:
 import 'package:words625/gen/assets.gen.dart';
 import 'package:words625/routing/routing.gr.dart';
+import 'package:words625/views/auth/components/logout_button.dart';
 
-import 'package:words625/views/auth/components/logout_button.dart'; // Assuming flutter_gen is being used
+import 'package:words625/views/profile/widgets/widgets.dart'; // Assuming flutter_gen is being used
 
 class ShopPage extends StatelessWidget {
   const ShopPage({Key? key}) : super(key: key);
@@ -85,30 +86,6 @@ class ShopPage extends StatelessWidget {
           child: LogoutButton(),
         ),
       ],
-    );
-  }
-}
-
-class BigTitle extends StatelessWidget {
-  final String text;
-
-  const BigTitle({Key? key, required this.text}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Container(
-        padding: const EdgeInsets.only(left: 15, top: 20, bottom: 10),
-        child: Text(
-          text,
-          style: const TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFF4B4B4B),
-          ),
-        ),
-      ),
     );
   }
 }
