@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'components/components.dart';
+import 'package:words625/views/profile/widgets/widgets.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -18,9 +18,8 @@ class ProfilePage extends StatelessWidget {
             FriendUpdates(),
             Statistics(),
             FriendSuggestions(),
-            Friends(),
+            SocialFriends(),
             Achievements(),
-            // Expanded(child: Column(children: [Text('yo')],)),
           ],
         ),
       ),
