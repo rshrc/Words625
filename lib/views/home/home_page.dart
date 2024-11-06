@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     const CourseTree(),
     const CharacterPracticeScreen(),
     const ProfilePage(),
-    LeaderboardPage(),
+    const LeaderboardPage(),
     const ShopPage(),
     // const ExplorePage(),
   ];
