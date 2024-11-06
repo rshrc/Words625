@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
-import 'package:words625/core/logger.dart';
 
 // Project imports:
 import 'package:words625/di/injection.dart';
