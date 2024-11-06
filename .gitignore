@@ -57,3 +57,5 @@ private_keys/
 android/app/google-services.json
 ios/Runner/GoogleService-Info.plist
 lib/firebase_options.dart
+node_modules/
+serviceAccountKey.json

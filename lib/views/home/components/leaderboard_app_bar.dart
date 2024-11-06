@@ -1,6 +1,9 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
+// Project imports:
+import 'package:words625/views/profile/widgets/widgets.dart';
+
 class LeaderboardAppBar extends StatelessWidget implements PreferredSizeWidget {
   const LeaderboardAppBar({Key? key}) : super(key: key);
 
@@ -17,9 +20,9 @@ class LeaderboardAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Column(
         children: [
           leagues(),
-          bigTitle('Amethyst League'),
-          message('Top 10 advance to the next league'),
-          remainingDay('2 days'),
+          const BigTitle(text: 'Amethyst League'),
+          message('Top 10 advance to the next league\n(in progress)'),
+          remainingDay('∞ days'),
         ],
       ),
     );
@@ -78,20 +81,7 @@ class LeaderboardAppBar extends StatelessWidget implements PreferredSizeWidget {
           fontSize: 17,
           color: Color(0xFFAFAFAF),
         ),
-      ),
-    );
-  }
-
-  bigTitle(String text) {
-    return Container(
-      margin: const EdgeInsets.only(top: 15),
-      child: Text(
-        text,
-        style: const TextStyle(
-          fontSize: 25,
-          fontWeight: FontWeight.bold,
-          color: Color(0xFF4B4B4B),
-        ),
+        textAlign: TextAlign.center,
       ),
     );
   }

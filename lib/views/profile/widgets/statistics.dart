@@ -2,8 +2,56 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Statistics extends StatelessWidget {
+// Package imports:
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+// Project imports:
+import 'package:words625/gen/assets.gen.dart';
+
+class Statistics extends StatefulWidget {
   const Statistics({Key? key}) : super(key: key);
+
+  @override
+  State<Statistics> createState() => _StatisticsState();
+}
+
+class _StatisticsState extends State<Statistics> {
+  String streak = '0';
+  String totalXp = '0';
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserData();
+  }
+
+  Future<void> _fetchUserData() async {
+    try {
+      final currentUser = FirebaseAuth.instance.currentUser;
+      if (currentUser == null) return;
+
+      final userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(currentUser.uid)
+          .get();
+
+      if (userDoc.exists) {
+        final userData = userDoc.data() as Map<String, dynamic>;
+        setState(() {
+          streak = userData['streak']?.toString() ?? '0';
+          totalXp = userData['score']?.toString() ?? '0';
+          isLoading = false;
+        });
+      } else {
+        setState(() => isLoading = false);
+      }
+    } catch (e) {
+      setState(() => isLoading = false);
+      print("Error fetching user data: $e");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +67,10 @@ class Statistics extends StatelessWidget {
           mainAxisSpacing: 10,
           childAspectRatio: (1 / .4),
           children: [
-            statBox('assets/images/streak.png', '34', 'Day Streak'),
-            statBox('assets/images/electric.png', '1770', 'Total XP'),
-            statBox('assets/images/pearl.png', 'Pearl', 'Current League'),
-            statBox('assets/images/chest.png', '7', 'Top 3 Finishes'),
+            statBox(Assets.images.streak.path, streak, 'Day Streak'),
+            statBox(Assets.images.electric.path, totalXp, 'Total XP'),
+            statBox(Assets.images.pearl.path, 'Pearl', 'Current League'),
+            statBox(Assets.images.chest.path, '7', 'Top 3 Finishes'),
           ],
         ),
       ],

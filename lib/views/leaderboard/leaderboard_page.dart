@@ -1,57 +1,53 @@
-// Dart imports:
-import 'dart:math';
-
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-Random random = Random();
+// Package imports:
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LeaderboardPage extends StatelessWidget {
-  LeaderboardPage({Key? key}) : super(key: key);
-
-  var ranks = List<int>.generate(30, (i) => i + 1);
-  var xps = List<int>.generate(30, (i) => random.nextInt(1000));
-  var nameList = [
-    'Nikhil',
-    'Pratik',
-    'Sushant',
-    'Kaushal',
-    'Dhruv',
-    'Kishore',
-    'Akshaj',
-    'Dash'
-  ];
-  var imageList = [
-    'white.png',
-    'profile.jpg',
-    'green.png',
-    'cyan.png',
-    'yellow.png'
-  ];
+  const LeaderboardPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // generate mock data
-    var names = List<String>.generate(
-        30, (i) => nameList[random.nextInt(nameList.length)]);
-    var images = List<String>.generate(30,
-        (i) => 'assets/images/${imageList[random.nextInt(imageList.length)]}');
+    return StreamBuilder<QuerySnapshot>(
+      stream: FirebaseFirestore.instance
+          .collection('users')
+          .orderBy('score', descending: true)
+          .limit(30)
+          .snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+          return const Center(child: Text('No leaderboard data available'));
+        }
 
-    return ListView.builder(
-      itemCount: 30,
-      itemBuilder: (BuildContext context, int index) {
-        return ListTile(
-          contentPadding: const EdgeInsets.only(top: 17),
-          horizontalTitleGap: 12,
-          leading: rank(ranks[index]),
-          title: avatarWithName(images[index], names[index]),
-          trailing: xpAmount(xps[index]),
+        final users = snapshot.data!.docs;
+
+        return ListView.builder(
+          itemCount: users.length,
+          itemBuilder: (context, index) {
+            final userData = users[index].data() as Map<String, dynamic>;
+            final xp = userData['score'] ?? 0;
+            final name = userData['name'] ?? 'Anonymous';
+            final image =
+                userData['profileImage'] ?? 'assets/images/default_image.png';
+
+            return ListTile(
+              contentPadding: const EdgeInsets.only(top: 17),
+              horizontalTitleGap: 12,
+              leading: rank(index + 1),
+              title: avatarWithName(image, name),
+              trailing: xpAmount(xp),
+            );
+          },
         );
       },
     );
   }
 
-  xpAmount(int xp) {
+  Widget xpAmount(int xp) {
     return Container(
       margin: const EdgeInsets.only(right: 15),
       child: Text(
@@ -61,20 +57,20 @@ class LeaderboardPage extends StatelessWidget {
     );
   }
 
-  avatarWithName(String image, String name) {
+  Widget avatarWithName(String image, String name) {
     return Align(
       alignment: Alignment.centerLeft,
       child: Row(
         children: [
           avatar(image),
           const Padding(padding: EdgeInsets.only(right: 20)),
-          friendName(name),
+          Flexible(child: friendName(name)),
         ],
       ),
     );
   }
 
-  friendName(String name) {
+  Widget friendName(String name) {
     return Text(
       name,
       style: const TextStyle(
@@ -85,18 +81,14 @@ class LeaderboardPage extends StatelessWidget {
     );
   }
 
-  avatar(String image) {
-    return Container(
-      // padding: const EdgeInsets.only(top: 5),
-      // margin: const EdgeInsets.only(bottom: 10),
-      child: CircleAvatar(
-        backgroundImage: AssetImage(image),
-        radius: 22,
-      ),
+  Widget avatar(String image) {
+    return CircleAvatar(
+      backgroundImage: NetworkImage(image),
+      radius: 22,
     );
   }
 
-  rank(int rank) {
+  Widget rank(int rank) {
     return Container(
       margin: const EdgeInsets.only(left: 15),
       child: Text(

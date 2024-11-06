@@ -69,7 +69,7 @@ class GetStartedButton extends StatelessWidget {
       if (firebaseUser != null) {
         await getIt<AppPrefs>().setFirebaseUser(firebaseUser);
 
-        await _initializeUserDocument(firebaseUser.uid);
+        await _initializeUserDocument(firebaseUser);
 
         context.router.pushAndPopUntil(
           const HomeRoute(),
@@ -84,23 +84,28 @@ class GetStartedButton extends StatelessWidget {
     }
   }
 
-  Future<void> _initializeUserDocument(String userId) async {
-    final userDoc = FirebaseFirestore.instance.collection('users').doc(userId);
+  Future<void> _initializeUserDocument(User firebaseUser) async {
+    final userDoc =
+        FirebaseFirestore.instance.collection('users').doc(firebaseUser.uid);
 
     try {
       final docSnapshot = await userDoc.get();
 
       if (!docSnapshot.exists) {
         await userDoc.set({
+          'name': firebaseUser.displayName ?? 'Anonymous',
+          'profileImage': firebaseUser.photoURL ??
+              'default_image_url', // You can replace 'default_image_url' with any placeholder
           'streak': 0,
           'score': 0,
           'createdAt': FieldValue.serverTimestamp(),
           'updatedAt': FieldValue.serverTimestamp(),
         });
-        logger
-            .i("User document created with initial values for userId: $userId");
+        logger.i(
+            "User document created with initial values for userId: ${firebaseUser.uid}");
       } else {
-        logger.i("User document already exists for userId: $userId");
+        logger
+            .i("User document already exists for userId: ${firebaseUser.uid}");
       }
     } catch (e) {
       logger.e("Error initializing user document: $e");

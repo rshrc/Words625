@@ -145,14 +145,50 @@ class LessonProvider with ChangeNotifier {
       final userId = FirebaseAuth.instance.currentUser?.uid;
       if (userId == null) return;
 
-      final userDoc =
+      final userDocRef =
           FirebaseFirestore.instance.collection('users').doc(userId);
+      final userDoc = await userDocRef.get();
 
-      await userDoc.update({
+      if (!userDoc.exists) return;
+
+      final userData = userDoc.data()!;
+      final DateTime now = DateTime.now();
+
+      // Start of the current day (today's midnight)
+      final DateTime todayMidnight = DateTime(now.year, now.month, now.day);
+
+      // Get `lastStreakDate` from Firestore
+      final lastStreakDate = userData['lastStreakDate'] != null
+          ? DateTime.parse(userData['lastStreakDate'])
+          : null;
+
+      int newStreak = userData['streak'] ?? 1;
+
+      // Determine if streak should be incremented or reset
+      if (lastStreakDate != null) {
+        final DateTime lastMidnight = DateTime(
+            lastStreakDate.year, lastStreakDate.month, lastStreakDate.day);
+
+        // If the last streak date was before today and within the previous day
+        if (lastMidnight.isBefore(todayMidnight) &&
+            lastMidnight
+                .isAfter(todayMidnight.subtract(const Duration(days: 1)))) {
+          newStreak += 1; // Increment streak
+        } else if (lastMidnight != todayMidnight) {
+          newStreak = 1; // Reset streak if not consecutive day
+        }
+      } else {
+        newStreak = 1; // Initial streak if no lastStreakDate exists
+      }
+
+      // Update Firestore with new score and streak information
+      await userDocRef.update({
         'score': FieldValue.increment(xp),
+        'streak': newStreak,
+        'lastStreakDate': todayMidnight.toIso8601String(),
       });
     } catch (e) {
-      logger.e("Error updating score: $e");
+      logger.e("Error updating score and streak: $e");
     }
   }
 
