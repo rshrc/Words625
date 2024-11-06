@@ -40,7 +40,9 @@ class _CourseTreeState extends State<CourseTree> {
     return SingleChildScrollView(
       child: Column(
         children: courses == null
-            ? [Text("Hello")]
+            ? [
+                Container(),
+              ]
             : courses!.map<Widget>((courseGroup) {
                 // Render SingleCourseNode, DoubleCourseNode, or TripleCourseNode based on course group length
                 if (courseGroup.length == 1) {
