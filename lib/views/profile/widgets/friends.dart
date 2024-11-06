@@ -1,7 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+// Project imports:
+import 'package:words625/views/profile/widgets/widgets.dart';
 
 class SocialFriends extends StatelessWidget {
   const SocialFriends({Key? key}) : super(key: key);
@@ -42,30 +48,6 @@ class SocialFriends extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class BigTitle extends StatelessWidget {
-  final String text;
-
-  const BigTitle({Key? key, required this.text}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Container(
-        padding: const EdgeInsets.only(top: 20, left: 15, bottom: 10),
-        child: Text(
-          text,
-          style: const TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFF4B4B4B),
-          ),
-        ),
-      ),
     );
   }
 }
@@ -164,42 +146,6 @@ class FriendItem extends StatelessWidget {
   }
 }
 
-class Avatar extends StatelessWidget {
-  final String image;
-
-  const Avatar({Key? key, required this.image}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(top: 5),
-      margin: const EdgeInsets.all(10),
-      child: CircleAvatar(
-        backgroundImage: AssetImage(image),
-        radius: 22,
-      ),
-    );
-  }
-}
-
-class FriendName extends StatelessWidget {
-  final String name;
-
-  const FriendName({Key? key, required this.name}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      name,
-      style: const TextStyle(
-        fontWeight: FontWeight.bold,
-        color: Color(0xFF4B4B4B),
-        fontSize: 17,
-      ),
-    );
-  }
-}
-
 class XpAmount extends StatelessWidget {
   final String xp;
 
@@ -233,7 +179,7 @@ class _PaginatedFollowersListState extends State<PaginatedFollowersList> {
   DocumentSnapshot? _lastDocument;
   bool _isLoadingMore = false;
   bool _hasMore = true;
-  List<DocumentSnapshot> _followers = [];
+  final List<DocumentSnapshot> _followers = [];
 
   @override
   void initState() {
@@ -296,7 +242,7 @@ class _PaginatedFollowersListState extends State<PaginatedFollowersList> {
           return FriendItem(
             image: followerData['profileImage'],
             name: followerData['name'],
-            xp: 'N/A', // Replace with actual XP if needed
+            xp: 'N/A',
           );
         } else if (_isLoadingMore) {
           return const Center(child: CircularProgressIndicator());
@@ -323,7 +269,7 @@ class _PaginatedFollowingListState extends State<PaginatedFollowingList> {
   DocumentSnapshot? _lastDocument;
   bool _isLoadingMore = false;
   bool _hasMore = true;
-  List<DocumentSnapshot> _following = [];
+  final List<DocumentSnapshot> _following = [];
 
   @override
   void initState() {
@@ -387,7 +333,7 @@ class _PaginatedFollowingListState extends State<PaginatedFollowingList> {
           return FriendItem(
             image: followingData['profileImage'],
             name: followingData['name'],
-            xp: 'N/A', // Replace with actual XP if needed
+            xp: 'N/A',
           );
         } else if (_isLoadingMore) {
           return const Center(child: CircularProgressIndicator());
