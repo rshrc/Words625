@@ -16,11 +16,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
-                "sentence": "Ninna hesaru yenu?",
+                "sentence": "Ninna hesaru enu?",
                 "options": [
                   "Nanna hesaru $firstName.",
-                  "Naanu kaalithini.",
-                  "Naanu gothilla."
+                  "Naanu kalithini.",
+                  "Nange gothilla."
                 ],
                 "correctAnswer": "Nanna hesaru $firstName."
               },
@@ -59,7 +59,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence": "Hege iddeera?",
                 "options": [
                   "Chennagiddini.",
-                  "Naanu gothilla.",
+                  "Nange gothilla.",
                   "Nanna hesaru Vidya."
                 ],
                 "correctAnswer": "Chennagiddini."
@@ -75,7 +75,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence": "Ninna ooru yavudu?",
                 "options": [
                   "Nanna ooru Bengaluru.",
-                  "Naanu gothilla.",
+                  "Nange gothilla.",
                   "Naale barthini."
                 ],
                 "correctAnswer": "Nanna ooru Bengaluru."
@@ -83,24 +83,35 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Avanu naanu naanu.",
+                "sentence": "Avanu nanna thamma.",
                 "options": [
                   "He is my friend.",
-                  "He is my brother.",
+                  "He is my younger brother.",
                   "He is my cousin."
                 ],
-                "correctAnswer": "He is my brother."
+                "correctAnswer": "He is my younger brother."
+              },
+              {
+                "type": "translate",
+                "prompt": "Translate the sentence",
+                "sentence": "Avanu nanna anna.",
+                "options": [
+                  "He is my friend.",
+                  "He is my elder brother.",
+                  "He is my cousin."
+                ],
+                "correctAnswer": "He is my elder brother."
               },
               {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Neevu yelli hoguthiddira?",
                 "options": [
-                  "Naanu maratakke hoguthiddene.",
-                  "Nanna mane ondhu.",
+                  "Naanu manege hoguthiddene.",
+                  "Nanna mane adhu.",
                   "Naale barthini."
                 ],
-                "correctAnswer": "Naanu maratakke hoguthiddene."
+                "correctAnswer": "Naanu manege hoguthiddene."
               },
               {
                 "type": "translate",
@@ -127,7 +138,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Ivattu nanna hudugi bandaLu.",
+                "sentence": "Ivattu nanna magaLu bandaLu.",
                 "options": [
                   "My daughter came today.",
                   "My wife came today.",
@@ -138,7 +149,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
-                "sentence": "Neevu English maathaduttaara?",
+                "sentence": "Neevu English maathaduttheera?",
                 "options": [
                   "Yes, I speak English.",
                   "I don't understand.",
@@ -154,11 +165,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
-                "sentence": "Ninna thindi aythu?",
+                "sentence": "Ninna thindi aytha?",
                 "options": [
                   "Howdu, aythu.",
                   "Beda, beku.",
-                  "Naale thinisidini."
+                  "Naale thintheeni."
                 ],
                 "correctAnswer": "Howdu, aythu."
               },
@@ -176,9 +187,9 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
-                "sentence": "Yelli odutha iddiya?",
+                "sentence": "Yelli odutthaidya?",
                 "options": [
-                  "Naanu Bengaluralli odutha iddini.",
+                  "Naanu Bengaluralli oduttha iddhini.",
                   "Naanu nanna mane hatra iddini.",
                   "Naanu channagiddini."
                 ],
@@ -198,24 +209,35 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
-                "sentence": "Neevu yestu vayassu?",
+                "sentence": "Nimma vayassu eshtu?",
                 "options": [
-                  "Naanu hadinayidu varsha.",
+                  "Nange hadinayidu varsha aagidhe.",
                   "Naanu oota maaduthiddene.",
                   "Naanu Bengaluru hodha."
                 ],
-                "correctAnswer": "Naanu hadinayidu varsha."
+                "correctAnswer": "Nange hadinayidu varsha aagidhe"
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Avalu nanna akka.",
                 "options": [
-                  "She is my sister.",
+                  "She is my elder sister.",
                   "She is my mother.",
                   "She is my teacher."
                 ],
-                "correctAnswer": "She is my sister."
+                "correctAnswer": "She is my elder sister."
+              },
+              {
+                "type": "translate",
+                "prompt": "Translate the sentence",
+                "sentence": "Avalu nanna thangi.",
+                "options": [
+                  "She is my younger sister.",
+                  "She is my mother.",
+                  "She is my teacher."
+                ],
+                "correctAnswer": "She is my younger sister."
               },
               {
                 "type": "multiple_choice",
@@ -236,7 +258,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Naanu pustaka ooduthiddene.",
+                "sentence": "Naanu pustaka oodutthaidhini.",
                 "options": [
                   "I am reading a book.",
                   "I am writing a book.",
@@ -256,16 +278,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "prompt": "Translate the sentence",
                 "sentence": "Bengalurige barthini.",
                 "options": [
-                  "I am coming to Bangalore.",
+                  "I will come to Bangalore.",
                   "I am going to Bangalore.",
                   "I live in Bangalore."
                 ],
-                "correctAnswer": "I am coming to Bangalore."
+                "correctAnswer": "I will come to Bangalore."
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Ninna tande hesaru yenu?",
+                "sentence": "Ninna thandeyavara hesaru enu?",
                 "options": [
                   "What is your father's name?",
                   "What is your mother's name?",
@@ -275,14 +297,14 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "Choose the correct answer",
-                "sentence": "Which one is correct?",
+                "prompt": "Choose an appropriate response",
+                "sentence": "Hengiddhira",
                 "options": [
-                  "Chennagiddini",
+                  "Chennagiddhini",
                   "Ninna mane ellide?",
-                  "Naale barthini."
+                  "Naale barthini."ð
                 ],
-                "correctAnswer": "Chennagiddini"
+                "correctAnswer": "Chennagiddhini"
               }
             ]
           },
@@ -292,7 +314,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
-                "sentence": "Neevu yenu maadthira?",
+                "sentence": "Neevu enu maadthira?",
                 "options": [
                   "Naanu engineer.",
                   "Naanu gothilla.",
@@ -374,18 +396,18 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
-                "sentence": "Yelli hogthiddira?",
+                "sentence": "Yelli hogthiddheera?",
                 "options": [
-                  "Naanu marketge hogthiddini.",
-                  "Naanu yestu vayassu.",
+                  "Naanu marketge hogthiddhini.",
+                  "Naanu eshtu vayassu.",
                   "Nanna hesaru geetegaara."
                 ],
-                "correctAnswer": "Naanu marketge hogthiddini."
+                "correctAnswer": "Naanu marketge hogthiddhini."
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Nanna makkalu nanna pride.",
+                "sentence": "Nanna makkalu nanna hemme.",
                 "options": [
                   "My children are my pride.",
                   "My family is my pride.",
@@ -418,7 +440,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
-                "sentence": "Ninna uddesha yenu?",
+                "sentence": "Ninna uddesha enu?",
                 "options": [
                   "Nanna uddesha kushiyagi jeevana maduvudu.",
                   "Naanu odutha iddini.",
@@ -429,14 +451,14 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Naanu avarannu karedidenu.",
-                "options": ["I invited them.", "I called her.", "I asked him."],
-                "correctAnswer": "I invited them."
+                "sentence": "Naanu avarannu manege karide.",
+                "options": ["I invited them home.", "I called her.", "I asked him."],
+                "correctAnswer": "I invited them home."
               },
               {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
-                "sentence": "Nimage yaake odalike agutte?",
+                "sentence": "Neevu yaake oodtheera?",
                 "options": [
                   "I like reading books.",
                   "I don’t like running.",
@@ -465,7 +487,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "options": [
                   "Namaskara",
                   "Dhanyavaadagalu",
-                  "Ninna hesaru yenu?"
+                  "Ninna hesaru enu?"
                 ],
                 "correctAnswer": "Namaskara"
               },
@@ -481,18 +503,18 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "prompt": "Choose the appropriate response",
                 "sentence": "How do you ask 'How are you?' in Kannada?",
                 "options": [
-                  "Hege iddeera?",
-                  "Ninna hesaru yenu?",
+                  "Hege iddheera?",
+                  "Ninna hesaru enu?",
                   "Oota aaytha?"
                 ],
-                "correctAnswer": "Hege iddeera?"
+                "correctAnswer": "Hege iddheera?"
               },
               {
                 "type": "translate",
                 "prompt": "Translate the phrase",
                 "sentence": "Chennagiddini",
-                "options": ["I am fine", "I am tired", "I am happy"],
-                "correctAnswer": "I am fine"
+                "options": ["I am good", "I am tired", "I am happy"],
+                "correctAnswer": "I am good"
               },
               {
                 "type": "multiple_choice",
@@ -514,8 +536,8 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "type": "multiple_choice",
                 "prompt": "Choose the correct way to say 'Goodbye' in Kannada",
                 "sentence": "How do you say 'Goodbye'?",
-                "options": ["Hogibanni", "Veedoke", "Namaskara"],
-                "correctAnswer": "Veedoke"
+                "options": ["Naanu bandhe", "Hogbarthini", "Namaskara"],
+                "correctAnswer": "Hogbarthini"
               },
               {
                 "type": "translate",
@@ -571,8 +593,8 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
             "questions": [
               {
                 "type": "multiple_choice",
-                "prompt": "Choose the correct translation for 'Dog'",
-                "sentence": "What is the Kannada word for 'Dog'?",
+                "prompt": "Translate the animal name",
+                "sentence": "Dog",
                 "options": ["Naayi", "Koli", "Aane"],
                 "correctAnswer": "Naayi"
               },
@@ -585,8 +607,8 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "Choose the correct translation for 'Elephant'",
-                "sentence": "What is the Kannada word for 'Elephant'?",
+                "prompt": "Translate the animal name",
+                "sentence": "Elephant",
                 "options": ["Aane", "Kuri", "Huli"],
                 "correctAnswer": "Aane"
               },
@@ -599,8 +621,8 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "Choose the correct translation for 'Cow'",
-                "sentence": "What is the Kannada word for 'Cow'?",
+                "prompt": "Translate the animal name",
+                "sentence": "Cow",
                 "options": ["Hasu", "Koli", "Bekku"],
                 "correctAnswer": "Hasu"
               }
@@ -618,8 +640,8 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
             "questions": [
               {
                 "type": "multiple_choice",
-                "prompt": "Choose the correct translation for 'Red'",
-                "sentence": "What is the Kannada word for 'Red'?",
+                "prompt": "Translate the color name",
+                "sentence": "Red",
                 "options": ["Kempu", "Neeli", "Hasiru"],
                 "correctAnswer": "Kempu"
               },
@@ -632,8 +654,8 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "Choose the correct translation for 'Green'",
-                "sentence": "What is the Kannada word for 'Green'?",
+                "prompt": "Translate the color name",
+                "sentence": "Green",
                 "options": ["Hasiru", "Bili", "Kappu"],
                 "correctAnswer": "Hasiru"
               },
@@ -646,8 +668,8 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "Choose the correct translation for 'Black'",
-                "sentence": "What is the Kannada word for 'Black'?",
+                "prompt": "Translate the color name",
+                "sentence": "Black",
                 "options": ["Kappu", "Kempu", "Hasiru"],
                 "correctAnswer": "Kappu"
               }
@@ -670,11 +692,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "prompt": "How do you ask 'Where are you?' to the auto driver?",
                 "sentence": "What is the Kannada phrase for 'Where are you?'",
                 "options": [
-                  "Neenu elli iddiya?",
+                  "Neevu elli iddheera?",
                   "Neenu yelli hogthiddiya?",
                   "Naale barthini."
                 ],
-                "correctAnswer": "Neenu elli iddiya?"
+                "correctAnswer": "Neevu elli iddheera?"
               },
               {
                 "type": "multiple_choice",
@@ -683,24 +705,24 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'Come to my location'?",
                 "options": [
-                  "Nanna jaaga bandhu.",
+                  "Nanna location-ge banni",
                   "Nanna hesaru gothide.",
                   "Oota maadi."
                 ],
-                "correctAnswer": "Nanna jaaga bandhu."
+                "correctAnswer": "Nanna location-ge banni"
               },
               {
                 "type": "multiple_choice",
                 "prompt": "How do you ask for the fare in Kannada?",
                 "sentence":
                     "What is the Kannada phrase for 'How much for the ride?'",
-                "options": ["Yestu duddu?", "Yelli hogbeku?", "Hege iddeera?"],
-                "correctAnswer": "Yestu duddu?"
+                "options": ["Eshtu aaithu?", "Elli hogbeku?", "Hege iddeera?"],
+                "correctAnswer": "Eshtu aaithu?"
               },
               {
                 "type": "translate",
                 "prompt": "Translate this sentence",
-                "sentence": "Swalpa tagolisi.",
+                "sentence": "Swalpa kammi maadi.",
                 "options": [
                   "Reduce the price a little.",
                   "Let's go faster.",
@@ -735,16 +757,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "prompt": "How do you ask if the driver has change?",
                 "sentence": "How do you say 'Do you have change?' in Kannada?",
                 "options": [
-                  "Nimage change ideya?",
-                  "Nimage bele ideya?",
-                  "Nimage oota aytha?"
+                  "Nimhathra change idhya?",
+                  "Nimage time idhya?",
+                  "Nimma oota aytha?"
                 ],
-                "correctAnswer": "Nimage change ideya?"
+                "correctAnswer": "Nimhathra change idhya?"
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Yestu samaya aaguthade?",
+                "sentence": "Eshtu hotthu aagutthe?",
                 "options": [
                   "How much time will it take?",
                   "How much will you charge?",
@@ -754,7 +776,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'I will give you only 100 rupees'?",
+                "prompt": "How do you say 'I will give you 100 rupees'?",
                 "sentence": "How do you say this in Kannada?",
                 "options": [
                   "Naanu nooru rupayi kodthini.",
@@ -766,7 +788,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Nanna swalpa bela tagolisi.",
+                "sentence": "Bele swala kammi maadi.",
                 "options": [
                   "Please lower the fare a little.",
                   "Where are you going?",
@@ -777,134 +799,20 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
             ]
           },
           {
-            "level": 1,
-            "questions": [
-              {
-                "type": "multiple_choice",
-                "prompt": "How do you ask 'Where are you?' to the auto driver?",
-                "sentence": "What is the Kannada phrase for 'Where are you?'",
-                "options": [
-                  "Neenu elli iddiya?",
-                  "Neenu yelli hogthiddiya?",
-                  "Naale barthini."
-                ],
-                "correctAnswer": "Neenu elli iddiya?"
-              },
-              {
-                "type": "multiple_choice",
-                "prompt":
-                    "How do you ask the auto driver to come to your location?",
-                "sentence":
-                    "What is the Kannada phrase for 'Come to my location'?",
-                "options": [
-                  "Nanna jaaga bandhu.",
-                  "Nanna hesaru gothide.",
-                  "Oota maadi."
-                ],
-                "correctAnswer": "Nanna jaaga bandhu."
-              },
-              {
-                "type": "multiple_choice",
-                "prompt": "How do you ask for the fare in Kannada?",
-                "sentence":
-                    "What is the Kannada phrase for 'How much for the ride?'",
-                "options": ["Yestu duddu?", "Yelli hogbeku?", "Hege iddeera?"],
-                "correctAnswer": "Yestu duddu?"
-              },
-              {
-                "type": "translate",
-                "prompt": "Translate this sentence",
-                "sentence": "Swalpa tagolisi.",
-                "options": [
-                  "Reduce the price a little.",
-                  "Let's go faster.",
-                  "I am in a hurry."
-                ],
-                "correctAnswer": "Reduce the price a little."
-              },
-              {
-                "type": "multiple_choice",
-                "prompt": "Choose the correct response",
-                "sentence": "How do you say 'I want to go to Majestic'?",
-                "options": [
-                  "Naanu Majestic ge hogabeku.",
-                  "Nanna hesaru Majestic.",
-                  "Nanu gothilla."
-                ],
-                "correctAnswer": "Naanu Majestic ge hogabeku."
-              },
-              {
-                "type": "translate",
-                "prompt": "Translate the sentence",
-                "sentence": "Meter mele hogona.",
-                "options": [
-                  "Let’s go by the meter.",
-                  "Drive faster.",
-                  "Stop the auto here."
-                ],
-                "correctAnswer": "Let’s go by the meter."
-              },
-              {
-                "type": "multiple_choice",
-                "prompt": "How do you ask if the driver has change?",
-                "sentence": "How do you say 'Do you have change?' in Kannada?",
-                "options": [
-                  "Nimage change ideya?",
-                  "Nimage bele ideya?",
-                  "Nimage oota aytha?"
-                ],
-                "correctAnswer": "Nimage change ideya?"
-              },
-              {
-                "type": "translate",
-                "prompt": "Translate the sentence",
-                "sentence": "Yestu samaya aaguthade?",
-                "options": [
-                  "How much time will it take?",
-                  "How much will you charge?",
-                  "Where are we going?"
-                ],
-                "correctAnswer": "How much time will it take?"
-              },
-              {
-                "type": "multiple_choice",
-                "prompt": "How do you say 'I will give you only 100 rupees'?",
-                "sentence": "How do you say this in Kannada?",
-                "options": [
-                  "Naanu nooru rupayi kodthini.",
-                  "Naanu naale kodthini.",
-                  "Naanu nooru duddu beda."
-                ],
-                "correctAnswer": "Naanu nooru rupayi kodthini."
-              },
-              {
-                "type": "translate",
-                "prompt": "Translate the sentence",
-                "sentence": "Nanna swalpa bela tagolisi.",
-                "options": [
-                  "Please lower the fare a little.",
-                  "Where are you going?",
-                  "I want to stop here."
-                ],
-                "correctAnswer": "Please lower the fare a little."
-              }
-            ]
-          },
-          {
-            "level": 3,
+            "level": 2,
             "questions": [
               {
                 "type": "multiple_choice",
                 "prompt": "How do you ask about the rent?",
                 "sentence":
                     "What is the Kannada phrase for 'How much is the rent?'",
-                "options": ["Bhada yestu?", "Idhu yestu?", "Mane elli ide?"],
-                "correctAnswer": "Bhada yestu?"
+                "options": ["Baadige eshtu?", "Idhu eshtu?", "Mane elli ide?"],
+                "correctAnswer": "Bhada eshtu?"
               },
               {
                 "type": "translate",
                 "prompt": "Translate the phrase",
-                "sentence": "Nimage advance yestu beku?",
+                "sentence": "Nimage advance eshtu beku?",
                 "options": [
                   "How much advance do you need?",
                   "When do I need to pay the rent?",
@@ -918,11 +826,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'Is there water supply?'",
                 "options": [
-                  "Illi neeru ideya?",
-                  "Bhada yestu?",
+                  "Illi neeru idhya?",
+                  "Bhada eshtu?",
                   "Manege yavaga barbeku?"
                 ],
-                "correctAnswer": "Illi neeru ideya?"
+                "correctAnswer": "Illi neeru idhya?"
               },
               {
                 "type": "translate",
@@ -941,16 +849,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'Who is responsible for maintenance?'",
                 "options": [
-                  "Maintenance yavaru maadthare?",
-                  "Maintenance yestu duddu?",
+                  "Maintenance yaaru maadthare?",
+                  "Maintenance eshtu duddu?",
                   "Yelli maintenance maadthira?"
                 ],
-                "correctAnswer": "Maintenance yavaru maadthare?"
+                "correctAnswer": "Maintenance yaaru maadthare?"
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Manege current ideya?",
+                "sentence": "Maneli current idhya?",
                 "options": [
                   "Is there electricity in the house?",
                   "When is the rent due?",
@@ -964,11 +872,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'Are pets allowed?'",
                 "options": [
-                  "Illi prani galu maathra barthara?",
-                  "Illi neeru ideya?",
-                  "Nimage agreement ideya?"
+                  "Illi pranina saakbohuda?",
+                  "Illi neeru idhya?",
+                  "Nimage agreement idhya?"
                 ],
-                "correctAnswer": "Illi prani galu maathra barthara?"
+                "correctAnswer": "Illi pranina saakbohuda?"
               },
               {
                 "type": "translate",
@@ -987,11 +895,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'When can I move in?'",
                 "options": [
-                  "Naanu yavaga manege barabahudu?",
-                  "Nimage duddu yestu?",
-                  "Yelli neeru ideya?"
+                  "Naanu yavaga manege shift agbohudu?",
+                  "Nimage duddu eshtu?",
+                  "Yelli neeru idhya?"
                 ],
-                "correctAnswer": "Naanu yavaga manege barabahudu?"
+                "correctAnswer": "Naanu yavaga manege shift agbohudu?"
               },
               {
                 "type": "translate",
@@ -1007,23 +915,23 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
             ]
           },
           {
-            "level": 4,
+            "level": 3,
             "questions": [
               {
                 "type": "multiple_choice",
                 "prompt": "How do you ask 'Where are you?' to the auto driver?",
                 "sentence": "What is the Kannada phrase for 'Where are you?'",
                 "options": [
-                  "Neenu elli iddiya?",
-                  "Yestu duddu?",
+                  "Neevu elli iddheera?",
+                  "Eshtu duddu?",
                   "Nanna hesaru gothilla."
                 ],
-                "correctAnswer": "Neenu elli iddiya?"
+                "correctAnswer":  "Neevu elli iddheera?",
               },
               {
                 "type": "translate",
                 "prompt": "Translate this sentence",
-                "sentence": "Swalpa tagolisi.",
+                "sentence": "Swalpa bele kammi maadi.",
                 "options": [
                   "Reduce the price a little.",
                   "Go faster.",
@@ -1037,16 +945,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'How much is the rent?'",
                 "options": [
-                  "Bhada yestu?",
-                  "Yestu samaya?",
+                  "Baadige eshtu?",
+                  "Eshtu samaya?",
                   "Naanu odutha iddini."
                 ],
-                "correctAnswer": "Bhada yestu?"
+                "correctAnswer": "Baadige eshtu?",
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Nimage advance yestu beku?",
+                "sentence": "Nimage advance eshtu beku?",
                 "options": [
                   "How much advance do you need?",
                   "Do you need any help?",
@@ -1060,11 +968,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'Do you have this item?'",
                 "options": [
-                  "Idhu nim hatra ideya?",
-                  "Nimage duddu ideya?",
+                  "Idhu nim hatra idhya?",
+                  "Nimage duddu idhya?",
                   "Swalpa tagolisi."
                 ],
-                "correctAnswer": "Idhu nim hatra ideya?"
+                "correctAnswer": "Idhu nim hatra idhya?"
               },
               {
                 "type": "translate",
@@ -1106,15 +1014,15 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                     "What is the Kannada phrase for 'Can you give me a discount?'",
                 "options": [
                   "Swalpa kammi maadi.",
-                  "Yestu duddu?",
-                  "Bhada yestu?"
+                  "Eshtu duddu?",
+                  "Bhada eshtu?"
                 ],
                 "correctAnswer": "Swalpa kammi maadi."
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Illi neeru ideya?",
+                "sentence": "Illi neeru idhya?",
                 "options": [
                   "Is there water supply?",
                   "Where is the bathroom?",
@@ -1129,11 +1037,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'Do you have change?'",
                 "options": [
-                  "Nimage change ideya?",
-                  "Nimage neeru ideya?",
-                  "Nimage yestu duddu beku?"
+                  "Nimhathra change idhya?",
+                  "Nimage neeru idhya?",
+                  "Nimage eshtu duddu beku?"
                 ],
-                "correctAnswer": "Nimage change ideya?"
+                "correctAnswer": "Nimhathra change idhya?"
               },
               {
                 "type": "translate",
@@ -1153,15 +1061,15 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence": "What is the Kannada phrase for this?",
                 "options": [
                   "Naanu yavaga manege barabahudu?",
-                  "Nimage duddu yestu?",
-                  "Idhu fresh ideya?"
+                  "Nimage duddu eshtu?",
+                  "Idhu fresh idhya?"
                 ],
                 "correctAnswer": "Naanu yavaga manege barabahudu?"
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Idhu yestu?",
+                "sentence": "Idhu eshtu?",
                 "options": [
                   "How much is this?",
                   "Is this fresh?",
@@ -1176,16 +1084,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'How much time will it take?'",
                 "options": [
-                  "Yestu samaya aaguthade?",
-                  "Yestu duddu beku?",
-                  "Nimage change ideya?"
+                  "Eshtu samaya aaguthade?",
+                  "Eshtu duddu beku?",
+                  "Nimage change idhya?"
                 ],
-                "correctAnswer": "Yestu samaya aaguthade?"
+                "correctAnswer": "Eshtu samaya aaguthade?"
               }
             ]
           },
           {
-            "level": 5,
+            "level": 4,
             "questions": [
               {
                 "type": "multiple_choice",
@@ -1202,7 +1110,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "translate",
                 "prompt": "Translate this sentence",
-                "sentence": "Right thagoli.",
+                "sentence": "Right thogoli.",
                 "options": [
                   "Take a right turn.",
                   "Take a left turn.",
@@ -1216,16 +1124,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'Take a left turn'?",
                 "options": [
-                  "Left thagoli.",
-                  "Right thagoli.",
+                  "Left thogoli.",
+                  "Right thogoli.",
                   "Swalpa nidhana maadi."
                 ],
-                "correctAnswer": "Left thagoli."
+                "correctAnswer": "Left thogoli."
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Illa nilsi.",
+                "sentence": "Illi nilsi.",
                 "options": ["Stop here.", "Turn right here.", "Speed up."],
                 "correctAnswer": "Stop here."
               },
@@ -1234,16 +1142,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "prompt": "How do you ask the driver to go straight?",
                 "sentence": "What is the Kannada phrase for 'Go straight'?",
                 "options": [
-                  "Nerage hogi.",
-                  "Left thagoli.",
+                  "Nera hogi.",
+                  "Left thogoli.",
                   "Swalpa nidhana maadi."
                 ],
-                "correctAnswer": "Nerage hogi."
+                "correctAnswer": "Nera hogi."
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Nalegondhu left thagoli.",
+                "sentence": "Mundhe left thogoli.",
                 "options": [
                   "Take a left ahead.",
                   "Turn left now.",
@@ -1265,7 +1173,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "translate",
                 "prompt": "Translate the phrase",
-                "sentence": "Iveghe nilsi.",
+                "sentence": "Ivage nilsi.",
                 "options": ["Stop immediately.", "Go faster.", "Take a right."],
                 "correctAnswer": "Stop immediately."
               },
@@ -1275,16 +1183,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'Wait for a moment'?",
                 "options": [
-                  "Ondu nimisha kaayi.",
+                  "Ondhu nimisha wait maadi.",
                   "Bega hogi.",
                   "Swalpa nidhana maadi."
                 ],
-                "correctAnswer": "Ondu nimisha kaayi."
+                "correctAnswer": "Ondhu nimisha wait maadi."
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Nalegondhu right thagoli.",
+                "sentence": "Mundhe right thogoli.",
                 "options": [
                   "Take a right ahead.",
                   "Take a left turn now.",
@@ -1298,11 +1206,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'Don’t take this road'?",
                 "options": [
-                  "Ee daari thagobeda.",
-                  "Right thagoli.",
+                  "Ee daari thogobedi.",
+                  "Right thogoli.",
                   "Nerage hogi."
                 ],
-                "correctAnswer": "Ee daari thagobeda."
+                "correctAnswer": "Ee daari thogobedi."
               },
               {
                 "type": "translate",
@@ -1329,7 +1237,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Illa right thagoli.",
+                "sentence": "Illi right thogoli.",
                 "options": [
                   "Take a right here.",
                   "Take a left turn here.",
@@ -1342,11 +1250,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "prompt": "How do you say 'Drop me here' to the driver?",
                 "sentence": "What is the Kannada phrase for 'Drop me here'?",
                 "options": [
-                  "Nanna illi bitu.",
+                  "Nanna illi bidi.",
                   "Nanna manege barabahudu?",
                   "Nanna neeru beku."
                 ],
-                "correctAnswer": "Nanna illi bitu."
+                "correctAnswer": "Nanna illi bidi."
               }
             ]
           }
@@ -1368,16 +1276,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'What time is the meeting?'",
                 "options": [
-                  "Meeting yestu ghante?",
-                  "Naale meeting ideya?",
+                  "Meeting esth-hotthige ide?",
+                  "Naale meeting idhya?",
                   "Yelli neeru ide?"
                 ],
-                "correctAnswer": "Meeting yestu ghante?"
+                "correctAnswer": "Meeting esth-hotthige ide?"
               },
               {
                 "type": "translate",
                 "prompt": "Translate the phrase",
-                "sentence": "Naanu swalpa busy iddini.",
+                "sentence": "Naanu swalpa busy iddhini.",
                 "options": [
                   "I am a little busy.",
                   "I have finished the work.",
@@ -1393,20 +1301,20 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "options": [
                   "Deadline yavaga?",
                   "Nimage yen beku?",
-                  "Yestu ghantege office?"
+                  "Eshtu ghantege office?"
                 ],
                 "correctAnswer": "Deadline yavaga?"
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Naa meeting ge hogabeku.",
+                "sentence": "Naanu meeting-ge hogabeku.",
                 "options": [
-                  "I need to attend the meeting.",
+                  "I need to go to the meeting.",
                   "I will go to the market.",
                   "I am going to lunch."
                 ],
-                "correctAnswer": "I need to attend the meeting."
+                "correctAnswer": "I need to go to the meeting."
               },
               {
                 "type": "multiple_choice",
@@ -1437,16 +1345,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'Can we postpone the meeting?'",
                 "options": [
-                  "Meeting postpone maadbahuda?",
+                  "Meeting postpone maadbohuda?",
                   "Meeting yelli ide?",
                   "Meeting yavaga?"
                 ],
-                "correctAnswer": "Meeting postpone maadbahuda?"
+                "correctAnswer": "Meeting postpone maadbohuda?"
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Nanna kelsa aythu.",
+                "sentence": "Nanna kelsa aaythu.",
                 "options": [
                   "I have finished my work.",
                   "I need more time for the work.",
@@ -1461,15 +1369,15 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                     "What is the Kannada phrase for 'Do you need any help?'",
                 "options": [
                   "Nimage sahaya beka?",
-                  "Nimage neeru ideya?",
-                  "Yenu beku?"
+                  "Nimage neeru idhya?",
+                  "enu beku?"
                 ],
                 "correctAnswer": "Nimage sahaya beka?"
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Naale officege baruthini.",
+                "sentence": "Naale officege barthini.",
                 "options": [
                   "I will come to the office tomorrow.",
                   "I will work from home tomorrow.",
@@ -1493,8 +1401,8 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "type": "multiple_choice",
                 "prompt": "How do you say 'One' in Kannada?",
                 "sentence": "What is the Kannada word for 'One'?",
-                "options": ["Ondu", "Moovu", "Aidu"],
-                "correctAnswer": "Ondu"
+                "options": ["Ondhu", "Moovu", "Aidu"],
+                "correctAnswer": "Ondhu"
               },
               {
                 "type": "translate",
@@ -1507,13 +1415,13 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "type": "multiple_choice",
                 "prompt": "What is the Kannada word for 'Three'?",
                 "sentence": "How do you say 'Three' in Kannada?",
-                "options": ["Moovattu", "Moov", "Muru"],
-                "correctAnswer": "Moovattu"
+                "options": ["Mooru", "Moov", "Moovaththu"],
+                "correctAnswer": "Mooru"
               },
               {
                 "type": "translate",
                 "prompt": "Translate this sentence",
-                "sentence": "Nalku",
+                "sentence": "Naalkku",
                 "options": ["Four", "Five", "Six"],
                 "correctAnswer": "Four"
               },
@@ -1521,8 +1429,8 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "type": "multiple_choice",
                 "prompt": "How do you say 'Five' in Kannada?",
                 "sentence": "What is the Kannada word for 'Five'?",
-                "options": ["Aidu", "Aradu", "Nalku"],
-                "correctAnswer": "Aidu"
+                "options": ["Aidhu", "Aradu", "Nalku"],
+                "correctAnswer": "Aidhu"
               },
               {
                 "type": "translate",
@@ -1535,8 +1443,8 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "type": "multiple_choice",
                 "prompt": "What is the Kannada word for 'Seven'?",
                 "sentence": "How do you say 'Seven' in Kannada?",
-                "options": ["Yelu", "Aradu", "Moov"],
-                "correctAnswer": "Yelu"
+                "options": ["ELu", "Aradu", "Moov"],
+                "correctAnswer": "ELu"
               },
               {
                 "type": "translate",
@@ -1568,13 +1476,13 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "type": "multiple_choice",
                 "prompt": "How do you say 'Eleven' in Kannada?",
                 "sentence": "What is the Kannada word for 'Eleven'?",
-                "options": ["Hanondu", "Hannadu", "Hattu"],
-                "correctAnswer": "Hanondu"
+                "options": ["Hadhnondhu", "Hannadu", "Hattu"],
+                "correctAnswer": "Hadhnondhu"
               },
               {
                 "type": "translate",
                 "prompt": "Translate this sentence",
-                "sentence": "Hannayidu",
+                "sentence": "Hadhnaidhu",
                 "options": ["Fifteen", "Thirteen", "Fourteen"],
                 "correctAnswer": "Fifteen"
               },
@@ -1582,13 +1490,13 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "type": "multiple_choice",
                 "prompt": "How do you say 'Sixteen' in Kannada?",
                 "sentence": "What is the Kannada word for 'Sixteen'?",
-                "options": ["Hannaradu", "Hannaaru", "Hattaru"],
-                "correctAnswer": "Hannaaru"
+                "options": ["Hannaradu", "Hadhnaaru", "Hattaru"],
+                "correctAnswer": "Hadnaaru"
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Hannumuru",
+                "sentence": "Hadhmooru",
                 "options": ["Thirteen", "Sixteen", "Fourteen"],
                 "correctAnswer": "Thirteen"
               },
@@ -1597,16 +1505,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "prompt": "How do you ask 'How many people?' in Kannada?",
                 "sentence": "What is the Kannada phrase for 'How many people?'",
                 "options": [
-                  "Yestu janaru?",
+                  "Eshtu janaru?",
                   "Yavaga barthira?",
                   "Yen maadthira?"
                 ],
-                "correctAnswer": "Yestu janaru?"
+                "correctAnswer": "Eshtu janaru?"
               },
               {
                 "type": "translate",
                 "prompt": "Translate this sentence",
-                "sentence": "Nimage hattu roti beka?",
+                "sentence": "Nimage hatthu roti beka?",
                 "options": [
                   "Do you want ten rotis?",
                   "Do you want ten people?",
@@ -1620,11 +1528,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'What is the time?'",
                 "options": [
-                  "Samaya yestu?",
+                  "Samaya eshtu?",
                   "Nimage estu rotti?",
-                  "Yestu jana?"
+                  "Eshtu jana?"
                 ],
-                "correctAnswer": "Samaya yestu?"
+                "correctAnswer": "Samaya eshtu?"
               },
               {
                 "type": "translate",
@@ -1643,16 +1551,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'What time is it now?'",
                 "options": [
-                  "Eega yestu ghante?",
-                  "Yestu janaru?",
-                  "Yestu beka?"
+                  "Eega eshtu ghante?",
+                  "Eshtu janaru?",
+                  "Eshtu beka?"
                 ],
-                "correctAnswer": "Eega yestu ghante?"
+                "correctAnswer": "Eega eshtu ghante?"
               },
               {
                 "type": "translate",
                 "prompt": "Translate this sentence",
-                "sentence": "Yenidi nimage ondu glass neeru?",
+                "sentence": "Nimage ondhu glass neeru beeka?",
                 "options": [
                   "Do you want one glass of water?",
                   "Do you need help with something?",
@@ -1677,16 +1585,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "prompt": "How do you say 'I am happy' in Kannada?",
                 "sentence": "What is the Kannada phrase for 'I am happy'?",
                 "options": [
-                  "Naanu khushiyagi iddini.",
+                  "Naanu khushiyaagi iddini.",
                   "Naanu kashta padthini.",
                   "Naanu horatu hogidini."
                 ],
-                "correctAnswer": "Naanu khushiyagi iddini."
+                "correctAnswer": "Naanu khushiyaagi iddini."
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Naanu thumba dukha padthini.",
+                "sentence": "Naanu thumba dukkha-dalli iddhini.",
                 "options": ["I am very sad.", "I am angry.", "I am excited."],
                 "correctAnswer": "I am very sad."
               },
@@ -1695,16 +1603,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "prompt": "How do you say 'I am angry' in Kannada?",
                 "sentence": "What is the Kannada phrase for 'I am angry'?",
                 "options": [
-                  "Naanu kopa barthide.",
+                  "Nange kopa barthide.",
                   "Naanu khushiyagi iddini.",
                   "Naanu swalpa tensed iddini."
                 ],
-                "correctAnswer": "Naanu kopa barthide."
+                "correctAnswer": "Nange kopa barthide."
               },
               {
                 "type": "translate",
                 "prompt": "Translate this sentence",
-                "sentence": "Naanu bayasuthini.",
+                "sentence": "Nange hedarike.",
                 "options": ["I am scared.", "I am tired.", "I am hopeful."],
                 "correctAnswer": "I am scared."
               },
@@ -1713,16 +1621,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "prompt": "How do you say 'I am excited' in Kannada?",
                 "sentence": "What is the Kannada phrase for 'I am excited'?",
                 "options": [
-                  "Naanu utsaha iddini.",
+                  "Naanu utsaha-dalli iddini.",
                   "Naanu swalpa thumba iddini.",
                   "Naanu tensed iddini."
                 ],
-                "correctAnswer": "Naanu utsaha iddini."
+                "correctAnswer": "Naanu utsaha-dalli iddini."
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Naanu tensed iddini.",
+                "sentence": "Naanu tensed iddhini.",
                 "options": [
                   "I am feeling tense.",
                   "I am relaxed.",
@@ -1735,16 +1643,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "prompt": "How do you say 'I am worried' in Kannada?",
                 "sentence": "What is the Kannada phrase for 'I am worried'?",
                 "options": [
-                  "Naanu chinte padthini.",
+                  "Naanu chinte maadthaiddhini.",
                   "Naanu bisi padthini.",
                   "Naanu utsaha iddini."
                 ],
-                "correctAnswer": "Naanu chinte padthini."
+                "correctAnswer": "Naanu chinte maadthaiddhini."
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Naanu relaxed iddini.",
+                "sentence": "Naanu relaxed iddhini.",
                 "options": [
                   "I am feeling relaxed.",
                   "I am feeling sad.",
@@ -1758,16 +1666,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'I am feeling tired'?",
                 "options": [
-                  "Naanu sustha iddini.",
+                  "Nange susth aagidhe.",
                   "Naanu bisi padthini.",
                   "Naanu utsaha iddini."
                 ],
-                "correctAnswer": "Naanu sustha iddini."
+                "correctAnswer": "Nange susth aagidhe."
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Naanu haasya maadthini.",
+                "sentence": "Naanu naguttha iddhini.",
                 "options": ["I am laughing.", "I am crying.", "I am sad."],
                 "correctAnswer": "I am laughing."
               }
@@ -1804,16 +1712,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'I feel embarrassed'?",
                 "options": [
-                  "Naanu sankocha aagidhe.",
+                  "Nange sankocha aagidhe.",
                   "Naanu niraasha padthini.",
                   "Naanu tensed iddini."
                 ],
-                "correctAnswer": "Naanu sankocha aagidhe."
+                "correctAnswer": "Nange sankocha aagidhe."
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Naanu thumba niraasha padthini.",
+                "sentence": "Naanu thumba niraasha aagiddheeni.",
                 "options": [
                   "I am very disappointed.",
                   "I am feeling very scared.",
@@ -1835,7 +1743,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Naanu naachike aagidhe.",
+                "sentence": "Nange naachike aagidhe.",
                 "options": [
                   "I am feeling shy.",
                   "I am feeling proud.",
@@ -1849,11 +1757,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'I am feeling lonely'?",
                 "options": [
-                  "Naanu ondhige iddini.",
+                  "Naanu obbare iddini.",
                   "Naanu sankocha padthini.",
                   "Naanu swarupa iddini."
                 ],
-                "correctAnswer": "Naanu ondhige iddini."
+                "correctAnswer": "Naanu obbare iddini."
               },
               {
                 "type": "translate",
@@ -1881,7 +1789,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Naanu thumba santoshan aagiddini.",
+                "sentence": "Naanu thumba santosha-vaagiddhini.",
                 "options": [
                   "I am very happy.",
                   "I am very sad.",
@@ -1909,16 +1817,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'What do you recommend?'",
                 "options": [
-                  "Neenu yenu recommend maadthira?",
-                  "Idhu yestu duddu?",
+                  "Neevu enu recommend maadthira?",
+                  "Idhu eshtu duddu?",
                   "Neenu swalpa coffee kodthira?"
                 ],
-                "correctAnswer": "Neenu yenu recommend maadthira?"
+                "correctAnswer": "Neevu enu recommend maadthira?"
               },
               {
                 "type": "translate",
                 "prompt": "Translate this sentence",
-                "sentence": "Idhu vegano non-veg?",
+                "sentence": "Idhu veg-o non-veg-o?",
                 "options": [
                   "Is this vegetarian or non-vegetarian?",
                   "Is this spicy?",
@@ -1932,11 +1840,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'One plate of dosa'?",
                 "options": [
-                  "Ondhu plate dosa.",
+                  "Ondhu plate dosay.",
                   "Ondhu cup coffee.",
                   "Nanna oota aaythu."
                 ],
-                "correctAnswer": "Ondhu plate dosa."
+                "correctAnswer": "Ondhu plate dosay."
               },
               {
                 "type": "translate",
@@ -1955,16 +1863,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'Is the food spicy?'",
                 "options": [
-                  "Oota khara ideya?",
+                  "Oota khara idhya?",
                   "Idhu vegano non-veg?",
                   "Idhu swalpa bekitta?"
                 ],
-                "correctAnswer": "Oota khara ideya?"
+                "correctAnswer": "Oota khara idhya?"
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Naanu neeru beda.",
+                "sentence": "Nange neeru beda.",
                 "options": [
                   "I don’t want water.",
                   "I need some water.",
@@ -1978,11 +1886,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'How much is the bill?'",
                 "options": [
-                  "Bill yestu?",
+                  "Bill eshtu?",
                   "Idhu vegano?",
-                  "Neenu yenu recommend maadthira?"
+                  "Neenu enu recommend maadthira?"
                 ],
-                "correctAnswer": "Bill yestu?"
+                "correctAnswer": "Bill eshtu?"
               },
               {
                 "type": "translate",
@@ -2000,16 +1908,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "prompt": "How do you say 'I am full' after eating?",
                 "sentence": "What is the Kannada phrase for 'I am full'?",
                 "options": [
-                  "Nanna oota aaythu.",
+                  "Hotte thumb-thu.",
                   "Nanna oota illa.",
                   "Neeru beda."
                 ],
-                "correctAnswer": "Nanna oota aaythu."
+                "correctAnswer": "Hotte thumb-thu."
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Nimma special dish yenu?",
+                "sentence": "Nimma special dish enu?",
                 "options": [
                   "What is your special dish?",
                   "Is the food spicy?",
@@ -2028,11 +1936,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'What workout today?'",
                 "options": [
-                  "Indu yenu workout?",
-                  "Indu yestu samaya?",
+                  "Ivatthu workout enu?",
+                  "Indu eshtu samaya?",
                   "Workout yelli?"
                 ],
-                "correctAnswer": "Indu yenu workout?"
+                "correctAnswer": "Ivatthu workout enu?"
               },
               {
                 "type": "translate",
@@ -2051,16 +1959,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'Lift heavy, bro!'?",
                 "options": [
-                  "Heavy yestu thagoli!",
+                  "Heavy eshtu thogoli!",
                   "Bega workout mugisi!",
-                  "Heavy thagoli bro!"
+                  "Heavy thogoli bro!"
                 ],
-                "correctAnswer": "Heavy thagoli bro!"
+                "correctAnswer": "Heavy thogoli bro!"
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Protein thandira?",
+                "sentence": "Protein thandiddheera?",
                 "options": [
                   "Did you bring your protein?",
                   "Are you using protein?",
@@ -2075,7 +1983,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                     "What is the Kannada phrase for 'What protein do you use?'",
                 "options": [
                   "Neenu yaava protein use maadthira?",
-                  "Indu yenu workout?",
+                  "Indu enu workout?",
                   "Workout yelli?"
                 ],
                 "correctAnswer": "Neenu yaava protein use maadthira?"
@@ -2083,7 +1991,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Cardio madthiddira?",
+                "sentence": "Cardio madthiddheera?",
                 "options": [
                   "Are you doing cardio?",
                   "What workout today?",
@@ -2097,11 +2005,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'Let’s do legs today'?",
                 "options": [
-                  "Indu legs maadona.",
-                  "Indu cardio maadona.",
+                  "Ivatthu legs maadona.",
+                  "Ivatthu cardio maadona.",
                   "Nale legs maadona."
                 ],
-                "correctAnswer": "Indu legs maadona."
+                "correctAnswer": "Ivatthu legs maadona."
               },
               {
                 "type": "translate",
@@ -2120,11 +2028,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'When will you finish your workout?'",
                 "options": [
-                  "Neenu yavaga workout mugisthira?",
-                  "Neenu yenu workout?",
+                  "Neevu yavaga workout mugistheera?",
+                  "Neenu enu workout?",
                   "Yelli gym ide?"
                 ],
-                "correctAnswer": "Neenu yavaga workout mugisthira?"
+                "correctAnswer": "Neevu yavaga workout mugistheera?"
               },
               {
                 "type": "translate",
@@ -2155,16 +2063,16 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'The weather is nice'?",
                 "options": [
-                  "Hava suksma ide.",
+                  "Hava sookshma ide.",
                   "Nadi nalli neeru ide.",
                   "Mara chennagide."
                 ],
-                "correctAnswer": "Hava suksma ide."
+                "correctAnswer": "Hava sookshma ide."
               },
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Male barthide.",
+                "sentence": "MaLe baratthe.",
                 "options": [
                   "It is going to rain.",
                   "The sun is shining.",
@@ -2178,11 +2086,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'Is it sunny today?'",
                 "options": [
-                  "Indu suryavideya?",
-                  "Indu hava yestu?",
+                  "Ivatthu bisilu irattha?",
+                  "Indu hava eshtu?",
                   "Male elli ide?"
                 ],
-                "correctAnswer": "Indu suryavideya?"
+                "correctAnswer": "Ivatthu bisilu irattha?"
               },
               {
                 "type": "translate",
@@ -2224,11 +2132,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "sentence":
                     "What is the Kannada phrase for 'Is it raining now?'",
                 "options": [
-                  "Eega male barthideya?",
-                  "Eega surya barthideya?",
-                  "Eega gaali ideya?"
+                  "Eega male barthidhya?",
+                  "Eega surya barthidhya?",
+                  "Eega gaali idhya?"
                 ],
-                "correctAnswer": "Eega male barthideya?"
+                "correctAnswer": "Eega male barthidhya?"
               },
               {
                 "type": "translate",
