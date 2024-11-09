@@ -302,7 +302,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "options": [
                   "Chennagiddhini",
                   "Ninna mane ellide?",
-                  "Naale barthini."ð
+                  "Naale barthini.",
                 ],
                 "correctAnswer": "Chennagiddhini"
               }
@@ -452,7 +452,11 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Naanu avarannu manege karide.",
-                "options": ["I invited them home.", "I called her.", "I asked him."],
+                "options": [
+                  "I invited them home.",
+                  "I called her.",
+                  "I asked him."
+                ],
                 "correctAnswer": "I invited them home."
               },
               {
@@ -926,7 +930,7 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                   "Eshtu duddu?",
                   "Nanna hesaru gothilla."
                 ],
-                "correctAnswer":  "Neevu elli iddheera?",
+                "correctAnswer": "Neevu elli iddheera?",
               },
               {
                 "type": "translate",
