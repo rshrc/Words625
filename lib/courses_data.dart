@@ -578,13 +578,118 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
             ]
           }
         ]
-      },
+      }
+    ],
+    [
       {
         "courseName": "introduction",
         "image": Assets.images.pen.path,
         "color": 0xffCE82FF,
-        "levels": []
-      },
+        "levels": [
+          {
+            "level": 1,
+            "questions": [
+              {
+                "type": "multiple_choice",
+                "prompt": "Choose the correct greeting",
+                "sentence": "How do you say 'Hello' in Kannada?",
+                "options": ["Namaskara", "Dhanyavādagaḷu", "Ninna hesaru ēnu?"],
+                "correctAnswer": "Namaskara"
+              },
+              {
+                "type": "translation",
+                "prompt": "Translate to English",
+                "sentence": "Namaskara",
+                "options": ["Good morning", "Hello", "Thank you"],
+                "correctAnswer": "Hello"
+              },
+              {
+                "type": "fill_in_the_blank",
+                "prompt": "Complete the greeting",
+                "sentence": "______ hēgiddīrā?",
+                "options": ["Nīvu", "Ninna", "Nanna"],
+                "correctAnswer": "Nīvu"
+              },
+              {
+                "type": "multiple_choice",
+                "prompt": "Choose the correct response",
+                "sentence": "What is the correct response to 'Namaskara'?",
+                "options": ["Namaskara", "Nimma hesaru ēnu?", "Hōgibanni"],
+                "correctAnswer": "Namaskara"
+              },
+              {
+                "type": "fill_in_the_blank",
+                "prompt": "Complete the phrase",
+                "sentence": "Nimma hesaru ______?",
+                "options": ["ēnu", "yāru", "hēge"],
+                "correctAnswer": "ēnu"
+              },
+              {
+                "type": "translation",
+                "prompt": "Translate to Kannada",
+                "sentence": "Thank you",
+                "options": ["Namaskara", "Nimma hesaru ēnu?", "Dhanyavādagaḷu"],
+                "correctAnswer": "Dhanyavādagaḷu"
+              },
+              {
+                "type": "multiple_choice",
+                "prompt": "Choose the formal way to ask 'How are you?'",
+                "sentence": "",
+                "options": [
+                  "Nīvu hēgiddīrā?",
+                  "Nīnu hēgiddīyā?",
+                  "Nanna hesaru ēnu?"
+                ],
+                "correctAnswer": "Nīvu hēgiddīrā?"
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "questions": [
+              {
+                "type": "multiple_choice",
+                "prompt": "Identify the informal greeting",
+                "sentence": "",
+                "options": [
+                  "Nīnu hēgiddīyā?",
+                  "Nīvu hēgiddīrā?",
+                  "Dhanyavādagaḷu"
+                ],
+                "correctAnswer": "Nīnu hēgiddīyā?"
+              },
+              {
+                "type": "fill_in_the_blank",
+                "prompt": "Fill in the missing word",
+                "sentence": "______ hesaru ēnu?",
+                "options": ["Nimma", "Nīvu", "Nanna"],
+                "correctAnswer": "Nimma"
+              },
+              {
+                "type": "fill_in_the_blank",
+                "prompt": "Complete the response",
+                "sentence": "Nānu ______ chennāgiddēne",
+                "options": ["bahala", "illa", "hōgu"],
+                "correctAnswer": "bahala"
+              },
+              {
+                "type": "fill_in_the_blank",
+                "prompt": "Complete the question",
+                "sentence": "______ hēgiddīyā?",
+                "options": ["Nīnu", "Nīvu", "Nānu"],
+                "correctAnswer": "Nīnu"
+              },
+              {
+                "type": "multiple_choice",
+                "prompt": "Identify the correct translation",
+                "sentence": "'Svāgata' means:",
+                "options": ["Welcome", "Goodbye", "Please"],
+                "correctAnswer": "Welcome"
+              }
+            ]
+          }
+        ]
+      }
     ],
     [
       {
