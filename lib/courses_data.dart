@@ -22,7 +22,8 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                   "Naanu kalithini.",
                   "Nange gothilla."
                 ],
-                "correctAnswer": "Nanna hesaru $firstName."
+                "correctAnswer": "Nanna hesaru $firstName.",
+                "translatedSentence": "My name is $firstName"
               },
               {
                 "type": "translate",
@@ -62,7 +63,8 @@ Future<List<List<dynamic>>> getCoursesData({required String firstName}) async {
                   "Nange gothilla.",
                   "Nanna hesaru Vidya."
                 ],
-                "correctAnswer": "Chennagiddini."
+                "correctAnswer": "Chennagiddini.",
+                "translatedSentence": "I am fine"
               }
             ]
           },

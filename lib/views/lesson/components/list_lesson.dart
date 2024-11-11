@@ -95,6 +95,16 @@ class _ListLessonState extends State<ListLesson> {
                                 : Colors.white,
                           ),
                         ),
+                      ] else if (lessonProvider.currentQuestion?.translatedSentence != null)...[
+                        const SizedBox(height: 8),
+                        Text(
+                          "Translation: ${lessonProvider.currentQuestion?.translatedSentence}",
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                            color: Colors.green
+                          ),
+                        ),
                       ],
                     ],
                   ),
