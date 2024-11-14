@@ -1,0 +1,33 @@
+name: Discord Notifications
+
+on:
+  push:
+    branches:
+      - main  # Change to any branch you want to monitor
+  pull_request:
+    types: [opened, closed, edited]  # Modify as needed
+
+jobs:
+  send-discord-notification:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Discord Notification for Push Event
+        if: github.event_name == 'push'
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d "{\"content\": \"🚀 New push by *${{ github.actor }}* on branch *${{ github.ref_name }}:\nCommit Message: *${{ github.event.head_commit.message }}\"}" \
+          $DISCORD_WEBHOOK_URL
+
+      - name: Send Discord Notification for Pull Request Event
+        if: github.event_name == 'pull_request'
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d "{\"content\": \"📢 Pull request *${{ github.event.action }}* by *${{ github.actor }}:\nTitle: *${{ github.event.pull_request.title }}\nURL: ${{ github.event.pull_request.html_url }}\"}" \
+          $DISCORD_WEBHOOK_URL
