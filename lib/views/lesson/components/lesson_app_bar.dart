@@ -39,6 +39,7 @@ class LessonAppBar extends StatelessWidget implements PreferredSizeWidget {
             size: 32,
           ),
           onPressed: () {
+            context.read<LessonProvider>().reset();
             Navigator.pop(context);
           },
         ),
