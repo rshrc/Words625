@@ -256,77 +256,134 @@ class RenderCharacter extends StatefulWidget {
 }
 
 class _RenderCharacterState extends State<RenderCharacter> {
+  final List<List<Offset>> strokes = [];
+  List<Offset> currentStroke = [];
+
   @override
   Widget build(BuildContext context) {
-    return Consumer<CharacterProvider>(builder: (context, characterState, _) {
-      final points = characterState.points;
-      return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Stack(
-          children: [
-            // Background guide for the character 'B'
-            Center(
-              child: Opacity(
-                opacity: 0.15, // Semi-transparent guide for tracing
-                child: Text(
-                  widget.alphabet,
-                  style: const TextStyle(
-                    fontSize: 300,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: AspectRatio(
+        aspectRatio: 1, // Makes it square
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey.withOpacity(0.2)),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Stack(
+            children: [
+              // Background guide character
+              Center(
+                child: Opacity(
+                  opacity: 0.15,
+                  child: Text(
+                    widget.alphabet,
+                    style: const TextStyle(
+                      fontSize: 300,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
-            ),
-            // Drawing Canvas
-            LayoutBuilder(
-              builder: (context, constraints) {
-                return GestureDetector(
-                  onPanUpdate: (details) {
-                    characterState.addPoints(context, details);
+              // Drawing Canvas
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  return GestureDetector(
+                    onPanStart: (details) {
+                      currentStroke = [details.localPosition];
+                      setState(() {
+                        strokes.add(currentStroke);
+                      });
+                    },
+                    onPanUpdate: (details) {
+                      setState(() {
+                        if (currentStroke.isNotEmpty) {
+                          final distance =
+                              (currentStroke.last - details.localPosition)
+                                  .distance;
+                          if (distance > 8.0) {
+                            currentStroke.add(details.localPosition);
+                          }
+                        } else {
+                          currentStroke.add(details.localPosition);
+                        }
+                      });
+                    },
+                    onPanEnd: (details) {
+                      currentStroke = [];
+                    },
+                    child: CustomPaint(
+                      painter: CharacterPainter(strokes: strokes),
+                      size: Size(constraints.maxWidth, constraints.maxHeight),
+                    ),
+                  );
+                },
+              ),
+              // Clear button
+              Positioned(
+                top: 10,
+                right: 10,
+                child: IconButton(
+                  icon: const Icon(Icons.clear),
+                  onPressed: () {
+                    setState(() {
+                      strokes.clear();
+                      currentStroke = [];
+                    });
                   },
-                  onPanEnd: (details) {
-                    // Stop capturing when the user lifts their finger
-                    characterState.addOffset(const Offset(-1, -1));
-                  },
-                  child: CustomPaint(
-                    painter: CharacterPainter(points: points),
-                    size: const Size(300, 200),
-                    willChange: true,
-                  ),
-                );
-              },
-            ),
-          ],
+                ),
+              ),
+            ],
+          ),
         ),
-      );
-    });
+      ),
+    );
   }
 }
 
 class CharacterPainter extends CustomPainter {
-  final List<Offset> points;
+  final List<List<Offset>> strokes;
 
-  CharacterPainter({required this.points});
+  CharacterPainter({required this.strokes});
 
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
-      ..color = appGreen
+    final paint = Paint()
+      ..color = Colors.green
       ..strokeCap = StrokeCap.round
-      ..strokeWidth = 10.0;
+      ..strokeJoin = StrokeJoin.round
+      ..strokeWidth = 8.0
+      ..style = PaintingStyle.stroke;
 
-    for (int i = 0; i < points.length - 1; i++) {
-      if (points[i] != const Offset(-1, -1) &&
-          points[i + 1] != const Offset(-1, -1)) {
-        // Draw a line between each point
-        canvas.drawLine(points[i], points[i + 1], paint);
+    for (final stroke in strokes) {
+      if (stroke.length < 2) continue;
+
+      final path = Path();
+      path.moveTo(stroke[0].dx, stroke[0].dy);
+
+      if (stroke.length < 3) {
+        // For short strokes, just draw a line
+        path.lineTo(stroke[1].dx, stroke[1].dy);
+      } else {
+        // Use quadratic bezier curves for smooth lines
+        for (var i = 1; i < stroke.length - 1; i++) {
+          final p0 = stroke[i];
+          final p1 = stroke[i + 1];
+          final midPoint = Offset(
+            (p0.dx + p1.dx) / 2,
+            (p0.dy + p1.dy) / 2,
+          );
+          path.quadraticBezierTo(p0.dx, p0.dy, midPoint.dx, midPoint.dy);
+        }
       }
+
+      canvas.drawPath(path, paint);
     }
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+  bool shouldRepaint(CharacterPainter oldDelegate) {
     return true;
   }
 }
