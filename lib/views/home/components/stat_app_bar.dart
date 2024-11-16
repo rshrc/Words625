@@ -8,9 +8,9 @@ import 'package:countup/countup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
-import 'package:words625/application/game_provider.dart';
 
 // Project imports:
+import 'package:words625/application/game_provider.dart';
 import 'package:words625/di/injection.dart';
 import 'package:words625/gen/assets.gen.dart';
 import 'package:words625/routing/routing.gr.dart';
