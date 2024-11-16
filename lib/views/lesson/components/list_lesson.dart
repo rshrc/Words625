@@ -52,8 +52,7 @@ class _ListLessonState extends State<ListLesson> {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                  height: MediaQuery.of(context).size.height *
-                      (lessonProvider.answerState.isCorrect ? 0.16 : 0.20),
+                  height: MediaQuery.of(context).size.height * 0.20,
                   padding: const EdgeInsets.symmetric(
                     horizontal: 22,
                     vertical: 16,
@@ -95,15 +94,16 @@ class _ListLessonState extends State<ListLesson> {
                                 : Colors.white,
                           ),
                         ),
-                      ] else if (lessonProvider.currentQuestion?.translatedSentence != null)...[
+                      ] else if (lessonProvider
+                              .currentQuestion?.translatedSentence !=
+                          null) ...[
                         const SizedBox(height: 8),
                         Text(
                           "Translation: ${lessonProvider.currentQuestion?.translatedSentence}",
                           style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                            color: Colors.green
-                          ),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22,
+                              color: Colors.green),
                         ),
                       ],
                     ],
