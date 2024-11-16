@@ -8,10 +8,9 @@ import 'package:auto_route/annotations.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
-import 'package:words625/application/audio_controller.dart';
+import 'package:words625/application/game_provider.dart';
 import 'package:words625/application/match_provider.dart';
 import 'package:words625/core/utils.dart';
-import 'package:words625/di/injection.dart';
 import 'package:words625/views/app.dart';
 
 @RoutePage()
@@ -62,10 +61,15 @@ class _MatchWordsPageState extends State<MatchWordsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MatchProvider>(
-      builder: (context, matchProvider, _) {
+    return Consumer2<MatchProvider, GameProvider>(
+      builder: (context, matchProvider, gameProvider, _) {
         if (matchProvider.isGameOver) {
           // Use post-frame callback to avoid showing dialog during build
+          // update score
+          gameProvider.incrementScore(
+            matchProvider.sessionScore,
+            notify: false,
+          );
           WidgetsBinding.instance.addPostFrameCallback((_) {
             showPlayerOption(context);
           });
@@ -91,7 +95,7 @@ class _MatchWordsPageState extends State<MatchWordsPage> {
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: matchProvider.secondsRemaining < 60
+                    color: matchProvider.secondsRemaining < 25
                         ? Colors.red
                         : appGreen,
                   ),
@@ -136,6 +140,14 @@ class _MatchWordsPageState extends State<MatchWordsPage> {
                   ),
                 ),
                 const SizedBox(height: 20),
+                const Text(
+                  "2XP for Each Correct Match",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 16,
+                  ),
+                ),
+                const SizedBox(height: 10),
                 MatchCounter(
                   matchedCount: matchProvider.matchedPairs.length,
                   totalCount: matchProvider.wordPairs?.length ?? 0,

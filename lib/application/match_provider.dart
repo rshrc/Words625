@@ -27,13 +27,13 @@ class MatchProvider extends ChangeNotifier {
   String? selectedEnglishWord;
   String? selectedTargetWord;
   Timer? _timer;
-  int secondsRemaining = 180;
+  int secondsRemaining = 90;
   Set<String> matchedWords = {};
   Map<String, String>? wordPairs;
   bool isGameOver = false;
+  int sessionScore = 0;
 
   void initializeGame() {
-    logger.i("Hello");
     wordPairs = getRandomWords(8);
 
     logger.i("Word Pairs: $wordPairs");
@@ -47,9 +47,10 @@ class MatchProvider extends ChangeNotifier {
     matchedPairs = {};
     selectedEnglishWord = null;
     selectedTargetWord = null;
-    secondsRemaining = 180;
+    secondsRemaining = 90;
     matchedWords = {};
     isGameOver = false;
+    sessionScore = 0;
     notifyListeners();
 
     startTimer();
@@ -91,6 +92,7 @@ class MatchProvider extends ChangeNotifier {
   Future<void> checkMatch() async {
     if (selectedEnglishWord != null && selectedTargetWord != null) {
       if (wordPairs![selectedEnglishWord!] == selectedTargetWord) {
+        sessionScore += 2;
         _audioController.playRandomLevelUpSound();
         matchedPairs[selectedEnglishWord!] = selectedTargetWord!;
         notifyListeners();

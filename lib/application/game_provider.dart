@@ -39,7 +39,7 @@ class GameProvider extends ChangeNotifier {
   }
 
   // Method to increment the score and potentially the streak
-  Future<void> incrementScore(int xp) async {
+  Future<void> incrementScore(int xp, {bool notify = true}) async {
     try {
       final userId = _auth.currentUser?.uid;
       if (userId == null) return;
@@ -79,8 +79,7 @@ class GameProvider extends ChangeNotifier {
         'lastStreakDate': todayMidnight.toIso8601String(),
       });
 
-      // Notify listeners to update UI
-      notifyListeners();
+      if (notify) notifyListeners();
     } catch (e) {
       debugPrint("Error updating score and streak: $e");
     }
