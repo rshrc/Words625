@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 // Project imports:
+import 'package:words625/core/extensions.dart';
 import 'package:words625/gen/assets.gen.dart';
 
 class Statistics extends StatefulWidget {
@@ -20,6 +21,7 @@ class _StatisticsState extends State<Statistics> {
   String streak = '0';
   String totalXp = '0';
   bool isLoading = true;
+  List<String> languages = [];
 
   @override
   void initState() {
@@ -43,6 +45,7 @@ class _StatisticsState extends State<Statistics> {
           streak = userData['streak']?.toString() ?? '0';
           totalXp = userData['score']?.toString() ?? '0';
           isLoading = false;
+          languages = userData['languages']?.cast<String>() ?? [];
         });
       } else {
         setState(() => isLoading = false);
@@ -56,8 +59,43 @@ class _StatisticsState extends State<Statistics> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         bigTitle('Statistics'),
+        if (languages.isNotEmpty) ...[
+          Padding(
+            padding: const EdgeInsets.only(left: 15, right: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "You are learning ${languages.length} ${languages.length == 1 ? 'language' : 'languages'}",
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Row(
+                  children: languages
+                      .map((lang) => Card(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 8.0, horizontal: 12),
+                              child: Text(
+                                lang.toTitleCase,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ))
+                      .toList(),
+                ),
+              ],
+            ),
+          ),
+        ],
         GridView.count(
           primary: false,
           shrinkWrap: true,

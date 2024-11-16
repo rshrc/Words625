@@ -10,6 +10,9 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
 // Project imports:
+import 'package:words625/core/enums.dart';
+
+// Project imports:
 
 extension BreakpointUtils on BoxConstraints {
   bool get isTablet => maxWidth > 730;
@@ -244,5 +247,14 @@ extension TimeOfDayExtension on TimeOfDay {
     final dt = DateTime(now.year, now.month, now.day, hour, minute);
     final format = DateFormat('HH:mm:ss');
     return format.format(dt);
+  }
+}
+
+extension EnumType on String {
+  TargetLanguage getEnumValue() {
+    return TargetLanguage.values.firstWhere(
+      (element) => element.name == this,
+      orElse: () => TargetLanguage.kannada,
+    );
   }
 }

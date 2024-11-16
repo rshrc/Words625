@@ -12,8 +12,11 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:words625/application/audio_controller.dart';
+import 'package:words625/core/extensions.dart';
+import 'package:words625/core/logger.dart';
+import 'package:words625/di/injection.dart';
 import 'package:words625/match_levels.dart';
-import '../core/logger.dart';
+import 'package:words625/service/locator.dart';
 
 @injectable
 class MatchProvider extends ChangeNotifier {
@@ -57,8 +60,11 @@ class MatchProvider extends ChangeNotifier {
   }
 
   Map<String, String> getRandomWords(int count) {
+    final targetLanguage =
+        getIt<AppPrefs>().currentLanguage.getValue().getEnumValue();
+
     final List<MapEntry<String, String>> entries =
-        allLevel1Words.entries.toList();
+        wordsMap[targetLanguage]!.entries.toList();
     entries.shuffle(Random());
     return Map.fromEntries(entries.take(count));
   }
