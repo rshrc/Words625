@@ -26,6 +26,7 @@ dependencies:
   flutter_custom_dialog: '^1.2.0'
   flutter_svg: any
   flutter_tts: any
+  font_awesome_flutter: any
   freezed: any
   get_it: any
   google_fonts: 6.0.0
