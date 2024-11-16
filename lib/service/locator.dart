@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 // Package imports:
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:injectable/injectable.dart';
 import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
 
 // Project imports:
@@ -21,6 +22,10 @@ class AppPrefs {
           PrefsConstants.fcmToken,
           defaultValue: "",
         ),
+        currentLanguage = preferences.getString(
+          PrefsConstants.currentLanguage,
+          defaultValue: "kannada",
+        ),
         authUser = preferences.getCustomValue(
           PrefsConstants.authUser,
           defaultValue: null,
@@ -33,6 +38,7 @@ class AppPrefs {
 
   final Preference<String> fcmToken;
   final Preference<SerializableFirebaseUser?> authUser;
+  final Preference<String> currentLanguage;
 
   Future<bool> setBool(String key, {required bool value}) async {
     printBefore(value: value, key: key);
@@ -84,6 +90,7 @@ class PrefsConstants {
   static const String userId = 'userId';
   static const String authUser = 'authUser';
   static const String branch = 'branch';
+  static const String currentLanguage = 'currentLanguage';
 }
 
 /// Making AppPrefs injectable
