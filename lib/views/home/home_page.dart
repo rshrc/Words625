@@ -41,7 +41,9 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    initSession();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      initSession();
+    });
   }
 
   initSession() async {
