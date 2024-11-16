@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:chiclet/chiclet.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
@@ -159,97 +160,12 @@ class _CharacterPracticeScreenState extends State<CharacterPracticeScreen> {
   }
 }
 
-@RoutePage()
-class VowelAndConsonantLearningPage extends StatefulWidget {
-  final CharacterLearningMode mode;
-  const VowelAndConsonantLearningPage({super.key, required this.mode});
-
-  @override
-  State<VowelAndConsonantLearningPage> createState() =>
-      _VowelAndConsonantLearningPageState();
-}
-
-class _VowelAndConsonantLearningPageState
-    extends State<VowelAndConsonantLearningPage> {
-  late Map<String, String> charactersToLearn;
-  late MapEntry currentCharacter;
-  late TargetLanguage targetLanguage;
-  late Map<String, String> sounds;
-  late Map<String, String> vowels;
-  late Map<String, String> consonants;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-
-    targetLanguage = context.read<LanguageProvider>().selectedLanguage;
-
-    sounds = getLanguageSounds(targetLanguage);
-    vowels = getLanguageVowels(targetLanguage);
-    consonants = getLanguageConsonants(targetLanguage);
-
-    switch (widget.mode) {
-      case CharacterLearningMode.vowels:
-        charactersToLearn = vowels;
-        break;
-      case CharacterLearningMode.consonants:
-        charactersToLearn = consonants;
-        break;
-      case CharacterLearningMode.random:
-        charactersToLearn = shuffleMap(sounds);
-        break;
-    }
-    currentCharacter = charactersToLearn.entries.first;
-  }
-
-  Set<MapEntry> visitedCharacters = {};
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SizedBox(
-        height: context.height,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            RenderCharacter(alphabet: currentCharacter.key),
-            Text(
-              currentCharacter.value,
-              style: const TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 32),
-            ChicletOutlinedAnimatedButton(
-              borderColor: Colors.green,
-              child: const Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.green,
-              ),
-              onPressed: () {
-                context.read<CharacterProvider>().clearPoints();
-                setState(() {
-                  visitedCharacters.add(currentCharacter);
-                  charactersToLearn.remove(currentCharacter.key);
-                  if (charactersToLearn.isNotEmpty) {
-                    currentCharacter = charactersToLearn.entries.first;
-                  } else {}
-                });
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 class RenderCharacter extends StatefulWidget {
   final String alphabet;
-  const RenderCharacter({super.key, required this.alphabet});
+  final ValueNotifier<bool> shouldRebuild;
+
+  const RenderCharacter(
+      {super.key, required this.alphabet, required this.shouldRebuild});
 
   @override
   _RenderCharacterState createState() => _RenderCharacterState();
@@ -260,11 +176,22 @@ class _RenderCharacterState extends State<RenderCharacter> {
   List<Offset> currentStroke = [];
 
   @override
+  void initState() {
+    super.initState();
+
+    widget.shouldRebuild.addListener(() {
+      setState(() {
+        strokes.clear(); // Clear strokes when `shouldRebuild` is true
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: AspectRatio(
-        aspectRatio: 1, // Makes it square
+        aspectRatio: 0.7, // Makes it square
         child: Container(
           decoration: BoxDecoration(
             border: Border.all(color: Colors.grey.withOpacity(0.2)),
@@ -275,7 +202,7 @@ class _RenderCharacterState extends State<RenderCharacter> {
               // Background guide character
               Center(
                 child: Opacity(
-                  opacity: 0.15,
+                  opacity: 0.12,
                   child: Text(
                     widget.alphabet,
                     style: const TextStyle(
@@ -325,7 +252,10 @@ class _RenderCharacterState extends State<RenderCharacter> {
                 top: 10,
                 right: 10,
                 child: IconButton(
-                  icon: const Icon(Icons.clear),
+                  icon: Icon(
+                    FontAwesomeIcons.eraser,
+                    color: Colors.black.withOpacity(0.7),
+                  ),
                   onPressed: () {
                     setState(() {
                       strokes.clear();
@@ -336,6 +266,120 @@ class _RenderCharacterState extends State<RenderCharacter> {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+@RoutePage()
+class VowelAndConsonantLearningPage extends StatefulWidget {
+  final CharacterLearningMode mode;
+  const VowelAndConsonantLearningPage({super.key, required this.mode});
+
+  @override
+  State<VowelAndConsonantLearningPage> createState() =>
+      _VowelAndConsonantLearningPageState();
+}
+
+class _VowelAndConsonantLearningPageState
+    extends State<VowelAndConsonantLearningPage> {
+  late Map<String, String> charactersToLearn;
+  late MapEntry currentCharacter;
+  late TargetLanguage targetLanguage;
+  late Map<String, String> sounds;
+  late Map<String, String> vowels;
+  late Map<String, String> consonants;
+
+  // Add ValueNotifier to track character changes
+  final ValueNotifier<bool> shouldRebuildCharacter = ValueNotifier(false);
+
+  @override
+  void initState() {
+    super.initState();
+
+    targetLanguage = context.read<LanguageProvider>().selectedLanguage;
+    sounds = getLanguageSounds(targetLanguage);
+    vowels = getLanguageVowels(targetLanguage);
+    consonants = getLanguageConsonants(targetLanguage);
+
+    switch (widget.mode) {
+      case CharacterLearningMode.vowels:
+        charactersToLearn = vowels;
+        break;
+      case CharacterLearningMode.consonants:
+        charactersToLearn = consonants;
+        break;
+      case CharacterLearningMode.random:
+        charactersToLearn = shuffleMap(sounds);
+        break;
+    }
+    currentCharacter = charactersToLearn.entries.first;
+  }
+
+  Set<MapEntry> visitedCharacters = {};
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SizedBox(
+        height: context.height,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            RenderCharacter(
+              alphabet: currentCharacter.key,
+              shouldRebuild: shouldRebuildCharacter,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  currentCharacter.key,
+                  style: const TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                const Text("=", style: TextStyle(fontSize: 32)),
+                const SizedBox(width: 8),
+                Text(
+                  currentCharacter.value,
+                  style: const TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 32),
+            ChicletOutlinedAnimatedButton(
+              borderColor: Colors.green,
+              child: const Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.green,
+              ),
+              onPressed: () {
+                // Clear drawing and move to the next character
+                context.read<CharacterProvider>().clearPoints();
+                setState(() {
+                  visitedCharacters.add(currentCharacter);
+                  charactersToLearn.remove(currentCharacter.key);
+                  if (charactersToLearn.isNotEmpty) {
+                    currentCharacter = charactersToLearn.entries.first;
+                  } else {
+                    // Handle end of learning characters, if necessary
+                  }
+                });
+
+                // Trigger rebuild for RenderCharacter
+                shouldRebuildCharacter.value = !shouldRebuildCharacter.value;
+              },
+            ),
+          ],
         ),
       ),
     );
