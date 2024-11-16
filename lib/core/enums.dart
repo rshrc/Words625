@@ -1,4 +1,4 @@
-enum Language {
+enum TargetLanguage {
   kannada,
   tamil,
   telugu,
