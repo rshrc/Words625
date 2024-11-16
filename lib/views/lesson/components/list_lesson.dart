@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 
 // Project imports:
 import 'package:words625/application/level_provider.dart';
+import 'package:words625/courses/languages/dictionary.dart';
 import 'package:words625/di/injection.dart';
 import 'package:words625/domain/course/course.dart';
 import 'package:words625/views/lesson/lesson_screen.dart';
@@ -115,8 +116,7 @@ class _ListLessonState extends State<ListLesson> {
                 Instruction(
                     prompt: lessonProvider.currentQuestion?.prompt ?? "--"),
                 const Padding(padding: EdgeInsets.only(top: 15)),
-                QuestionRow(
-                    sentence: lessonProvider.currentQuestion?.sentence ?? "--"),
+                QuestionRow(question: lessonProvider.currentQuestion),
                 const SizedBox(height: 8),
                 Center(
                   child: Column(
@@ -175,8 +175,8 @@ class Instruction extends StatelessWidget {
 }
 
 class QuestionRow extends StatelessWidget {
-  final String sentence;
-  const QuestionRow({super.key, required this.sentence});
+  final Question? question;
+  const QuestionRow({super.key, required this.question});
 
   @override
   Widget build(BuildContext context) {
@@ -184,21 +184,59 @@ class QuestionRow extends StatelessWidget {
       margin: const EdgeInsets.only(left: 15, bottom: 5),
       child: Row(
         children: [
-          SpeakButton(sentence: sentence),
+          SpeakButton(sentence: question?.sentence ?? "--"),
           const Padding(padding: EdgeInsets.only(right: 15)),
           Flexible(
-            child: Text(
-              sentence,
-              style: const TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF4B4B4B)),
-            ),
+            child: question?.sentenceIsTargetLanguage ?? false
+                ? RichText(
+                    text: TextSpan(
+                      children: _buildTextSpans(context),
+                    ),
+                  )
+                : Text(
+                    question?.sentence ?? "--",
+                    style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF4B4B4B)),
+                  ),
           ),
           const SizedBox(width: 16),
         ],
       ),
     );
+  }
+
+  List<TextSpan> _buildTextSpans(BuildContext context) {
+    final words = question?.sentence?.split(' ') ?? [];
+
+    return words.map((word) {
+      return TextSpan(
+        children: [
+          WidgetSpan(
+            alignment: PlaceholderAlignment.middle,
+            child: Tooltip(
+              triggerMode: TooltipTriggerMode.tap,
+              enableFeedback: true,
+              message: getWordMeaning(word),
+              child: Text(
+                word,
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF4B4B4B),
+                  decoration: TextDecoration.underline,
+                  decorationStyle: TextDecorationStyle.dotted,
+                ),
+              ),
+            ),
+          ),
+          const TextSpan(
+            text: ' ', // Add a space between words
+          ),
+        ],
+      );
+    }).toList();
   }
 }
 

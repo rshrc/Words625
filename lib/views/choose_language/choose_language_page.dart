@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:auto_route/annotations.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:

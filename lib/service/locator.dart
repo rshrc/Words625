@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 // Package imports:
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:injectable/injectable.dart';
 import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
 
 // Project imports:

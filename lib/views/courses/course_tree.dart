@@ -7,10 +7,6 @@ import 'package:provider/provider.dart';
 // Project imports:
 import 'package:words625/application/course_provider.dart';
 import 'package:words625/application/language_provider.dart';
-import 'package:words625/courses/courses.dart';
-import 'package:words625/di/injection.dart';
-import 'package:words625/domain/course/course.dart';
-import 'package:words625/service/locator.dart';
 import 'components/course_node.dart';
 import 'components/double_course_node.dart';
 import 'components/triple_course_node.dart';

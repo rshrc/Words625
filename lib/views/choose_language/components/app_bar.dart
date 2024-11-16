@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:words625/views/choose_language/components/stage_progress_bar.dart';
 
 class ChooseLanguageAppbar extends StatelessWidget
     implements PreferredSizeWidget {

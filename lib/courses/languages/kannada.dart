@@ -16,6 +16,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Ninna hesaru enu?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Nanna hesaru $firstName.",
                   "Naanu kalithini.",
@@ -28,6 +29,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Naanu vidyaarthi.",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "I am a student.",
                   "You are a student.",
@@ -39,6 +41,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Naanu oota maaduthiddene.",
+                "sentenceIsTargetLanguage": true,
                 "options": ["I am eating.", "I am walking.", "I am sitting."],
                 "correctAnswer": "I am eating."
               },
@@ -46,6 +49,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Naale barthini.",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "I will come tomorrow.",
                   "I am going now.",
@@ -57,6 +61,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Hege iddeera?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Chennagiddini.",
                   "Nange gothilla.",
@@ -74,6 +79,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Ninna ooru yavudu?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Nanna ooru Bengaluru.",
                   "Nange gothilla.",
@@ -85,6 +91,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Avanu nanna thamma.",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "He is my friend.",
                   "He is my younger brother.",
@@ -96,6 +103,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Avanu nanna anna.",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "He is my friend.",
                   "He is my elder brother.",
@@ -107,6 +115,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Neevu yelli hoguthiddira?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Naanu manege hoguthiddene.",
                   "Nanna mane adhu.",
@@ -118,6 +127,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Nanage Kannada baruthe.",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "I know Kannada.",
                   "I speak Kannada fluently.",
@@ -129,6 +139,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Nimage coffee beka?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Yes, I would like coffee.",
                   "No, I don't drink coffee.",
@@ -140,6 +151,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Ivattu nanna magaLu bandaLu.",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "My daughter came today.",
                   "My wife came today.",
@@ -151,6 +163,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Neevu English maathaduttheera?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Yes, I speak English.",
                   "I don't understand.",
@@ -167,6 +180,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Ninna thindi aytha?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Howdu, aythu.",
                   "Beda, beku.",
@@ -178,6 +192,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Avanu nanna snehitha.",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "He is my friend.",
                   "He is my teacher.",
@@ -189,6 +204,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Yelli odutthaidya?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Naanu Bengaluralli oduttha iddhini.",
                   "Naanu nanna mane hatra iddini.",
@@ -200,6 +216,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Naanu manege hoguthiddene.",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "I am going home.",
                   "I am cooking at home.",
@@ -211,6 +228,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Nimma vayassu eshtu?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Nange hadinayidu varsha aagidhe.",
                   "Naanu oota maaduthiddene.",
@@ -222,6 +240,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Avalu nanna akka.",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "She is my elder sister.",
                   "She is my mother.",
@@ -233,6 +252,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Avalu nanna thangi.",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "She is my younger sister.",
                   "She is my mother.",
@@ -244,6 +264,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Nimage nanna sahaya beka?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Yes, I need help.",
                   "No, I am okay.",
@@ -260,6 +281,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Naanu pustaka oodutthaidhini.",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "I am reading a book.",
                   "I am writing a book.",
@@ -270,7 +292,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               {
                 "type": "multiple_choice",
                 "prompt": "Choose the correct response",
-                "sentence": "How do you say 'Good night' in Kannada?",
+                "sentence": "'Good night'?",
                 "options": ["Shubha raatri", "Shubhodaya", "Chennagiddini"],
                 "correctAnswer": "Shubha raatri"
               },
@@ -278,6 +300,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Bengalurige barthini.",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "I will come to Bangalore.",
                   "I am going to Bangalore.",
@@ -289,6 +312,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Ninna thandeyavara hesaru enu?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "What is your father's name?",
                   "What is your mother's name?",
@@ -300,6 +324,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Hengiddhira",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Chennagiddhini",
                   "Ninna mane ellide?",
@@ -316,6 +341,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Neevu enu maadthira?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Naanu engineer.",
                   "Naanu gothilla.",
@@ -326,7 +352,8 @@ List<List<dynamic>> getKannadaData(String firstName) {
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Nanna magalu hathra ide.",
+                "sentence": "Nanna magalu hathra ide",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "My daughter is nearby.",
                   "My son is in school.",
@@ -338,6 +365,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Yavaga nillu?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Naale.",
                   "Innu swalpa samaya.",
@@ -349,6 +377,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Namma mane sundara.",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Our house is beautiful.",
                   "Our car is new.",
@@ -360,6 +389,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Ninna jeevanadalli yaaru mukhya?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Nanna family mukhya.",
                   "Nanna mane doora.",
@@ -371,6 +401,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Avanu Bengaluru vidhyarthi.",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "He is a student from Bengaluru.",
                   "He is working in Bengaluru.",
@@ -382,6 +413,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Nimma mane yalli ide?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Namma mane Bengaluralli ide.",
                   "Nanna hesaru $firstName.",
@@ -398,6 +430,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Yelli hogthiddheera?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Naanu marketge hogthiddhini.",
                   "Naanu eshtu vayassu.",
@@ -408,7 +441,8 @@ List<List<dynamic>> getKannadaData(String firstName) {
               {
                 "type": "translate",
                 "prompt": "Translate the sentence",
-                "sentence": "Nanna makkalu nanna hemme.",
+                "sentence": "Nanna makkalu nanna hemme",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "My children are my pride.",
                   "My family is my pride.",
@@ -420,6 +454,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Nimage yaava ruchi ishta?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Nanage masala dosa ishta.",
                   "Nanage Kannada gothilla.",
@@ -431,6 +466,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Ivattu nanna dina uttama.",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Today is my best day.",
                   "Tomorrow will be a good day.",
@@ -442,6 +478,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Ninna uddesha enu?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "Nanna uddesha kushiyagi jeevana maduvudu.",
                   "Naanu odutha iddini.",
@@ -453,6 +490,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "translate",
                 "prompt": "Translate the sentence",
                 "sentence": "Naanu avarannu manege karide.",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "I invited them home.",
                   "I called her.",
@@ -464,6 +502,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "type": "multiple_choice",
                 "prompt": "Choose an appropriate response",
                 "sentence": "Neevu yaake oodtheera?",
+                "sentenceIsTargetLanguage": true,
                 "options": [
                   "I like reading books.",
                   "I don’t like running.",
@@ -488,7 +527,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               {
                 "type": "multiple_choice",
                 "prompt": "Choose the correct greeting",
-                "sentence": "How do you say 'Hello' in Kannada?",
+                "sentence": "Hello!",
                 "options": [
                   "Namaskara",
                   "Dhanyavaadagalu",
@@ -506,7 +545,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               {
                 "type": "multiple_choice",
                 "prompt": "Choose the appropriate response",
-                "sentence": "How do you ask 'How are you?' in Kannada?",
+                "sentence": "'How are you?'?",
                 "options": [
                   "Hege iddheera?",
                   "Ninna hesaru enu?",
@@ -539,8 +578,8 @@ List<List<dynamic>> getKannadaData(String firstName) {
             "questions": [
               {
                 "type": "multiple_choice",
-                "prompt": "Choose the correct way to say 'Goodbye' in Kannada",
-                "sentence": "How do you say 'Goodbye'?",
+                "prompt": "Choose the correct way to say 'Goodbye'",
+                "sentence": "'Goodbye'?",
                 "options": ["Naanu bandhe", "Hogbarthini", "Namaskara"],
                 "correctAnswer": "Hogbarthini"
               },
@@ -554,7 +593,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               {
                 "type": "multiple_choice",
                 "prompt": "Choose the appropriate response",
-                "sentence": "How do you say 'Good night' in Kannada?",
+                "sentence": "'Good night'?",
                 "options": [
                   "Shubha Rathri",
                   "Shubha Madyahna",
@@ -572,7 +611,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               {
                 "type": "multiple_choice",
                 "prompt": "Choose the correct translation",
-                "sentence": "How do you ask someone to 'come in' politely?",
+                "sentence": "someone to 'come in' politely?",
                 "options": ["Banni", "Nodi", "Hogi"],
                 "correctAnswer": "Banni"
               }
@@ -593,7 +632,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               {
                 "type": "multiple_choice",
                 "prompt": "Choose the correct greeting",
-                "sentence": "How do you say 'Hello' in Kannada?",
+                "sentence": "'Hello'?",
                 "options": ["Namaskara", "Dhanyavādagaḷu", "Ninna hesaru ēnu?"],
                 "correctAnswer": "Namaskara"
               },
@@ -790,7 +829,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
     ],
     [
       {
-        "courseName": "life in BLR",
+        "courseName": "Life in BLR",
         "image": Assets.images.bandages.path,
         "color": 0xff00FF00,
         "levels": [
@@ -799,7 +838,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
             "questions": [
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask 'Where are you?' to the auto driver?",
+                "prompt": "'Where are you?' to the auto driver?",
                 "sentence": "What is the Kannada phrase for 'Where are you?'",
                 "options": [
                   "Neevu elli iddheera?",
@@ -810,8 +849,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt":
-                    "How do you ask the auto driver to come to your location?",
+                "prompt": "the auto driver to come to your location?",
                 "sentence":
                     "What is the Kannada phrase for 'Come to my location'?",
                 "options": [
@@ -823,7 +861,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask for the fare in Kannada?",
+                "prompt": "for the fare?",
                 "sentence":
                     "What is the Kannada phrase for 'How much for the ride?'",
                 "options": ["Eshtu aaithu?", "Elli hogbeku?", "Hege iddeera?"],
@@ -843,7 +881,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               {
                 "type": "multiple_choice",
                 "prompt": "Choose the correct response",
-                "sentence": "How do you say 'I want to go to Majestic'?",
+                "sentence": "'I want to go to Majestic'?",
                 "options": [
                   "Naanu Majestic ge hogabeku.",
                   "Nanna hesaru Majestic.",
@@ -864,8 +902,8 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask if the driver has change?",
-                "sentence": "How do you say 'Do you have change?' in Kannada?",
+                "prompt": "if the driver has change?",
+                "sentence": "'Do you have change?'?",
                 "options": [
                   "Nimhathra change idhya?",
                   "Nimage time idhya?",
@@ -886,8 +924,8 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'I will give you 100 rupees'?",
-                "sentence": "How do you say this in Kannada?",
+                "prompt": "'I will give you 100 rupees'?",
+                "sentence": "this?",
                 "options": [
                   "Naanu nooru rupayi kodthini.",
                   "Naanu naale kodthini.",
@@ -913,7 +951,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
             "questions": [
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask about the rent?",
+                "prompt": "about the rent?",
                 "sentence":
                     "What is the Kannada phrase for 'How much is the rent?'",
                 "options": ["Baadige eshtu?", "Idhu eshtu?", "Mane elli ide?"],
@@ -932,7 +970,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask if water is available?",
+                "prompt": "if water is available?",
                 "sentence":
                     "What is the Kannada phrase for 'Is there water supply?'",
                 "options": [
@@ -955,7 +993,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask about maintenance?",
+                "prompt": "about maintenance?",
                 "sentence":
                     "What is the Kannada phrase for 'Who is responsible for maintenance?'",
                 "options": [
@@ -978,7 +1016,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask if pets are allowed?",
+                "prompt": "if pets are allowed?",
                 "sentence":
                     "What is the Kannada phrase for 'Are pets allowed?'",
                 "options": [
@@ -1001,7 +1039,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask when you can move in?",
+                "prompt": "when you can move in?",
                 "sentence":
                     "What is the Kannada phrase for 'When can I move in?'",
                 "options": [
@@ -1029,7 +1067,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
             "questions": [
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask 'Where are you?' to the auto driver?",
+                "prompt": "'Where are you?' to the auto driver?",
                 "sentence": "What is the Kannada phrase for 'Where are you?'",
                 "options": [
                   "Neevu elli iddheera?",
@@ -1051,7 +1089,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask about the rent?",
+                "prompt": "about the rent?",
                 "sentence":
                     "What is the Kannada phrase for 'How much is the rent?'",
                 "options": [
@@ -1074,7 +1112,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask if something is in stock?",
+                "prompt": "if something is in stock?",
                 "sentence":
                     "What is the Kannada phrase for 'Do you have this item?'",
                 "options": [
@@ -1097,7 +1135,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'I want to go to Majestic'?",
+                "prompt": "'I want to go to Majestic'?",
                 "sentence": "What is the Kannada phrase for this?",
                 "options": [
                   "Naanu Majestic ge hogabeku.",
@@ -1119,7 +1157,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask for a discount from a shopkeeper?",
+                "prompt": "for a discount from a shopkeeper?",
                 "sentence":
                     "What is the Kannada phrase for 'Can you give me a discount?'",
                 "options": [
@@ -1142,8 +1180,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt":
-                    "How do you ask 'Do you have change?' to an auto driver?",
+                "prompt": "'Do you have change?' to an auto driver?",
                 "sentence":
                     "What is the Kannada phrase for 'Do you have change?'",
                 "options": [
@@ -1166,8 +1203,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt":
-                    "How do you ask 'When can I move in?' to the landlord?",
+                "prompt": "'When can I move in?' to the landlord?",
                 "sentence": "What is the Kannada phrase for this?",
                 "options": [
                   "Naanu yavaga manege barabahudu?",
@@ -1189,8 +1225,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt":
-                    "How do you ask 'How much time will it take?' to an auto driver?",
+                "prompt": "'How much time will it take?' to an auto driver?",
                 "sentence":
                     "What is the Kannada phrase for 'How much time will it take?'",
                 "options": [
@@ -1207,7 +1242,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
             "questions": [
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask the driver to slow down?",
+                "prompt": "the driver to slow down?",
                 "sentence":
                     "What is the Kannada phrase for 'Please slow down'?",
                 "options": [
@@ -1230,7 +1265,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask the driver to take a left turn?",
+                "prompt": "the driver to take a left turn?",
                 "sentence":
                     "What is the Kannada phrase for 'Take a left turn'?",
                 "options": [
@@ -1249,7 +1284,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask the driver to go straight?",
+                "prompt": "the driver to go straight?",
                 "sentence": "What is the Kannada phrase for 'Go straight'?",
                 "options": [
                   "Nera hogi.",
@@ -1271,7 +1306,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask the driver to go faster?",
+                "prompt": "the driver to go faster?",
                 "sentence": "What is the Kannada phrase for 'Go faster'?",
                 "options": [
                   "Bega hogi.",
@@ -1357,7 +1392,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'Drop me here' to the driver?",
+                "prompt": "'Drop me here' to the driver?",
                 "sentence": "What is the Kannada phrase for 'Drop me here'?",
                 "options": [
                   "Nanna illi bidi.",
@@ -1382,7 +1417,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
             "questions": [
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask 'What time is the meeting?'",
+                "prompt": "'What time is the meeting?'",
                 "sentence":
                     "What is the Kannada phrase for 'What time is the meeting?'",
                 "options": [
@@ -1405,7 +1440,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'When is the deadline?'",
+                "prompt": "'When is the deadline?'",
                 "sentence":
                     "What is the Kannada phrase for 'When is the deadline?'",
                 "options": [
@@ -1428,7 +1463,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask 'Have you completed the task?'",
+                "prompt": "'Have you completed the task?'",
                 "sentence":
                     "What is the Kannada phrase for 'Have you completed the task?'",
                 "options": [
@@ -1451,7 +1486,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask 'Can we postpone the meeting?'",
+                "prompt": "'Can we postpone the meeting?'",
                 "sentence":
                     "What is the Kannada phrase for 'Can we postpone the meeting?'",
                 "options": [
@@ -1474,7 +1509,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask 'Do you need any help?'",
+                "prompt": "'Do you need any help?'",
                 "sentence":
                     "What is the Kannada phrase for 'Do you need any help?'",
                 "options": [
@@ -1509,7 +1544,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
             "questions": [
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'One' in Kannada?",
+                "prompt": "'One'?",
                 "sentence": "What is the Kannada word for 'One'?",
                 "options": ["Ondhu", "Moovu", "Aidu"],
                 "correctAnswer": "Ondhu"
@@ -1524,7 +1559,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               {
                 "type": "multiple_choice",
                 "prompt": "What is the Kannada word for 'Three'?",
-                "sentence": "How do you say 'Three' in Kannada?",
+                "sentence": "'Three'?",
                 "options": ["Mooru", "Moov", "Moovaththu"],
                 "correctAnswer": "Mooru"
               },
@@ -1537,7 +1572,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'Five' in Kannada?",
+                "prompt": "'Five'?",
                 "sentence": "What is the Kannada word for 'Five'?",
                 "options": ["Aidhu", "Aradu", "Nalku"],
                 "correctAnswer": "Aidhu"
@@ -1552,7 +1587,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               {
                 "type": "multiple_choice",
                 "prompt": "What is the Kannada word for 'Seven'?",
-                "sentence": "How do you say 'Seven' in Kannada?",
+                "sentence": "'Seven'?",
                 "options": ["ELu", "Aradu", "Moov"],
                 "correctAnswer": "ELu"
               },
@@ -1566,7 +1601,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               {
                 "type": "multiple_choice",
                 "prompt": "What is the Kannada word for 'Nine'?",
-                "sentence": "How do you say 'Nine' in Kannada?",
+                "sentence": "'Nine'?",
                 "options": ["Ombattu", "Entu", "Aaru"],
                 "correctAnswer": "Ombattu"
               },
@@ -1584,7 +1619,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
             "questions": [
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'Eleven' in Kannada?",
+                "prompt": "'Eleven'?",
                 "sentence": "What is the Kannada word for 'Eleven'?",
                 "options": ["Hadhnondhu", "Hannadu", "Hattu"],
                 "correctAnswer": "Hadhnondhu"
@@ -1598,7 +1633,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'Sixteen' in Kannada?",
+                "prompt": "'Sixteen'?",
                 "sentence": "What is the Kannada word for 'Sixteen'?",
                 "options": ["Hannaradu", "Hadhnaaru", "Hattaru"],
                 "correctAnswer": "Hadnaaru"
@@ -1612,7 +1647,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask 'How many people?' in Kannada?",
+                "prompt": "'How many people?'?",
                 "sentence": "What is the Kannada phrase for 'How many people?'",
                 "options": [
                   "Eshtu janaru?",
@@ -1634,7 +1669,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask 'What is the time?'",
+                "prompt": "'What is the time?'",
                 "sentence":
                     "What is the Kannada phrase for 'What is the time?'",
                 "options": [
@@ -1657,7 +1692,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask 'What time is it now?' in Kannada?",
+                "prompt": "'What time is it now?'?",
                 "sentence":
                     "What is the Kannada phrase for 'What time is it now?'",
                 "options": [
@@ -1692,7 +1727,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
             "questions": [
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'I am happy' in Kannada?",
+                "prompt": "'I am happy'?",
                 "sentence": "What is the Kannada phrase for 'I am happy'?",
                 "options": [
                   "Naanu khushiyaagi iddini.",
@@ -1710,7 +1745,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'I am angry' in Kannada?",
+                "prompt": "'I am angry'?",
                 "sentence": "What is the Kannada phrase for 'I am angry'?",
                 "options": [
                   "Nange kopa barthide.",
@@ -1728,7 +1763,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'I am excited' in Kannada?",
+                "prompt": "'I am excited'?",
                 "sentence": "What is the Kannada phrase for 'I am excited'?",
                 "options": [
                   "Naanu utsaha-dalli iddini.",
@@ -1750,7 +1785,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'I am worried' in Kannada?",
+                "prompt": "'I am worried'?",
                 "sentence": "What is the Kannada phrase for 'I am worried'?",
                 "options": [
                   "Naanu chinte maadthaiddhini.",
@@ -1772,7 +1807,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'I am feeling tired'?",
+                "prompt": "'I am feeling tired'?",
                 "sentence":
                     "What is the Kannada phrase for 'I am feeling tired'?",
                 "options": [
@@ -1796,7 +1831,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
             "questions": [
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'I am frustrated' in Kannada?",
+                "prompt": "'I am frustrated'?",
                 "sentence": "What is the Kannada phrase for 'I am frustrated'?",
                 "options": [
                   "Naanu niraasha aagidhe.",
@@ -1818,7 +1853,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'I feel embarrassed' in Kannada?",
+                "prompt": "'I feel embarrassed'?",
                 "sentence":
                     "What is the Kannada phrase for 'I feel embarrassed'?",
                 "options": [
@@ -1841,7 +1876,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'I feel grateful'?",
+                "prompt": "'I feel grateful'?",
                 "sentence": "What is the Kannada phrase for 'I feel grateful'?",
                 "options": [
                   "Naanu kruthagnathe aagidhe.",
@@ -1863,7 +1898,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'I am feeling lonely'?",
+                "prompt": "'I am feeling lonely'?",
                 "sentence":
                     "What is the Kannada phrase for 'I am feeling lonely'?",
                 "options": [
@@ -1886,7 +1921,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'I am proud of you'?",
+                "prompt": "'I am proud of you'?",
                 "sentence":
                     "What is the Kannada phrase for 'I am proud of you'?",
                 "options": [
@@ -1923,7 +1958,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
             "questions": [
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask 'What do you recommend?' in Kannada?",
+                "prompt": "'What do you recommend?'?",
                 "sentence":
                     "What is the Kannada phrase for 'What do you recommend?'",
                 "options": [
@@ -1946,7 +1981,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask for 'one plate of dosa'?",
+                "prompt": "for 'one plate of dosa'?",
                 "sentence":
                     "What is the Kannada phrase for 'One plate of dosa'?",
                 "options": [
@@ -1969,7 +2004,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask 'Is the food spicy?'",
+                "prompt": "'Is the food spicy?'",
                 "sentence":
                     "What is the Kannada phrase for 'Is the food spicy?'",
                 "options": [
@@ -1992,7 +2027,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask 'How much is the bill?'",
+                "prompt": "'How much is the bill?'",
                 "sentence":
                     "What is the Kannada phrase for 'How much is the bill?'",
                 "options": [
@@ -2015,7 +2050,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'I am full' after eating?",
+                "prompt": "'I am full' after eating?",
                 "sentence": "What is the Kannada phrase for 'I am full'?",
                 "options": [
                   "Hotte thumb-thu.",
@@ -2042,7 +2077,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
             "questions": [
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask 'What workout today?'",
+                "prompt": "'What workout today?'",
                 "sentence":
                     "What is the Kannada phrase for 'What workout today?'",
                 "options": [
@@ -2065,7 +2100,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'Lift heavy, bro!'",
+                "prompt": "'Lift heavy, bro!'",
                 "sentence":
                     "What is the Kannada phrase for 'Lift heavy, bro!'?",
                 "options": [
@@ -2088,7 +2123,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask 'What protein do you use?'",
+                "prompt": "'What protein do you use?'",
                 "sentence":
                     "What is the Kannada phrase for 'What protein do you use?'",
                 "options": [
@@ -2111,7 +2146,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'Let’s do legs today'?",
+                "prompt": "'Let’s do legs today'?",
                 "sentence":
                     "What is the Kannada phrase for 'Let’s do legs today'?",
                 "options": [
@@ -2134,7 +2169,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask 'When will you finish your workout?'",
+                "prompt": "'When will you finish your workout?'",
                 "sentence":
                     "What is the Kannada phrase for 'When will you finish your workout?'",
                 "options": [
@@ -2169,7 +2204,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
             "questions": [
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'The weather is nice' in Kannada?",
+                "prompt": "'The weather is nice'?",
                 "sentence":
                     "What is the Kannada phrase for 'The weather is nice'?",
                 "options": [
@@ -2192,7 +2227,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask 'Is it sunny today?'",
+                "prompt": "'Is it sunny today?'",
                 "sentence":
                     "What is the Kannada phrase for 'Is it sunny today?'",
                 "options": [
@@ -2215,7 +2250,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'The wind is strong'?",
+                "prompt": "'The wind is strong'?",
                 "sentence":
                     "What is the Kannada phrase for 'The wind is strong'?",
                 "options": [
@@ -2238,7 +2273,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you ask 'Is it raining now?'",
+                "prompt": "'Is it raining now?'",
                 "sentence":
                     "What is the Kannada phrase for 'Is it raining now?'",
                 "options": [
@@ -2261,7 +2296,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
               },
               {
                 "type": "multiple_choice",
-                "prompt": "How do you say 'The sun is setting'?",
+                "prompt": "'The sun is setting'?",
                 "sentence":
                     "What is the Kannada phrase for 'The sun is setting'?",
                 "options": [
@@ -2289,3 +2324,117 @@ List<List<dynamic>> getKannadaData(String firstName) {
     ]
   ];
 }
+
+Map<String, String> kannadaDictionary = {
+  // Greetings and Common Phrases
+  "namaskara": "hello",
+  "dhanyavaadagalu": "thank you",
+  "hege": "how",
+  "iddeera": "are you",
+  "chennagiddini": "i am good",
+  "shubha": "good",
+  "saayankaala": "evening",
+  "beligge": "morning",
+  "hogbarthini": "goodbye",
+  "raatru": "night",
+  "hesaru": "name",
+  "ninna": "your",
+  "naanu": "i am",
+  "vidyaarthi": "student",
+  "oota": "meal",
+  "aytha": "done",
+  "naale": "tomorrow",
+  "barthini": "come",
+  "ooru": "place",
+  "yavudu": "which",
+  "nanna": "my",
+  "mane": "house",
+  "chennagiddini": "i am fine",
+
+  // Animals
+  "naayi": "dog",
+  "bekku": "cat",
+  "aane": "elephant",
+  "huli": "tiger",
+  "hasu": "cow",
+  "koli": "chicken",
+  "kuri": "sheep",
+
+  // Colors
+  "kempu": "red",
+  "neeli": "blue",
+  "hasiru": "green",
+  "bili": "white",
+  "kappu": "black",
+
+  // Numbers
+  "ondhu": "one",
+  "eradu": "two",
+  "mooru": "three",
+  "naalkku": "four",
+  "aidhu": "five",
+  "aaru": "six",
+  "elu": "seven",
+  "entu": "eight",
+  "ombattu": "nine",
+  "hattu": "ten",
+
+  // Directions and Actions
+  "banni": "come",
+  "thogoli": "take",
+  "hogi": "go",
+  "nilsi": "stop",
+  "mukya": "important",
+
+  // Time and Common Questions
+  "eshtu": "how much",
+  "samaya": "time",
+  "hotthu": "hour",
+  "ivattu": "today",
+  "ninna": "yesterday",
+  "naale": "tomorrow",
+
+  // Emotions and Conditions
+  "khushiyaagi": "happy",
+  "dukka": "sad",
+  "hedarike": "fear",
+  "utsaha": "excited",
+  "kashta": "difficult",
+  "sustha": "tired",
+  "kopa": "anger",
+  "nagutta": "laughing",
+
+  // Food and Common Objects
+  "oota": "food",
+  "billu": "bill",
+  "neeru": "water",
+  "coffee": "coffee",
+  "dosa": "dosa",
+  "masala": "spice",
+  "idli": "idli",
+
+  // Nature and Environment
+  "hava": "weather",
+  "mara": "tree",
+  "hoovu": "flower",
+  "bisilu": "sunshine",
+  "male": "rain",
+  "gaali": "wind",
+  "surya": "sun",
+
+  // Gym and Exercise Terms
+  "workout": "workout",
+  "cardio": "cardio",
+  "legs": "legs",
+  "spot": "spot",
+  "heavy": "heavy",
+  "protein": "protein",
+
+  // Miscellaneous
+  "nimma": "your",
+  "yen": "what",
+  "gothilla": "don’t know",
+  "saakbohuda": "allowed",
+  "mugisi": "finished",
+  "bega": "fast",
+};

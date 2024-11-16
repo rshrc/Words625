@@ -1,9 +1,7 @@
 // Project imports:
-import 'package:words625/application/language_provider.dart';
 import 'package:words625/core/enums.dart';
 import 'package:words625/core/logger.dart';
 import 'package:words625/courses/languages/languages.dart';
-import 'package:words625/di/injection.dart';
 import 'package:words625/domain/course/course.dart';
 
 Future<List<List<dynamic>>> getCoursesData(
