@@ -7,6 +7,7 @@ import 'package:words625/application/course_provider.dart';
 import 'package:words625/application/game_provider.dart';
 import 'package:words625/application/language_provider.dart';
 import 'package:words625/application/level_provider.dart';
+import 'package:words625/application/match_provider.dart';
 import 'package:words625/di/injection.dart';
 
 final providers = [
@@ -26,4 +27,7 @@ final providers = [
   ChangeNotifierProvider<GameProvider>(
     create: (_) => getIt<GameProvider>(),
   ),
+  ChangeNotifierProvider<MatchProvider>(
+    create: (_) => getIt<MatchProvider>(),
+  )
 ];
