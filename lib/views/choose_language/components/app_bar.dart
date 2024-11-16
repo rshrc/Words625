@@ -17,7 +17,6 @@ class ChooseLanguageAppbar extends StatelessWidget
       toolbarHeight: 80,
       shadowColor: Colors.transparent,
       backgroundColor: Colors.transparent,
-      title: const StageProgressBar(0.5),
       centerTitle: true,
       leading: Padding(
         padding: const EdgeInsets.only(left: 15),
