@@ -11,9 +11,11 @@ import 'package:provider/provider.dart';
 
 // Project imports:
 import 'package:words625/application/character_provider.dart';
+import 'package:words625/application/language_provider.dart';
+import 'package:words625/core/enums.dart';
 import 'package:words625/core/extensions.dart';
-import 'package:words625/core/resources.dart';
 import 'package:words625/core/utils.dart';
+import 'package:words625/courses/alphabets/alphabets.dart';
 import 'package:words625/di/injection.dart';
 import 'package:words625/routing/routing.gr.dart';
 import 'package:words625/views/app.dart';
@@ -24,8 +26,31 @@ enum CharacterLearningMode {
   random,
 }
 
-class CharacterPracticeScreen extends StatelessWidget {
+class CharacterPracticeScreen extends StatefulWidget {
   const CharacterPracticeScreen({super.key});
+
+  @override
+  State<CharacterPracticeScreen> createState() =>
+      _CharacterPracticeScreenState();
+}
+
+class _CharacterPracticeScreenState extends State<CharacterPracticeScreen> {
+  late TargetLanguage targetLanguage;
+  late Map<String, String> sounds;
+  late Map<String, String> vowels;
+  late Map<String, String> consonants;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    targetLanguage = context.read<LanguageProvider>().selectedLanguage;
+
+    sounds = getLanguageSounds(targetLanguage);
+    vowels = getLanguageVowels(targetLanguage);
+    consonants = getLanguageConsonants(targetLanguage);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +60,7 @@ class CharacterPracticeScreen extends StatelessWidget {
           Wrap(
             spacing: 8,
             runSpacing: 4,
-            children: kannadaVowels.entries.map((e) {
+            children: vowels.entries.map((e) {
               return Padding(
                 padding: const EdgeInsets.all(2.0),
                 child: ChicletOutlinedAnimatedButton(
@@ -63,7 +88,7 @@ class CharacterPracticeScreen extends StatelessWidget {
           Wrap(
             spacing: 8,
             runSpacing: 6,
-            children: kannadaConsonants.entries.map((e) {
+            children: consonants.entries.map((e) {
               return Padding(
                 padding: const EdgeInsets.all(2.0),
                 child: ChicletOutlinedAnimatedButton(
@@ -148,21 +173,31 @@ class _VowelAndConsonantLearningPageState
     extends State<VowelAndConsonantLearningPage> {
   late Map<String, String> charactersToLearn;
   late MapEntry currentCharacter;
+  late TargetLanguage targetLanguage;
+  late Map<String, String> sounds;
+  late Map<String, String> vowels;
+  late Map<String, String> consonants;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
+    targetLanguage = context.read<LanguageProvider>().selectedLanguage;
+
+    sounds = getLanguageSounds(targetLanguage);
+    vowels = getLanguageVowels(targetLanguage);
+    consonants = getLanguageConsonants(targetLanguage);
+
     switch (widget.mode) {
       case CharacterLearningMode.vowels:
-        charactersToLearn = kannadaVowels;
+        charactersToLearn = vowels;
         break;
       case CharacterLearningMode.consonants:
-        charactersToLearn = kannadaConsonants;
+        charactersToLearn = consonants;
         break;
       case CharacterLearningMode.random:
-        charactersToLearn = shuffleMap(kannadaSounds);
+        charactersToLearn = shuffleMap(sounds);
         break;
     }
     currentCharacter = charactersToLearn.entries.first;
