@@ -1,4 +1,7 @@
-final allLevel1Words = {
+// Project imports:
+import 'package:words625/core/enums.dart';
+
+final allLevel1WordsKannada = {
   "I": "Naanu",
   "You": "Neenu",
   "We": "Naavu",
@@ -29,4 +32,110 @@ final allLevel1Words = {
   "Sit": "Koodu",
   "Speak": "Maatanadu",
   "Listen": "Keliri"
+};
+
+final allLevel1WordsTamil = {
+  "I": "Naan",
+  "You": "Neenga / Nee",
+  "We": "Naanga / Naam",
+  "This": "Idhu",
+  "That": "Adhu",
+  "Here": "Inge",
+  "There": "Ange",
+  "Yes": "Aam",
+  "No": "Illai",
+  "Man": "Aambala",
+  "Woman": "Pombala",
+  "Boy": "Payyan",
+  "Girl": "Ponnu",
+  "Friend": "Nanban",
+  "Love": "Kaadhal",
+  "Happy": "Magizhchi",
+  "Sad": "Varutham",
+  "Good": "Nalladhu",
+  "Bad": "Kettadhu",
+  "Come": "Vaa",
+  "Go": "Poa",
+  "Eat": "Saapidu",
+  "Drink": "Kudi",
+  "Sleep": "Thoongu",
+  "Walk": "Nadakkam",
+  "Run": "Odu",
+  "Stand": "Nillu",
+  "Sit": "Utkaar",
+  "Speak": "Pesu",
+  "Listen": "Kaelu"
+};
+
+final allLevel1WordsTelugu = {
+  "I": "Nenu",
+  "You": "Meeru / Nuvvu",
+  "We": "Manam / Memu",
+  "This": "Idi",
+  "That": "Adi",
+  "Here": "Ikkaḍa",
+  "There": "Akkada",
+  "Yes": "Avunu",
+  "No": "Kadu",
+  "Man": "Magadu",
+  "Woman": "Aada",
+  "Boy": "Abbayi",
+  "Girl": "Ammai",
+  "Friend": "Sneehitudu",
+  "Love": "Prema",
+  "Happy": "Santosham",
+  "Sad": "Duhkham",
+  "Good": "Manchidi",
+  "Bad": "Chedda",
+  "Come": "Raa",
+  "Go": "Vellu",
+  "Eat": "Tinu",
+  "Drink": "Taagu",
+  "Sleep": "Nidra",
+  "Walk": "Nadava",
+  "Run": "Parigettu",
+  "Stand": "Nilabaduta",
+  "Sit": "Kurchu",
+  "Speak": "Matladu",
+  "Listen": "Vinu"
+};
+
+final allLevel1WordsMalayalam = {
+  "I": "Njan",
+  "You": "Nee / Ningal",
+  "We": "Njangal / Naam",
+  "This": "Ithu",
+  "That": "Ath",
+  "Here": "Ivide",
+  "There": "Avide",
+  "Yes": "Athu",
+  "No": "Illaa",
+  "Man": "Aan",
+  "Woman": "Pen",
+  "Boy": "Ankuttan",
+  "Girl": "Pennkutti",
+  "Friend": "Suhritt",
+  "Love": "Sneham",
+  "Happy": "Sandosham",
+  "Sad": "Dukham",
+  "Good": "Nannayi",
+  "Bad": "Cheetha",
+  "Come": "Vaa",
+  "Go": "Poka",
+  "Eat": "Kazhikuka",
+  "Drink": "Kudikkuka",
+  "Sleep": "Urakkam",
+  "Walk": "Nadakkuka",
+  "Run": "Oduka",
+  "Stand": "Nilkuka",
+  "Sit": "Irrikkuka",
+  "Speak": "Samsarikkuka",
+  "Listen": "Kelkkuka"
+};
+
+final wordsMap = {
+  TargetLanguage.kannada: allLevel1WordsKannada,
+  TargetLanguage.tamil: allLevel1WordsTamil,
+  TargetLanguage.telugu: allLevel1WordsTelugu,
+  TargetLanguage.malayalam: allLevel1WordsMalayalam,
 };

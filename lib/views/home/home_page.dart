@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:auto_route/annotations.dart';
+import 'package:provider/provider.dart';
 
 // Project imports:
-import 'package:words625/character_drawing.dart';
+import 'package:words625/application/language_provider.dart';
+import 'package:words625/views/characters/character_drawing.dart';
+import 'package:words625/views/characters/characters_app_bar.dart';
 import 'package:words625/views/courses/course_tree.dart';
 import 'package:words625/views/home/components/components.dart';
 import 'package:words625/views/leaderboard/leaderboard_page.dart';
@@ -34,35 +37,22 @@ class _HomePageState extends State<HomePage> {
     // const ExplorePage(),
   ];
 
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      initSession();
+    });
+  }
+
+  initSession() async {
+    context.read<LanguageProvider>().initLanguage();
+  }
+
   final List<PreferredSizeWidget> appBars = [
     const StatAppBar(),
-    AppBar(
-      title: Column(
-        children: [
-          Text(
-            "The Alphabet",
-            style: TextStyle(
-              color: Colors.grey[500],
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            "Let's learn the Kannada Script",
-            style: TextStyle(
-              color: Colors.grey[500],
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
-      ),
-      toolbarHeight: 120,
-      backgroundColor: Colors.white,
-      elevation: 1.5,
-      centerTitle: true,
-    ),
+    const CharactersAppBar(),
     const ProfileAppBar(),
     const LeaderboardAppBar(),
     const ShopAppBar(),

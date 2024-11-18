@@ -270,5 +270,4 @@ class CourseCompletionPlayerChoice extends StatelessWidget {
       ),
     );
   }
-
 }

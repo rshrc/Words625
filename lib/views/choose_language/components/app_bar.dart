@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:words625/views/choose_language/components/stage_progress_bar.dart';
 
 class ChooseLanguageAppbar extends StatelessWidget
     implements PreferredSizeWidget {
@@ -17,7 +16,6 @@ class ChooseLanguageAppbar extends StatelessWidget
       toolbarHeight: 80,
       shadowColor: Colors.transparent,
       backgroundColor: Colors.transparent,
-      title: const StageProgressBar(0.5),
       centerTitle: true,
       leading: Padding(
         padding: const EdgeInsets.only(left: 15),

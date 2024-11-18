@@ -34,9 +34,10 @@ class Question with _$Question {
     String? type,
     String? prompt,
     String? sentence,
+    bool? sentenceIsTargetLanguage,
     List<String>? options,
     String? correctAnswer,
-    String? translatedSentence
+    String? translatedSentence,
   }) = _Question;
 
   // Empty constructor

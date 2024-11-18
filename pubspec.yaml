@@ -11,6 +11,7 @@ dependencies:
   chiclet: any
   cloud_firestore: any
   contained_tab_bar_view: '^0.8.0'
+  countup: any
   cupertino_icons: '^1.0.2'
   equatable: any
   firebase_analytics: any
@@ -23,7 +24,9 @@ dependencies:
     sdk: flutter
   flutter_animate: any
   flutter_custom_dialog: '^1.2.0'
+  flutter_svg: any
   flutter_tts: any
+  font_awesome_flutter: any
   freezed: any
   get_it: any
   google_fonts: 6.0.0

@@ -1,18 +1,16 @@
-// Dart imports:
-import 'dart:async';
-import 'dart:math';
+// match_words_page.dart
 
 // Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:auto_route/annotations.dart';
+import 'package:provider/provider.dart';
 
 // Project imports:
-import 'package:words625/application/audio_controller.dart';
+import 'package:words625/application/game_provider.dart';
+import 'package:words625/application/match_provider.dart';
 import 'package:words625/core/utils.dart';
-import 'package:words625/di/injection.dart';
-import 'package:words625/match_levels.dart';
 import 'package:words625/views/app.dart';
 
 @RoutePage()
@@ -24,210 +22,141 @@ class MatchWordsPage extends StatefulWidget {
 }
 
 class _MatchWordsPageState extends State<MatchWordsPage> {
-  List<String> englishWords = [];
-  List<String> kannadaWords = [];
-  Map<String, String> matchedPairs = {};
-  String? selectedEnglishWord;
-  String? selectedKannadaWord;
-  Timer? _timer;
-  int _secondsRemaining = 180;
-  Set<String> matchedWords = {};
-
-  Map<String, String> getRandomWords(int count) {
-    final List<MapEntry<String, String>> entries =
-        allLevel1Words.entries.toList();
-    entries.shuffle(Random());
-    return Map.fromEntries(entries.take(count));
-  }
-
-  late Map<String, String> wordPairs;
-
-  late AudioController _audioController;
-
   @override
   void initState() {
     super.initState();
-    wordPairs = getRandomWords(8);
-    englishWords = wordPairs.keys.toList()..shuffle();
-    kannadaWords = wordPairs.values.toList()..shuffle();
-    _audioController = getIt<AudioController>();
-    startTimer();
-  }
 
-  void startTimer() {
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        if (_secondsRemaining > 0) {
-          _secondsRemaining--;
-        } else {
-          _timer?.cancel();
-          // TODO
-          // show dialog to give option to restart
-          // showPlayerOption();
-        }
-      });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<MatchProvider>().initializeGame();
     });
   }
 
-  void showPlayerOption() {
+  void showPlayerOption(BuildContext context) {
     showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: const Text("Game Over"),
-            content: const Text("Do you want to play again?"),
-            actions: [
-              TextButton(
-                onPressed: resetLevel,
-                child: const Text("Yes"),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text("No"),
-              ),
-            ],
-          );
-        });
-  }
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Game Over"),
+          content: const Text("Do you want to play again?"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                context.read<MatchProvider>().initializeGame();
 
-  void resetLevel() {
-    Navigator.pop(context);
-    setState(() {
-      wordPairs = getRandomWords(8);
-      englishWords = wordPairs.keys.toList()..shuffle();
-      kannadaWords = wordPairs.values.toList()..shuffle();
-      matchedPairs = {};
-      selectedEnglishWord = null;
-      selectedKannadaWord = null;
-      _secondsRemaining = 180;
-      startTimer();
-    });
-  }
-
-  void selectEnglishWord(String word) {
-    setState(() {
-      selectedEnglishWord = word;
-      checkMatch();
-    });
-  }
-
-  void selectKannadaWord(String word) {
-    setState(() {
-      selectedKannadaWord = word;
-      checkMatch();
-    });
-  }
-
-  void checkMatch() async {
-    if (selectedEnglishWord != null && selectedKannadaWord != null) {
-      if (wordPairs[selectedEnglishWord!] == selectedKannadaWord) {
-        setState(() {
-          matchedPairs[selectedEnglishWord!] = selectedKannadaWord!;
-        });
-
-        // Briefly highlight the match for 500ms before removing
-        _audioController.playRandomLevelUpSound();
-        await Future.delayed(const Duration(milliseconds: 500));
-
-        setState(() {
-          matchedWords.add(selectedEnglishWord!);
-          matchedWords.add(selectedKannadaWord!);
-          selectedEnglishWord = null;
-          selectedKannadaWord = null;
-        });
-
-        // If all matches are found, show option to restart
-        if (matchedWords.length == englishWords.length * 2) {
-          showPlayerOption();
-          _timer?.cancel();
-        }
-      } else {
-        // Reset selection if not a match
-        _audioController.playRandomErrorSound();
-        setState(() {
-          selectedEnglishWord = null;
-          selectedKannadaWord = null;
-        });
-      }
-    }
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
+                Navigator.pop(context);
+              },
+              child: const Text("Yes"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text("No"),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leadingWidth: 0,
-        leading: const SizedBox.shrink(),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              "Match Madness",
-              style: TextStyle(
-                color: Colors.pink,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              getFormattedTime(_secondsRemaining),
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: _secondsRemaining < 60 ? Colors.red : appGreen,
-              ),
-            ),
-          ],
-        ),
-        toolbarHeight: 60,
-        backgroundColor: Colors.white,
-        elevation: 1.5,
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            Expanded(
-              child: Row(
-                children: [
-                  WordListWidget(
-                    words: englishWords,
-                    selectedWord: selectedEnglishWord,
-                    onWordSelected: selectEnglishWord,
-                    selectedColor: Colors.blue,
-                    borderColor: Colors.grey.shade200,
-                    matchedWords: matchedWords,
+    return Consumer2<MatchProvider, GameProvider>(
+      builder: (context, matchProvider, gameProvider, _) {
+        if (matchProvider.isGameOver) {
+          // Use post-frame callback to avoid showing dialog during build
+          // update score
+          gameProvider.incrementScore(
+            matchProvider.sessionScore,
+            notify: false,
+          );
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            showPlayerOption(context);
+          });
+        }
+
+        return Scaffold(
+          appBar: AppBar(
+            leadingWidth: 0,
+            leading: const SizedBox.shrink(),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Match Madness",
+                  style: TextStyle(
+                    color: Colors.pink,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
                   ),
-                  const SizedBox(width: 16),
-                  WordListWidget(
-                    words: kannadaWords,
-                    selectedWord: selectedKannadaWord,
-                    onWordSelected: selectKannadaWord,
-                    selectedColor: Colors.green,
-                    borderColor: Colors.grey.shade200,
-                    matchedWords: matchedWords,
+                ),
+                Text(
+                  getFormattedTime(matchProvider.secondsRemaining),
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: matchProvider.secondsRemaining < 25
+                        ? Colors.red
+                        : appGreen,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            const SizedBox(height: 20),
-            MatchCounter(
-              matchedCount: matchedPairs.length,
-              totalCount: wordPairs.length,
+            toolbarHeight: 60,
+            backgroundColor: Colors.white,
+            elevation: 1.5,
+            centerTitle: true,
+          ),
+          body: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                const SizedBox(height: 20),
+                Expanded(
+                  child: Row(
+                    children: [
+                      WordListWidget(
+                        words: matchProvider.englishWords,
+                        selectedWord: matchProvider.selectedEnglishWord,
+                        onWordSelected: (word) {
+                          matchProvider.selectEnglishWord(word);
+                        },
+                        selectedColor: Colors.blue,
+                        borderColor: Colors.grey.shade200,
+                        matchedWords: matchProvider.matchedWords,
+                      ),
+                      const SizedBox(width: 16),
+                      WordListWidget(
+                        words: matchProvider.targetWords,
+                        selectedWord: matchProvider.selectedTargetWord,
+                        onWordSelected: (word) {
+                          matchProvider.selectTargetWord(word);
+                        },
+                        selectedColor: Colors.green,
+                        borderColor: Colors.grey.shade200,
+                        matchedWords: matchProvider.matchedWords,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  "2XP for Each Correct Match",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 16,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                MatchCounter(
+                  matchedCount: matchProvider.matchedPairs.length,
+                  totalCount: matchProvider.wordPairs?.length ?? 0,
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

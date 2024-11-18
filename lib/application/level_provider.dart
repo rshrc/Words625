@@ -203,6 +203,8 @@ class LessonProvider with ChangeNotifier {
     _currentQuestionIndex = 0;
     _isAnswerCorrect = false;
     _hasSelectedAnswer = false;
+    _answerState = AnswerState.none;
+    _percent = 0;
     notifyListeners();
   }
 }

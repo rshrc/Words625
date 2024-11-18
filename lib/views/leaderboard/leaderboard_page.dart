@@ -1,8 +1,14 @@
+// Dart imports:
+
 // Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+// Project imports:
+import 'package:words625/core/extensions.dart';
+import 'package:words625/core/logger.dart';
 
 class LeaderboardPage extends StatelessWidget {
   const LeaderboardPage({Key? key}) : super(key: key);
@@ -33,12 +39,15 @@ class LeaderboardPage extends StatelessWidget {
             final name = userData['name'] ?? 'Anonymous';
             final image =
                 userData['profileImage'] ?? 'assets/images/default_image.png';
+            final languages = userData['languages'] as List<dynamic>? ?? [];
+
+            logger.w("Line 1: $userData");
 
             return ListTile(
               contentPadding: const EdgeInsets.only(top: 17),
               horizontalTitleGap: 12,
               leading: rank(index + 1),
-              title: avatarWithName(image, name),
+              title: avatarWithName(image, name, languages.cast<String>()),
               trailing: xpAmount(xp),
             );
           },
@@ -57,26 +66,38 @@ class LeaderboardPage extends StatelessWidget {
     );
   }
 
-  Widget avatarWithName(String image, String name) {
+  Widget avatarWithName(String image, String name, List<String> languages) {
     return Align(
       alignment: Alignment.centerLeft,
       child: Row(
         children: [
           avatar(image),
           const Padding(padding: EdgeInsets.only(right: 20)),
-          Flexible(child: friendName(name)),
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  name,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF4B4B4B),
+                    fontSize: 20,
+                  ),
+                ),
+                if (languages.isNotEmpty)
+                  Text(
+                    languages.join(', ').toTitleCase,
+                    style: const TextStyle(
+                      color: Colors.orangeAccent,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+              ],
+            ),
+          ),
         ],
-      ),
-    );
-  }
-
-  Widget friendName(String name) {
-    return Text(
-      name,
-      style: const TextStyle(
-        fontWeight: FontWeight.bold,
-        color: Color(0xFF4B4B4B),
-        fontSize: 20,
       ),
     );
   }
