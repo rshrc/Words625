@@ -61,24 +61,24 @@ class ShopPage extends StatelessWidget {
         ),
         const BigTitle(text: 'Outfits'),
         ShopItem(
-          imagePath: Assets.images.duo1.path,
+          imagePath: Assets.images.mala.malaCute.path,
           label: 'Formal Attire',
           description:
-              "Learn in style. Duo has always been a sharp guy, now he'll look sharp too.",
+              "Learn in style. Maya has always been a sharp girl, now she'll look sharp too.",
           price: 1000,
         ),
         ShopItem(
-          imagePath: Assets.images.duo2.path,
+          imagePath: Assets.images.mala.malaDoubtful.path,
           label: 'Luxury Tracksuit',
           description:
-              'Learn in luxury. Duo will love the feel of 24-carat gold silk on his feathers.',
+              'Learn in luxury. Maya will love the feel of 24-carat gold silk on her feathers.',
           price: 2000,
         ),
         ShopItem(
-          imagePath: Assets.images.duo3.path,
-          label: 'Super Duo',
+          imagePath: Assets.images.mala.malaAngry.path,
+          label: 'Super Maya',
           description:
-              'Transform Duo from a humble owl into a fearless feathered crimefighter.',
+              'Transform Maya from a cute peacock into a fearless feathered Guru.',
           price: 3000,
         ),
         const Padding(
@@ -113,7 +113,7 @@ class ShopItem extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       padding: const EdgeInsets.all(5),
-      height: 160,
+      height: 150,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         border: Border.all(width: 2.5, color: const Color(0xFFE5E5E5)),
@@ -152,6 +152,7 @@ class ItemImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.asset(
       imagePath,
+      height: 250,
       width: 110,
     );
   }

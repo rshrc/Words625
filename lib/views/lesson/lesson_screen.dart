@@ -10,9 +10,9 @@ import 'package:provider/provider.dart';
 import 'package:words625/application/level_provider.dart';
 import 'package:words625/core/logger.dart';
 import 'package:words625/domain/course/course.dart';
-import 'package:words625/views/app.dart';
 import 'package:words625/views/lesson/components/lesson_app_bar.dart';
 import 'package:words625/views/lesson/components/list_lesson.dart';
+import 'package:words625/views/theme.dart';
 
 enum LessonAvailability { loading, present, absent }
 
@@ -124,7 +124,7 @@ class CheckButton extends StatelessWidget {
             backgroundColor = Colors.red;
           } else {
             title = "CHECK";
-            backgroundColor = appGreen;
+            backgroundColor = primaryColor;
           }
 
           return ChicletAnimatedButton(
@@ -181,7 +181,7 @@ class LevelPlayerChoice extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: appGreen,
+                  color: primaryColor,
                 ),
               ),
               const Text("You have completed this level!",
@@ -193,7 +193,7 @@ class LevelPlayerChoice extends StatelessWidget {
                 children: [
                   ChicletAnimatedButton(
                     width: MediaQuery.of(context).size.width * 0.5,
-                    backgroundColor: appGreen,
+                    backgroundColor: primaryColor,
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
@@ -203,7 +203,7 @@ class LevelPlayerChoice extends StatelessWidget {
                   ChicletOutlinedAnimatedButton(
                     width: MediaQuery.of(context).size.width * 0.5,
                     backgroundColor: Colors.white,
-                    borderColor: appGreen,
+                    borderColor: primaryColor,
                     onPressed: () {
                       Navigator.of(context).pop();
                       Navigator.of(context).pop();
@@ -235,7 +235,7 @@ class CourseCompletionPlayerChoice extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: appGreen,
+                  color: primaryColor,
                 ),
               ),
               const Text("You have completed this course!",
@@ -247,7 +247,7 @@ class CourseCompletionPlayerChoice extends StatelessWidget {
                 children: [
                   ChicletAnimatedButton(
                     width: MediaQuery.of(context).size.width * 0.5,
-                    backgroundColor: appGreen,
+                    backgroundColor: primaryColor,
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
@@ -257,7 +257,7 @@ class CourseCompletionPlayerChoice extends StatelessWidget {
                   ChicletOutlinedAnimatedButton(
                     width: MediaQuery.of(context).size.width * 0.5,
                     backgroundColor: Colors.white,
-                    borderColor: appGreen,
+                    borderColor: primaryColor,
                     onPressed: () {
                       Navigator.of(context).pop();
                       Navigator.of(context).pop();

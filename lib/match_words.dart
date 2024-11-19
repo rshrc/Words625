@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:words625/application/game_provider.dart';
 import 'package:words625/application/match_provider.dart';
 import 'package:words625/core/utils.dart';
-import 'package:words625/views/app.dart';
+import 'package:words625/views/theme.dart';
 
 @RoutePage()
 class MatchWordsPage extends StatefulWidget {
@@ -97,7 +97,7 @@ class _MatchWordsPageState extends State<MatchWordsPage> {
                     fontWeight: FontWeight.bold,
                     color: matchProvider.secondsRemaining < 25
                         ? Colors.red
-                        : appGreen,
+                        : primaryColor,
                   ),
                 ),
               ],

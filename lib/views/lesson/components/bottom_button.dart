@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:chiclet/chiclet.dart';
 
 // Project imports:
-import 'package:words625/views/app.dart';
 
 class BottomButton extends StatelessWidget {
   final BuildContext context;

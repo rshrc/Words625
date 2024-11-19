@@ -10,8 +10,6 @@ import 'package:words625/application/providers.dart';
 import 'package:words625/di/injection.dart';
 import 'package:words625/routing/routing.dart';
 
-const appGreen = Color(0xFF7ac70c);
-
 final router = getIt<AppRouter>();
 
 class Words625App extends StatelessWidget {

@@ -1,18 +1,21 @@
 // Flutter imports:
 
 // Flutter imports:
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 // Project imports:
-import 'package:words625/views/app.dart';
+import 'package:words625/views/home/mala_welcomes.dart';
+import 'package:words625/views/theme.dart';
 
 const centerTextStyle = TextStyle(
   fontSize: 32,
   fontWeight: FontWeight.bold,
-  color: appGreen,
+  color: primaryColor,
 );
 
 class CenterDisplay extends StatelessWidget {
@@ -24,7 +27,7 @@ class CenterDisplay extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Image.asset('assets/images/duo-wave.png', height: 150),
+          const MalaWelcomes(),
           Container(padding: const EdgeInsets.all(5)),
           AnimatedTextKit(
             animatedTexts: [
@@ -63,7 +66,7 @@ class CenterDisplay extends StatelessWidget {
                   text: 'ಕನ್ನಡ', // Kannada word highlighted
                   style: TextStyle(
                       fontSize: 20,
-                      color: appGreen,
+                      color: primaryColor,
                       fontWeight: FontWeight.bold),
                 ),
                 TextSpan(
@@ -88,7 +91,7 @@ class CenterDisplay extends StatelessWidget {
                     text: ' so, happy ಕಲಿಕೆ!',
                     style: TextStyle(
                       fontSize: 20,
-                      color: appGreen,
+                      color: primaryColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:words625/application/course_provider.dart';
 import 'package:words625/application/language_provider.dart';
 import 'package:words625/core/extensions.dart';
-import 'package:words625/views/app.dart';
+import 'package:words625/views/theme.dart';
 
 class ContinueButton extends StatelessWidget {
   final BuildContext context;
@@ -21,7 +21,7 @@ class ContinueButton extends StatelessWidget {
     return Consumer2<LanguageProvider, CourseProvider>(
       builder: (context, languageState, courseState, child) {
         return ChicletAnimatedButton(
-          backgroundColor: appGreen,
+          backgroundColor: primaryColor,
           width: context.width,
           onPressed: () {
             languageState.cacheLanguage();

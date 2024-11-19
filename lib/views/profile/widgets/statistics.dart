@@ -74,7 +74,7 @@ class _StatisticsState extends State<Statistics> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                Row(
+                Wrap(
                   children: languages
                       .map((lang) => Card(
                             child: Padding(

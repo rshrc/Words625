@@ -7,7 +7,6 @@ import 'package:chiclet/chiclet.dart';
 
 // Project imports:
 import 'package:words625/routing/routing.gr.dart';
-import 'package:words625/views/app.dart';
 
 class LogInButton extends StatelessWidget {
   final BuildContext context;

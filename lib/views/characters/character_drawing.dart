@@ -19,7 +19,7 @@ import 'package:words625/core/utils.dart';
 import 'package:words625/courses/alphabets/alphabets.dart';
 import 'package:words625/di/injection.dart';
 import 'package:words625/routing/routing.gr.dart';
-import 'package:words625/views/app.dart';
+import 'package:words625/views/theme.dart';
 
 enum CharacterLearningMode {
   vowels,
@@ -120,7 +120,7 @@ class _CharacterPracticeScreenState extends State<CharacterPracticeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ChicletOutlinedAnimatedButton(
-                  borderColor: appGreen,
+                  borderColor: primaryColor,
                   width: context.width * 0.9,
                   child: const Text("Learn Vowels", style: TextStyle()),
                   onPressed: () {

@@ -13,7 +13,7 @@ import 'package:words625/core/logger.dart';
 import 'package:words625/di/injection.dart';
 import 'package:words625/routing/routing.gr.dart';
 import 'package:words625/service/locator.dart';
-import 'package:words625/views/app.dart';
+import 'package:words625/views/theme.dart';
 
 enum AuthState { loading, authenticated, unauthenticated }
 
@@ -40,7 +40,7 @@ class _GetStartedButtonState extends State<GetStartedButton> {
       width: MediaQuery.of(context).size.width * 0.9,
       onPressed: () => _handleGoogleLogin(context),
       buttonType: ChicletButtonTypes.roundedRectangle,
-      backgroundColor: appGreen,
+      backgroundColor: primaryColor,
       child: _authState == AuthState.loading
           ? const SizedBox(
               height: 22,
