@@ -3,9 +3,9 @@
     "short_name": "Varnamala",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A Kannada Learning App - Duolingo Style",
+    "background_color": "#hexcode",
+    "theme_color": "#hexcode",
+    "description": "A Language Learning App - Duolingo Style",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
