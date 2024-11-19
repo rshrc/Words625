@@ -776,7 +776,7 @@ List<List<dynamic>> getKannadaData(String firstName) {
                 "correctAnswer": "Hasu"
               }
             ]
-          }
+          },
         ]
       },
       {

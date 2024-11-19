@@ -7,6 +7,7 @@ import 'package:chiclet/chiclet.dart';
 
 // Project imports:
 import 'package:words625/routing/routing.gr.dart';
+import 'package:words625/views/theme.dart';
 
 class LogInButton extends StatelessWidget {
   final BuildContext context;
@@ -27,7 +28,7 @@ class LogInButton extends StatelessWidget {
       child: const Text(
         'ALREADY HAVE AN ACCOUNT',
         style: TextStyle(
-          color: appGreen,
+          color: primaryColor,
           fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
