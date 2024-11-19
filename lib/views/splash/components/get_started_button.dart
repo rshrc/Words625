@@ -15,9 +15,24 @@ import 'package:words625/routing/routing.gr.dart';
 import 'package:words625/service/locator.dart';
 import 'package:words625/views/app.dart';
 
-class GetStartedButton extends StatelessWidget {
+enum AuthState { loading, authenticated, unauthenticated }
+
+class GetStartedButton extends StatefulWidget {
   final BuildContext context;
   const GetStartedButton(this.context, {Key? key}) : super(key: key);
+
+  @override
+  State<GetStartedButton> createState() => _GetStartedButtonState();
+}
+
+class _GetStartedButtonState extends State<GetStartedButton> {
+  AuthState _authState = AuthState.unauthenticated;
+
+  checkAuthState(AuthState authState) async {
+    setState(() {
+      _authState = authState;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,26 +41,36 @@ class GetStartedButton extends StatelessWidget {
       onPressed: () => _handleGoogleLogin(context),
       buttonType: ChicletButtonTypes.roundedRectangle,
       backgroundColor: appGreen,
-      child: const Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'GET STARTED',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
+      child: _authState == AuthState.loading
+          ? const SizedBox(
+              height: 22,
+              width: 22,
+              child: CircularProgressIndicator(
+                color: Colors.white,
+              ),
+            )
+          : const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'GET STARTED',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(width: 16),
+                Icon(Icons.arrow_forward, color: Colors.white, size: 18)
+              ],
             ),
-          ),
-          SizedBox(width: 16),
-          Icon(Icons.arrow_forward, color: Colors.white, size: 18)
-        ],
-      ),
     );
   }
 
   _handleGoogleLogin(BuildContext context) async {
     try {
+      checkAuthState(AuthState.loading);
+
       final GoogleSignIn googleSignIn = GoogleSignIn();
 
       GoogleSignInAccount? googleUser = await googleSignIn.signIn();
