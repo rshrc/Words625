@@ -27,7 +27,7 @@ class Words625App extends StatelessWidget {
       providers: providers,
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        title: 'words625',
+        title: 'Varnamala',
         routerConfig: router.config(navigatorObservers: () => [observer]),
       ),
     );

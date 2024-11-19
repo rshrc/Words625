@@ -29,7 +29,7 @@ class CenterDisplay extends StatelessWidget {
           AnimatedTextKit(
             animatedTexts: [
               TypewriterAnimatedText(
-                'Words625',
+                'Varnamala',
                 speed: const Duration(milliseconds: 100),
                 textStyle: centerTextStyle,
                 cursor: "",
